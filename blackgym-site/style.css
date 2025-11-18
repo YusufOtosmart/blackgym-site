@@ -688,7 +688,7 @@ a {
 }
 
 .video-wrapper {
-  max-width: 720px;              /* Desktop’ta genişlik sınırı */
+  max-width: 720px;              /* Masaüstünde çok geniş olmasın */
   margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
@@ -697,29 +697,20 @@ a {
   background: #020617;
 }
 
-/* 16:9 oranlı çerçeve */
-.video-frame {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%;           /* 16:9 = 9 / 16 = 0.5625 */
-}
-
 .gallery-video {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;             /* Taşma yok, çerçeveyi doldurur */
+  height: auto;                  /* Oran sabit, mobilde senin sevdiğin gibi */
 }
 
-/* Mobilde de aynı oran, sadece genişlik tam olur (zaten responsive) */
-@media (max-width: 768px) {
-  .video-wrapper {
-    max-width: 100%;
-    margin-top: 1rem;
+/* SADECE DESKTOP İÇİN YÜKSEKLİK SINIRI */
+@media (min-width: 992px) {
+  .gallery-video {
+    max-height: 70vh;            /* Ekranın %70’ini geçmesin */
+    width: 100%;
+    height: auto;
   }
 }
-
 
 /* CONTACT */
 
