@@ -687,8 +687,9 @@ a {
   text-align: center;
 }
 
+/* Dikey video için “telefon ekranı” genişliği */
 .video-wrapper {
-  max-width: 720px;              /* Masaüstünde çok geniş olmasın */
+  max-width: 420px;              /* Desktop’ta dar, mobilde yine tam genişlik */
   margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
@@ -700,16 +701,7 @@ a {
 .gallery-video {
   display: block;
   width: 100%;
-  height: auto;                  /* Oran sabit, mobilde senin sevdiğin gibi */
-}
-
-/* SADECE DESKTOP İÇİN YÜKSEKLİK SINIRI */
-@media (min-width: 992px) {
-  .gallery-video {
-    max-height: 70vh;            /* Ekranın %70’ini geçmesin */
-    width: 100%;
-    height: auto;
-  }
+  height: auto;                  /* Orijinal dikey oran korunur */
 }
 
 /* CONTACT */
