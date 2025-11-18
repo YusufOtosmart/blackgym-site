@@ -669,6 +669,23 @@ a {
   height: 180px;
   object-fit: cover;
 }
+/* VIDEO GALLERY */
+
+.video-wrapper {
+  max-width: 960px;
+  margin: 2rem auto 0;
+  border-radius: 1.3rem;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+  background: #020617;
+}
+
+.gallery-video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* CONTACT */
 
