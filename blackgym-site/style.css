@@ -43,7 +43,7 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -111,11 +111,48 @@ a {
   text-decoration: none;
 }
 
-.brand-logo {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
+/* HEADER LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;                 /* logo ile yazı arası biraz açıldı */
+  text-decoration: none;
 }
+
+.logo-mark {
+  display: block;
+  height: 42px;                /* 32 → 42 (daha büyük ikon) */
+  width: auto;
+  background: transparent;
+}
+
+.logo-text {
+  display: flex;
+  align-items: baseline;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 1.15rem;          /* 1.0 → 1.15 (yazı da büyüdü) */
+}
+
+.logo-text-main {
+  color: #f9fafb;
+}
+
+.logo-text-accent {
+  color: var(--accent);
+  margin-left: 0.3rem;
+}
+@media (min-width: 1200px) {
+  .logo-mark {
+    height: 48px;              /* Geniş monitörde daha da büyük logo */
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
+
 
 .brand-text {
   display: flex;
