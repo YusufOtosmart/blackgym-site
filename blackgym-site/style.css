@@ -671,9 +671,17 @@ a {
 }
 /* VIDEO GALLERY */
 
+.video-tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
 .video-wrapper {
-  max-width: 960px;
-  margin: 2rem auto 0;
+  max-width: 960px;           /* Hem desktop hem mobilde genişliği kısıtlama */
+  margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
   border: 1px solid var(--border-soft);
@@ -684,8 +692,16 @@ a {
 .gallery-video {
   display: block;
   width: 100%;
-  height: auto;
+  height: auto;               /* Oran bozulmasın */
 }
+
+/* SADECE DESKTOP İÇİN YÜKSEKLİK SINIRI */
+@media (min-width: 992px) {
+  .gallery-video {
+    max-height: 70vh;         /* Ekran yüksekliğinin %70’ini geçmesin */
+  }
+}
+
 
 /* CONTACT */
 
