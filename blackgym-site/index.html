@@ -53,7 +53,7 @@
     <div class="container hero-inner">
       <div class="hero-content">
         <p class="hero-label">Now Open · Nilüfer / Bursa</p>
-        <h1 class="hero-title">HAREKETE GEÇ<br />İYİ HİSSET</h1>
+        <h1 class="hero-title">KARANLIK ATMOSFER,<br />GÜÇLÜ PERFORMANS.</h1>
         <p class="hero-subtitle">
           Fonksiyonel pist, free weight alanı, reformer stüdyo, sauna ve cafe – hepsi tek bir
           premium fitness deneyiminde.
@@ -133,52 +133,70 @@
   </section>
 
   <!-- FACILITIES -->
-  <section id="facilities" class="section section-alt">
-    <div class="container">
-      <h2 class="reveal">Alanlarımız</h2>
-      <div class="card-grid">
-        <article class="card reveal">
-          <img src="img/hero-gym.jpg" alt="Ağırlık ve makine alanı" />
-          <div class="card-content">
-            <h3>Ağırlık & Makine Alanı</h3>
-            <p>Free weight, makineler ve plate-loaded ekipmanlarla güç ve hipertrofi odaklı antrenman.</p>
+<section id="facilities" class="section section-alt">
+  <div class="container">
+    <h2 class="reveal">Alanlarımız</h2>
+
+    <div class="facilities-slider reveal">
+      <button class="slider-btn prev" type="button" aria-label="Önceki alan">&#10094;</button>
+
+      <div class="slider-track">
+        <article class="facility-slide">
+          <div class="card">
+            <img src="img/hero-gym.jpg" alt="Ağırlık ve makine alanı" />
+            <div class="card-content">
+              <h3>Ağırlık &amp; Makine Alanı</h3>
+              <p>Free weight, makineler ve plate-loaded ekipmanlarla güç ve hipertrofi odaklı antrenman.</p>
+            </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="img/gym-wide.jpg" alt="Fonksiyonel pist alanı" />
-          <div class="card-content">
-            <h3>Fonksiyonel Pist</h3>
-            <p>Sprint, sled, mobilite ve kondisyon çalışmalarına uygun koşu ve fonksiyonel pist.</p>
+        <article class="facility-slide">
+          <div class="card">
+            <img src="img/gym-wide.jpg" alt="Fonksiyonel pist alanı" />
+            <div class="card-content">
+              <h3>Fonksiyonel Pist</h3>
+              <p>Sprint, sled, mobilite ve kondisyon çalışmalarına uygun koşu ve fonksiyonel pist.</p>
+            </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="img/studio.jpg" alt="Reformer ve mat pilates stüdyosu" />
-          <div class="card-content">
-            <h3>Reformer & Studio</h3>
-            <p>Reformer grup & duet dersleri, mat pilates ve zumba için özel ayrılmış stüdyo alanı.</p>
+        <article class="facility-slide">
+          <div class="card">
+            <img src="img/studio.jpg" alt="Reformer ve mat pilates stüdyosu" />
+            <div class="card-content">
+              <h3>Reformer &amp; Studio</h3>
+              <p>Reformer grup &amp; duet dersleri, mat pilates ve zumba için özel ayrılmış stüdyo alanı.</p>
+            </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="img/sauna.jpg" alt="Sauna alanı" />
-          <div class="card-content">
-            <h3>Sauna & Recovery</h3>
-            <p>Antrenman sonrası toparlanma, rahatlama ve sauna keyfi fiyatlarımıza dahildir.</p>
+        <article class="facility-slide">
+          <div class="card">
+            <img src="img/sauna.jpg" alt="Sauna alanı" />
+            <div class="card-content">
+              <h3>Sauna &amp; Recovery</h3>
+              <p>Antrenman sonrası toparlanma, rahatlama ve sauna keyfi fiyatlarımıza dahildir.</p>
+            </div>
           </div>
         </article>
 
-        <article class="card reveal">
-          <img src="img/cafe.jpg" alt="Cafe ve lounge alanı" />
-          <div class="card-content">
-            <h3>Cafe & Lounge</h3>
-            <p>Antrenman öncesi kahve, sonrası toparlanma için içecek ve supplement seçenekleri.</p>
+        <article class="facility-slide">
+          <div class="card">
+            <img src="img/cafe.jpg" alt="Cafe ve lounge alanı" />
+            <div class="card-content">
+              <h3>Cafe &amp; Lounge</h3>
+              <p>Antrenman öncesi kahve, sonrası toparlanma için içecek ve supplement seçenekleri.</p>
+            </div>
           </div>
         </article>
       </div>
+
+      <button class="slider-btn next" type="button" aria-label="Sonraki alan">&#10095;</button>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- HOURS & INFO -->
   <section id="hours" class="section">
@@ -409,9 +427,16 @@
     <span class="wa-text">WhatsApp</span>
     <span class="wa-number">0 530 078 95 00</span>
   </a>
+  
+  <!-- LIGHTBOX FOR FACILITIES -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <figure class="lightbox-content">
+      <button class="lightbox-close" type="button" aria-label="Kapat">&times;</button>
+      <img src="" alt="" id="lightbox-image" />
+      <figcaption id="lightbox-caption" class="lightbox-caption"></figcaption>
+    </figure>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
