@@ -116,23 +116,27 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.9rem;                 /* logo ile yazı arası biraz açıldı */
+  gap: 0.6rem;              /* ikon-yazı arası biraz daha yakın */
   text-decoration: none;
 }
 
 .logo-mark {
   display: block;
-  height: 42px;                /* 32 → 42 (daha büyük ikon) */
+  height: 42px;
   width: auto;
   background: transparent;
 }
 
+/* Yazıyı logodaki stile yaklaştıralım: Russo, italik, sık harf aralığı */
 .logo-text {
   display: flex;
   align-items: baseline;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  font-size: 1.15rem;          /* 1.0 → 1.15 (yazı da büyüdü) */
+  font-family: "Russo One", system-ui;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.11em;   /* 0.18'den daha yakın */
+  font-size: 1.15rem;
 }
 
 .logo-text-main {
@@ -141,11 +145,13 @@ a {
 
 .logo-text-accent {
   color: var(--accent);
-  margin-left: 0.3rem;
+  margin-left: 0.18rem;     /* BLACK ile GYM arası çok açılmasın */
 }
+
+/* Büyük ekranlarda logo biraz daha büyüsün */
 @media (min-width: 1200px) {
   .logo-mark {
-    height: 48px;              /* Geniş monitörde daha da büyük logo */
+    height: 48px;
   }
 
   .logo-text {
@@ -153,52 +159,6 @@ a {
   }
 }
 
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-name,
-.brand-name-sub {
-  font-family: "Russo One", system-ui;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-}
-
-.brand-name-sub {
-  font-size: 0.7rem;
-  color: var(--accent);
-}
-
-/* NAV */
-
-.nav {
-  display: flex;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  font-size: 0.85rem;
-  text-decoration: none;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
 
 /* NAV TOGGLE (MOBILE) */
 
