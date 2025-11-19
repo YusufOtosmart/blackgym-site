@@ -135,8 +135,8 @@ a {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: 0.11em;   /* 0.18'den daha yakın */
-  font-size: 1.15rem;
+  letter-spacing: 0.09em;   /* Harfler biraz daha yakın */
+  font-size: 1.30rem;       /* Masaüstü + mobil için daha büyük */
 }
 
 .logo-text-main {
@@ -151,11 +151,11 @@ a {
 /* Büyük ekranlarda logo biraz daha büyüsün */
 @media (min-width: 1200px) {
   .logo-mark {
-    height: 48px;
+    height: 52px;
   }
 
   .logo-text {
-    font-size: 1.25rem;
+    font-size: 1.55rem;
   }
 }
 
