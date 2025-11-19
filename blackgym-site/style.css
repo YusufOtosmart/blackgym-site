@@ -159,6 +159,51 @@ a {
   }
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-name,
+.brand-name-sub {
+  font-family: "Russo One", system-ui;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.brand-name-sub {
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+/* NAV */
+
+.nav {
+  display: flex;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
 
 /* NAV TOGGLE (MOBILE) */
 
