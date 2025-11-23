@@ -873,17 +873,22 @@ a {
 }
 
 .wa-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 0.7rem;
-  background: rgba(15, 23, 42, 0.15);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.15); /* hafif koyu halka, istersen kaldır */
+  margin-right: 0.7rem;
 }
+
+.wa-icon img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 
 .wa-text {
   font-weight: 600;
