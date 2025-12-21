@@ -39,6 +39,26 @@ a {
   color: inherit;
 }
 
+/* SKIP LINK (erişilebilirlik) */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: #02111f;
+  font-weight: 600;
+  border-radius: 999px;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 /* LAYOUT */
 
 .container {
@@ -102,21 +122,12 @@ a {
   padding: 0.75rem 1.5rem;
 }
 
-/* BRAND */
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-decoration: none;
-}
-
 /* HEADER LOGO */
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;              /* ikon-yazı arası biraz daha yakın */
+  gap: 0.6rem;
   text-decoration: none;
 }
 
@@ -127,7 +138,8 @@ a {
   background: transparent;
 }
 
-/* Yazıyı logodaki stile yaklaştıralım: Russo, italik, sık harf aralığı */
+/* Yazıyı logodaki stile yaklaştıralım */
+
 .logo-text {
   display: flex;
   align-items: baseline;
@@ -135,8 +147,8 @@ a {
   text-transform: uppercase;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: 0.09em;   /* Harfler biraz daha yakın */
-  font-size: 1.30rem;       /* Masaüstü + mobil için daha büyük */
+  letter-spacing: 0.09em;
+  font-size: 1.3rem;
 }
 
 .logo-text-main {
@@ -145,10 +157,11 @@ a {
 
 .logo-text-accent {
   color: var(--accent);
-  margin-left: 0.18rem;     /* BLACK ile GYM arası çok açılmasın */
+  margin-left: 0.18rem;
 }
 
 /* Büyük ekranlarda logo biraz daha büyüsün */
+
 @media (min-width: 1200px) {
   .logo-mark {
     height: 52px;
@@ -157,25 +170,6 @@ a {
   .logo-text {
     font-size: 1.55rem;
   }
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-name,
-.brand-name-sub {
-  font-family: "Russo One", system-ui;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-}
-
-.brand-name-sub {
-  font-size: 0.7rem;
-  color: var(--accent);
 }
 
 /* NAV */
@@ -237,14 +231,16 @@ a {
 }
 
 /* HERO */
+
 .hero {
   position: relative;
   min-height: 92vh;
   display: flex;
-  align-items: center;   /* dikey ortalama */
-  overflow: hidden;      /* videonun taşan kısmını gizle */
+  align-items: center;
+  overflow: hidden;
 }
 
+/* Arka plan video */
 
 .hero-video {
   position: absolute;
@@ -252,10 +248,11 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;          /* içeriğin arkasında kalsın */
+  z-index: -2;
 }
 
 /* Varsayılan: desktop videosu açık, mobile kapalı */
+
 .hero-video-mobile {
   display: none;
 }
@@ -264,22 +261,20 @@ a {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.55));
-  z-index: -1;  /* video ile içerik arasında */
+  z-index: -1;
 }
-
 
 .hero-inner {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;           /* dikey ortalama */
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 1.5rem;          /* üst-alt nefes alanı */
+  padding: 6rem 1.5rem;
 }
-
 
 .hero-content {
   max-width: 520px;
@@ -375,7 +370,9 @@ a {
   text-decoration: none;
   color: var(--accent);
 }
+
 /* Hero sağ kart sadece desktopta görünsün */
+
 @media (max-width: 768px) {
   .hero-side {
     display: none;
@@ -692,7 +689,7 @@ a {
 }
 
 #pricing .pricing-card {
-  background: rgba(15, 23, 42, 0.96); /* koyu ama yumuşak */
+  background: rgba(15, 23, 42, 0.96);
   border-radius: 1.6rem;
   padding: 2.2rem 2.4rem;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
@@ -784,6 +781,7 @@ a {
   height: 180px;
   object-fit: cover;
 }
+
 /* VIDEO GALLERY */
 
 .video-tagline {
@@ -796,8 +794,9 @@ a {
 }
 
 /* Dikey video için “telefon ekranı” genişliği */
+
 .video-wrapper {
-  max-width: 420px;              /* Desktop’ta dar, mobilde yine tam genişlik */
+  max-width: 420px;
   margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
@@ -809,7 +808,7 @@ a {
 .gallery-video {
   display: block;
   width: 100%;
-  height: auto;                  /* Orijinal dikey oran korunur */
+  height: auto;
 }
 
 /* CONTACT */
@@ -894,7 +893,7 @@ a {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.15); /* hafif koyu halka, istersen kaldır */
+  background: rgba(0, 0, 0, 0.15);
   margin-right: 0.7rem;
 }
 
@@ -903,7 +902,6 @@ a {
   width: 1.5rem;
   height: 1.5rem;
 }
-
 
 .wa-text {
   font-weight: 600;
@@ -930,9 +928,16 @@ a {
 
 /* RESPONSIVE */
 
+/* Tablet ve altı: section layout tek kolona iner */
+
 @media (max-width: 960px) {
+  .section-layout,
+  .section-layout-reverse {
+    grid-template-columns: 1fr;
+  }
+
   .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
+    padding: 5rem 1.5rem 3rem;
   }
 
   .hero-side {
@@ -942,12 +947,9 @@ a {
   .hero-card {
     margin-top: 1.5rem;
   }
-
-  .section-layout,
-  .section-layout-reverse {
-    grid-template-columns: 1fr;
-  }
 }
+
+/* Mobil nav + hero + footer düzeni */
 
 @media (max-width: 768px) {
   .nav-toggle {
@@ -979,7 +981,6 @@ a {
     padding: 0.2rem 0;
   }
 
-@media (max-width: 768px) {
   .hero {
     min-height: 100vh;
   }
@@ -988,7 +989,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 7rem;       /* header için boşluk */
+    padding-top: 7rem;
     padding-bottom: 3rem;
   }
 
@@ -997,7 +998,7 @@ a {
     width: 100%;
   }
 
-  /* Video seçimi: mobilde dikey video aktif olsun */
+  /* Mobilde dikey hero videosu devreye girsin */
   .hero-video-desktop {
     display: none;
   }
@@ -1005,8 +1006,6 @@ a {
   .hero-video-mobile {
     display: block;
   }
-}
-
 
   .whatsapp-floating {
     right: 1rem;
@@ -1018,6 +1017,8 @@ a {
     align-items: flex-start;
   }
 }
+
+/* Çok küçük ekranlar */
 
 @media (max-width: 480px) {
   .hero-title {
