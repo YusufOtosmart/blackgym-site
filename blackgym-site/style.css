@@ -237,37 +237,52 @@ a {
 }
 
 /* HERO */
-
 .hero {
   position: relative;
   min-height: 92vh;
   display: flex;
-  align-items: stretch;
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
-    url("img/hero-gym.jpg");
-  background-size: cover;
-  background-position: center;
+  align-items: center;   /* dikey ortalama */
+  overflow: hidden;      /* videonun taşan kısmını gizle */
+}
+
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;          /* içeriğin arkasında kalsın */
+}
+
+/* Varsayılan: desktop videosu açık, mobile kapalı */
+.hero-video-mobile {
+  display: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(53, 240, 232, 0.1), transparent 60%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.55));
+  z-index: -1;  /* video ile içerik arasında */
 }
+
 
 .hero-inner {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding: 5rem 1.5rem 4rem;
   z-index: 1;
+  display: flex;
+  align-items: center;           /* dikey ortalama */
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;          /* üst-alt nefes alanı */
 }
 
+
 .hero-content {
-  max-width: 640px;
+  max-width: 520px;
 }
 
 .hero-label {
@@ -964,13 +979,34 @@ a {
     padding: 0.2rem 0;
   }
 
+@media (max-width: 768px) {
   .hero {
-    min-height: auto;
+    min-height: 100vh;
   }
 
   .hero-inner {
-    padding-top: 4.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 7rem;       /* header için boşluk */
+    padding-bottom: 3rem;
   }
+
+  .hero-side {
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+
+  /* Video seçimi: mobilde dikey video aktif olsun */
+  .hero-video-desktop {
+    display: none;
+  }
+
+  .hero-video-mobile {
+    display: block;
+  }
+}
+
 
   .whatsapp-floating {
     right: 1rem;
