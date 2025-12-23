@@ -1038,3 +1038,9 @@ a {
     display: none;
   }
 }
+/* Masaüstünde hero alt açıklamayı gizle (kart zaten özellikleri gösteriyor) */
+@media (min-width: 992px) {
+  .hero-subtitle {
+    display: none;
+  }
+}
