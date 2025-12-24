@@ -1038,9 +1038,78 @@ a {
     display: none;
   }
 }
-/* Masaüstünde hero alt açıklamayı gizle (kart zaten özellikleri gösteriyor) */
+/* Uzun SEO paragrafını tamamen gizle (hem mobil hem desktop) */
+.hero-subtitle {
+  display: none;
+}
+
+/* Kısa öne çıkan satır: sadece secondary görünsün */
+.hero-subtitle-secondary {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  max-width: 26rem;
+  color: var(--text-muted);
+}
+
+/* Desktop'ta hero-card zaten aynı bilgiyi verdiği için secondary'yi gizle */
 @media (min-width: 992px) {
-  .hero-subtitle {
+  .hero-subtitle-secondary {
     display: none;
   }
 }
+/* Mobil hero düzenlemeleri (max 768px) */
+@media (max-width: 768px) {
+
+  /* Hero içeriğini dikeyde biraz daha ortala */
+  .hero-inner {
+    padding-top: 5.5rem;      /* header'dan sonra boşluk */
+    padding-bottom: 3.5rem;
+  }
+
+  /* Başlığı 1 tık küçültüp dengeli yap */
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  /* Uzun hero-subtitle'ı gizle, sadece secondary kalsın */
+  .hero-subtitle:not(.hero-subtitle-secondary) {
+    display: none;
+  }
+
+  /* Görünen subtitle'ı (secondary) rahat okunur yap */
+  .hero-subtitle-secondary {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    max-width: 32rem;
+    margin-bottom: 1.6rem;    /* butonlardan önce nefes alanı */
+  }
+
+  /* İki buton arasında biraz boşluk */
+  .hero-actions .btn {
+    margin-bottom: 0.6rem;
+  }
+}
+/* Klavye odak stilleri (erişilebilirlik) ------------------ */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.slider-btn:focus-visible,
+.whatsapp-floating:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+/* Hareketi azalt tercihine saygı duy (prefers-reduced-motion) --------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
