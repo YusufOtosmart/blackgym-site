@@ -5,10 +5,8 @@
   <title>BLACK GYM Nilüfer | Spor Salonu, Fitness & Reformer Pilates Bursa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="BLACK GYM, Nilüfer / Bursa'da fonksiyonel pist, free weight alanı, reformer & mat pilates stüdyosu, sauna ve cafe sunan modern bir spor salonudur. Açılışa özel kampanyalar ve reformer pilates paketleri." />
-  <!--
-    Designed by Yusuf · Otosmart Bilgi Teknolojileri A.Ş.
-    Contact: info@otosmart.com.tr
-  -->
+  
+  <!-- Designer Credit -->
   <meta name="author" content="Yusuf - Otosmart Bilgi Teknolojileri A.Ş. (info@otosmart.com.tr)" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://blackgym.com.tr/" />
@@ -29,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-  <!-- Structured Data for SEO & AI -->
+  <!-- Structured Data for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,8 +61,53 @@
     ],
     "sameAs": [
       "https://www.instagram.com/blackgymconcept/"
-    ]
+    ],
+    "priceRange": "₺₺",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Sauna",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Reformer Pilates Studio",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cafe",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free Weights",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Functional Training Area",
+        "value": true
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "33"
+    }
   }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RLTN0JV889', {
+      'send_page_view': true,
+      'anonymize_ip': true
+    });
   </script>
 
   <link rel="stylesheet" href="style.css" />
@@ -75,8 +118,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Skip link (erişilebilirlik) -->
+  <!-- Skip link -->
   <a href="#main" class="skip-link">İçeriğe atla</a>
+  
   <!-- HEADER -->
   <header class="site-header" id="top">
     <div class="container nav-container">
@@ -96,6 +140,7 @@
         <ul class="nav-links">
           <li><a href="#about">Stüdyo</a></li>
           <li><a href="#facilities">Alanlar</a></li>
+          <li><a href="#reviews">Yorumlar</a></li>
           <li><a href="#hours">Saatler</a></li>
           <li><a href="#pricing">Fiyatlar</a></li>
           <li><a href="#contact">İletişim</a></li>
@@ -107,374 +152,469 @@
   <main id="main">
 
     <!-- HERO -->
-  <section id="hero" class="hero">
-    <!-- Desktop video -->
-    <video
-      class="hero-video hero-video-desktop"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="img/hero-gym.jpg"
-    >
-      <source src="video/hero-desktop.mp4" type="video/mp4" />
-      Tarayıcınız video oynatmayı desteklemiyor.
-    </video>
+    <section id="hero" class="hero">
+      <!-- Desktop video -->
+      <video
+        class="hero-video hero-video-desktop"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="img/hero-gym.jpg"
+      >
+        <source src="video/hero-desktop.mp4" type="video/mp4" />
+        Tarayıcınız video oynatmayı desteklemiyor.
+      </video>
 
-    <!-- Mobile video -->
-    <video
-      class="hero-video hero-video-mobile"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="img/hero-vertical.jpg"
-    >
-      <source src="video/hero-mobile.mp4" type="video/mp4" />
-      Tarayıcınız video oynatmayı desteklemiyor.
-    </video>
+      <!-- Mobile video -->
+      <video
+        class="hero-video hero-video-mobile"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="img/hero-vertical.jpg"
+      >
+        <source src="video/hero-mobile.mp4" type="video/mp4" />
+        Tarayıcınız video oynatmayı desteklemiyor.
+      </video>
 
-    <div class="hero-overlay"></div>
+      <div class="hero-overlay"></div>
 
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <h1 class="hero-title">HAREKETE GEÇ<br />GÜÇLÜ HİSSET</h1>
-        <p class="hero-subtitle">
-          BLACK GYM, Nilüfer / Bursa’da karanlık konseptli premium bir spor salonudur; fitness, bodybuilding, ağırlık çalışması, fonksiyonel antrenman,
-          reformer &amp; mat pilates, zumba grup dersleri, kickboks dersleri, çocuk kickboks dersleri, kişisel antrenör (PT) ve sauna hizmeti sunar.
-        <p class="hero-subtitle hero-subtitle-secondary">
-          Geniş serbest ağırlık alanı, reformer &amp; mat pilates stüdyosu,
-          sauna &amp; recovery alanı ve protein bar &amp; cafe ile Nilüfer / Bursa’da
-          premium bir spor deneyimi sunuyoruz.
-        </p>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1 class="hero-title">HAREKETE GEÇ<br />GÜÇLÜ HİSSET</h1>
+          <p class="hero-subtitle">
+            BLACK GYM, Nilüfer / Bursa'da karanlık konseptli premium bir spor salonudur; fitness, bodybuilding, ağırlık çalışması, fonksiyonel antrenman,
+            reformer &amp; mat pilates, zumba grup dersleri, kickboks dersleri, çocuk kickboks dersleri, kişisel antrenör (PT) ve sauna hizmeti sunar.
+          <p class="hero-subtitle hero-subtitle-secondary">
+            Geniş serbest ağırlık alanı, reformer &amp; mat pilates stüdyosu,
+            sauna &amp; recovery alanı ve protein bar &amp; cafe ile Nilüfer / Bursa'da
+            premium bir spor deneyimi sunuyoruz.
+          </p>
 
-        <div class="hero-actions">
-          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary">
-            WhatsApp’tan Yaz
-          </a>
-          <a href="#pricing" class="btn ghost">
-            Açılışa Özel Fiyatlar
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <div>
-            <span class="meta-label">Adres</span>
-            <p>Konak Mah. Kudret Sk. Elit Park Plaza No:12/A<br />Nilüfer · Bursa</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary" data-track="hero_whatsapp">
+              WhatsApp'tan Yaz
+            </a>
+            <a href="#pricing" class="btn ghost" data-track="hero_pricing">
+              Açılışa Özel Fiyatlar
+            </a>
           </div>
-          <div>
-            <span class="meta-label">Çalışma Saatleri</span>
-            <p>Hafta içi 08:00 – 22:00<br />Cumartesi 10:00 – 20:00<br />Pazar günleri kapalı</p>
-          </div>
-          <div>
-            <span class="meta-label">İletişim</span>
-            <p>📞 <a href="tel:+905300789500">0 530 078 95 00</a><br />
-              ✉️ <a href="mailto:info@blackgym.com.tr">info@blackgym.com.tr</a></p>
-          </div>
-        </div>
-      </div>
 
-      <div class="hero-side reveal">
-        <div class="hero-card">
-          <h2>BLACK GYM</h2>
-          <ul>
-            <li>Geniş serbest ağırlık alanı</li>
-            <li>Fonksiyonel koşu pisti</li>
-            <li>Reformer &amp; mat pilates stüdyosu</li>
-            <li>Sauna &amp; recovery alanı</li>
-            <li>Protein bar &amp; cafe</li>
-          </ul>
-          <a href="#about" class="hero-card-link">Stüdyoyu keşfet</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container section-layout">
-      <div class="reveal">
-        <h2>Şehrin En Karanlık, En Güçlü Salonu</h2>
-        <p>
-          BLACK GYM, motivasyonu maksimumda tutmak için baştan sona karanlık ve
-          neon detaylarla tasarlanmış modern bir stüdyodur. Girişten soyunma
-          odalarına, cafeden pist alanına kadar her noktada aynı tasarım dili devam eder.
-        </p>
-        <p>
-          İster vücut geliştirme, ister fonksiyonel antrenman, ister pilates ya da PT –
-          hedeflerinize odaklanabileceğiniz, kalabalıktan kopmadan ama karmaşadan uzak bir ortam sunuyoruz.
-        </p>
-      </div>
-      <div class="highlight-grid reveal">
-        <div class="highlight-item">
-          <span class="highlight-title">Performans Odaklı</span>
-          <p>Fonksiyonel pist, sled, koşu, HIIT ve atletik performans antrenmanlarına uygun altyapı.</p>
-        </div>
-        <div class="highlight-item">
-          <span class="highlight-title">Premium Ortam</span>
-          <p>Özel tasarım aydınlatma, ergonomik yerleşim, konforlu soyunma odaları ve sauna.</p>
-        </div>
-        <div class="highlight-item">
-          <span class="highlight-title">Profesyonel Rehberlik</span>
-          <p>Reformer, mat pilates, grup dersleri ve kişisel antrenör desteği ile yapılandırılmış programlar.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO GALLERY -->
-  <section id="gallery" class="section">
-    <div class="container">
-      <p class="video-tagline reveal">BLACK GYM'İ 1 DAKİKADA HİSSET.</p>
-
-      <div class="video-wrapper reveal">
-        <video
-          class="gallery-video"
-          controls
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="img/hero-gym.jpg"
-        >
-          <source src="video/blackgym-tour.mp4" type="video/mp4" />
-          Tarayıcınız video oynatmayı desteklemiyor.
-        </video>
-      </div>
-    </div>
-  </section>
-
-  <!-- FACILITIES -->
-  <section id="facilities" class="section section-alt">
-    <div class="container">
-      <h2 class="reveal">Alanlarımız</h2>
-
-      <div class="facilities-slider reveal">
-        <button class="slider-btn prev" type="button" aria-label="Önceki alan">&#10094;</button>
-
-        <div class="slider-track">
-          <article class="facility-slide">
-            <div class="card">
-              <img src="img/hero-gym.jpg" alt="BLACK GYM Nilüfer Bursa spor salonu free weight ve makine alanı" />
-              <div class="card-content">
-                <h3>Ağırlık &amp; Makine Alanı</h3>
-                <p>Free weight, makineler ve plate-loaded ekipmanlarla güç ve hipertrofi odaklı antrenman.</p>
-              </div>
+          <div class="hero-meta">
+            <div>
+              <span class="meta-label">Adres</span>
+              <p>Konak Mah. Kudret Sk. Elit Park Plaza No:12/A<br />Nilüfer · Bursa</p>
             </div>
-          </article>
-
-          <article class="facility-slide">
-            <div class="card">
-              <img src="img/gym-wide.jpg" alt="BLACK GYM fonksiyonel pist ve koşu alanı" />
-              <div class="card-content">
-                <h3>Fonksiyonel Pist</h3>
-                <p>Sprint, sled, mobilite ve kondisyon çalışmalarına uygun koşu ve fonksiyonel pist.</p>
-              </div>
+            <div>
+              <span class="meta-label">Çalışma Saatleri</span>
+              <p>Hafta içi 08:00 – 22:00<br />Cumartesi 10:00 – 20:00<br />Pazar günleri kapalı</p>
             </div>
-          </article>
-
-          <article class="facility-slide">
-            <div class="card">
-              <img src="img/studio.jpg" alt="BLACK GYM Nilüfer reformer ve mat pilates stüdyosu" />
-              <div class="card-content">
-                <h3>Reformer &amp; Studio</h3>
-                <p>Reformer grup &amp; duet dersleri, mat pilates ve zumba için özel ayrılmış stüdyo alanı.</p>
-              </div>
+            <div>
+              <span class="meta-label">İletişim</span>
+              <p>📞 <a href="tel:+905300789500" data-track="hero_phone">0 530 078 95 00</a><br />
+                ✉️ <a href="mailto:info@blackgym.com.tr" data-track="hero_email">info@blackgym.com.tr</a></p>
             </div>
-          </article>
-
-          <article class="facility-slide">
-            <div class="card">
-              <img src="img/sauna.jpg" alt="BLACK GYM Bursa sauna ve recovery alanı" />
-              <div class="card-content">
-                <h3>Sauna &amp; Recovery</h3>
-                <p>Antrenman sonrası toparlanma, rahatlama ve sauna keyfi fiyatlarımıza dahildir.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="facility-slide">
-            <div class="card">
-              <img src="img/cafe.jpg" alt="BLACK GYM cafe ve lounge alanı" />
-              <div class="card-content">
-                <h3>Cafe &amp; Lounge</h3>
-                <p>Antrenman öncesi kahve, sonrası toparlanma için içecek ve supplement seçenekleri.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <button class="slider-btn next" type="button" aria-label="Sonraki alan">&#10095;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOURS & INFO -->
-  <section id="hours" class="section">
-    <div class="container section-layout section-layout-reverse">
-      <div class="reveal">
-        <h2>Çalışma Saatlerimiz</h2>
-        <div class="hours-grid">
-          <div class="hours-card">
-            <span class="hours-label">Hafta İçi</span>
-            <span class="hours-time">08:00 – 22:00</span>
-          </div>
-          <div class="hours-card">
-            <span class="hours-label">Cumartesi</span>
-            <span class="hours-time">10:00 – 20:00</span>
-          </div>
-          <div class="hours-card closed">
-            <span class="hours-label">Pazar</span>
-            <span class="hours-time">Kapalı</span>
           </div>
         </div>
-        <p class="hours-note">* Fiyatlarımıza sauna kullanımı dahildir.</p>
+
+        <div class="hero-side reveal">
+          <div class="hero-card">
+            <h2>BLACK GYM</h2>
+            <ul>
+              <li>Geniş serbest ağırlık alanı</li>
+              <li>Fonksiyonel koşu pisti</li>
+              <li>Reformer &amp; mat pilates stüdyosu</li>
+              <li>Sauna &amp; recovery alanı</li>
+              <li>Protein bar &amp; cafe</li>
+            </ul>
+            <a href="#about" class="hero-card-link">Stüdyoyu keşfet</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="reveal">
-        <h2>İndirimler</h2>
-        <ul class="benefits-list">
-          <li>🎓 Öğrenci kimliği ile kayıt olanlara <strong>%10 indirim</strong></li>
-          <li>⚙️ Türk Metal Sendikalı olanlara <strong>%10 indirim</strong></li>
-          <li>👥 Reformer &amp; PT paketlerinde ilk 100 üyeye özel açılış fiyatları</li>
-        </ul>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container section-layout">
+        <div class="reveal">
+          <h2>Şehrin En Karanlık, En Güçlü Salonu</h2>
+          <p>
+            BLACK GYM, motivasyonu maksimumda tutmak için baştan sona karanlık ve
+            neon detaylarla tasarlanmış modern bir stüdyodur. Girişten soyunma
+            odalarına, cafeden pist alanına kadar her noktada aynı tasarım dili devam eder.
+          </p>
+          <p>
+            İster vücut geliştirme, ister fonksiyonel antrenman, ister pilates ya da PT –
+            hedeflerinize odaklanabileceğiniz, kalabalıktan kopmadan ama karmaşadan uzak bir ortam sunuyoruz.
+          </p>
+        </div>
+        <div class="highlight-grid reveal">
+          <div class="highlight-item">
+            <span class="highlight-title">Performans Odaklı</span>
+            <p>Fonksiyonel pist, sled, koşu, HIIT ve atletik performans antrenmanlarına uygun altyapı.</p>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-title">Premium Ortam</span>
+            <p>Özel tasarım aydınlatma, ergonomik yerleşim, konforlu soyunma odaları ve sauna.</p>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-title">Profesyonel Rehberlik</span>
+            <p>Reformer, mat pilates, grup dersleri ve kişisel antrenör desteği ile yapılandırılmış programlar.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRICING (fiyatları gizleyip paket anlatımı) -->
-  <section id="pricing" class="section section-alt">
-    <div class="container">
-      <div class="pricing-header">
-        <h2 class="reveal">Paketler &amp; Fiyat Bilgisi</h2>
-        <p class="section-intro reveal">
-          Fiyatlarımızı; hedeflerine, seçeceğin pakete ve güncel kampanyalara göre
-          kişiye özel olarak paylaşıyoruz. Aşağıdan sana uygun paketi seç,
-          WhatsApp veya telefonla bize ulaşıp güncel fiyat ve kontenjan bilgisi al.
-        </p>
+    <!-- VIDEO GALLERY -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <p class="video-tagline reveal">BLACK GYM'İ 1 DAKİKADA HİSSET.</p>
+
+        <div class="video-wrapper reveal">
+          <video
+            class="gallery-video"
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="img/hero-gym.jpg"
+            id="tour-video"
+          >
+            <source src="video/blackgym-tour.mp4" type="video/mp4" />
+            Tarayıcınız video oynatmayı desteklemiyor.
+          </video>
+        </div>
       </div>
+    </section>
 
-      <div class="pricing-grid">
-        <!-- Salon Üyelik -->
-        <article class="pricing-card reveal">
-          <h3>Salon Üyelik</h3>
-          <p class="pricing-tagline">Sınırsız salon + sauna kullanımı</p>
-          <ul class="pricing-features">
-            <li>Free weight, makineler ve fonksiyonel pist alanı</li>
-            <li>Gün içinde dilediğin saatte giriş çıkış imkânı</li>
-            <li>Yıllık, 6 aylık, 3 aylık ve aylık üyelik seçenekleri</li>
-          </ul>
-          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link">
-            Salon üyelik için fiyat al
-          </a>
-        </article>
+    <!-- FACILITIES -->
+    <section id="facilities" class="section section-alt">
+      <div class="container">
+        <h2 class="reveal">Alanlarımız</h2>
 
-        <!-- Reformer Pilates -->
-        <article class="pricing-card reveal">
-          <h3>Reformer Pilates</h3>
-          <p class="pricing-tagline">Küçük gruplar, güçlü sonuçlar</p>
-          <ul class="pricing-features">
-            <li>4 kişilik küçük grup dersleri</li>
-            <li>2 kişilik duet ders seçenekleri</li>
-            <li>Birebir reformer seansları</li>
-            <li>Her seviyeye uygun programlama ve ilerleme takibi</li>
-          </ul>
-          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link">
-            Reformer paketleri için fiyat al
-          </a>
-        </article>
+        <div class="facilities-slider reveal">
+          <button class="slider-btn prev" type="button" aria-label="Önceki alan">&#10094;</button>
 
-        <!-- PT -->
-        <article class="pricing-card reveal">
-          <h3>PT (Bireysel Ders)</h3>
-          <p class="pricing-tagline">Tamamen sana özel antrenman</p>
-          <ul class="pricing-features">
-            <li>Hedefe özel antrenman programı ve yakın takip</li>
-            <li>Vücut analizi ve düzenli ilerleme ölçümleri</li>
-            <li>Salon üyeliği + sauna kullanımı ile birlikte</li>
-            <li>Esnek saat seçenekleri</li>
-          </ul>
-          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link">
-            PT paket fiyatı al
-          </a>
-        </article>
+          <div class="slider-track">
+            <article class="facility-slide">
+              <div class="card">
+                <img src="img/hero-gym.jpg" alt="BLACK GYM Nilüfer Bursa spor salonu free weight ve makine alanı" />
+                <div class="card-content">
+                  <h3>Ağırlık &amp; Makine Alanı</h3>
+                  <p>Free weight, makineler ve plate-loaded ekipmanlarla güç ve hipertrofi odaklı antrenman.</p>
+                </div>
+              </div>
+            </article>
 
-        <!-- Zumba & Mat Pilates -->
-        <article class="pricing-card reveal">
-          <h3>Zumba &amp; Mat Pilates</h3>
-          <p class="pricing-tagline">Grup enerjisi, yüksek motivasyon</p>
-          <ul class="pricing-features">
-            <li>Haftada 2 gün zumba grup dersleri</li>
-            <li>Küçük grup mat pilates seansları</li>
-            <li>Başlangıç ve orta seviye gruplar</li>
-            <li>Arkadaşınla birlikte katılabileceğin paketler</li>
-          </ul>
-          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link">
-            Grup dersleri için fiyat al
-          </a>
-        </article>
+            <article class="facility-slide">
+              <div class="card">
+                <img src="img/gym-wide.jpg" alt="BLACK GYM fonksiyonel pist ve koşu alanı" />
+                <div class="card-content">
+                  <h3>Fonksiyonel Pist</h3>
+                  <p>Sprint, sled, mobilite ve kondisyon çalışmalarına uygun koşu ve fonksiyonel pist.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="facility-slide">
+              <div class="card">
+                <img src="img/studio.jpg" alt="BLACK GYM Nilüfer reformer ve mat pilates stüdyosu" />
+                <div class="card-content">
+                  <h3>Reformer &amp; Studio</h3>
+                  <p>Reformer grup &amp; duet dersleri, mat pilates ve zumba için özel ayrılmış stüdyo alanı.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="facility-slide">
+              <div class="card">
+                <img src="img/sauna.jpg" alt="BLACK GYM Bursa sauna ve recovery alanı" />
+                <div class="card-content">
+                  <h3>Sauna &amp; Recovery</h3>
+                  <p>Antrenman sonrası toparlanma, rahatlama ve sauna keyfi fiyatlarımıza dahildir.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="facility-slide">
+              <div class="card">
+                <img src="img/cafe.jpg" alt="BLACK GYM cafe ve lounge alanı" />
+                <div class="card-content">
+                  <h3>Cafe &amp; Lounge</h3>
+                  <p>Antrenman öncesi kahve, sonrası toparlanma için içecek ve supplement seçenekleri.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <button class="slider-btn next" type="button" aria-label="Sonraki alan">&#10095;</button>
+        </div>
       </div>
+    </section>
 
-      <div class="pricing-cta reveal">
-        <p>
-          Tüm paketlerde <strong>salon + sauna kullanımı</strong> bulunmaktadır.
-          En güncel fiyatlar, kampanyalar ve kontenjan bilgisi için:
-        </p>
-        <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary">
-          WhatsApp’tan fiyat al
-        </a>
-        <p class="pricing-cta-note">
-          veya bizi ara:
-          <a href="tel:+905300789500">0 530 078 95 00</a>
-        </p>
-      </div>
-    </div>
-  </section>
+    <!-- REVIEWS - Updated Structure -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <div class="reviews-layout">
+          <!-- Left: Header + Badge -->
+          <div class="reviews-left">
+            <div class="reviews-header reveal">
+              <h2>Üyelerimiz Ne Diyor?</h2>
+              <p class="section-intro">
+                BLACK GYM'e katılan üyelerimizin gerçek deneyimleri ve yorumları
+              </p>
+            </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section section-alt">
-    <div class="container section-layout">
-      <div class="reveal">
-        <h2>İletişim &amp; Konum</h2>
-        <p>Üyelik, grup dersleri veya PT paketleri için bize hemen ulaşabilirsiniz.</p>
-
-        <div class="contact-list">
-          <div>
-            <h3>Adres</h3>
-            <p>
-              Konak Mah. Kudret Sk. Elit Park Plaza No:12/A<br />
-              Nilüfer · Bursa
-            </p>
-            <p>
-              📍
-              <a href="https://maps.app.goo.gl/F5f5oRRVpNRQ4hcCA" target="_blank" rel="noopener">
-                Haritada Gör
+            <!-- Google Reviews Badge -->
+            <div class="google-badge reveal">
+              <a 
+                href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" 
+                target="_blank" 
+                rel="noopener"
+                class="google-review-link"
+                data-track="google_reviews_click"
+              >
+                <div class="google-badge-inner">
+                  <!-- Google Icon -->
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  
+                  <!-- Rating Info -->
+                  <div class="rating-info">
+                    <div class="stars">★★★★★</div>
+                    <div class="rating-number">5.0 / 5.0</div>
+                  </div>
+                </div>
+                
+                <!-- Review Count -->
+                <div class="review-count">
+                  <div class="count-label">Google'da Değerlendir</div>
+                  <div class="count-number">33 üye yorumu</div>
+                </div>
               </a>
-            </p>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="reviews-cta reveal">
+              <a 
+                href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" 
+                target="_blank" 
+                rel="noopener"
+                class="btn ghost"
+                data-track="view_all_reviews"
+              >
+                Tüm Yorumları Google'da Gör
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h3>İletişim</h3>
-            <p>📞 <a href="tel:+905300789500">0 530 078 95 00</a></p>
-            <p>✉️ <a href="mailto:info@blackgym.com.tr">info@blackgym.com.tr</a></p>
-            <p>📷 <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener">@blackgymconcept</a></p>
+          <!-- Right: Review Screenshots Carousel -->
+          <div class="reviews-right reveal">
+            <div class="reviews-carousel">
+              <button class="review-slider-btn prev" type="button" aria-label="Önceki yorum">&#10094;</button>
+
+              <div class="review-slider-track">
+                <!-- Review Screenshot 1 -->
+                <div class="review-slide">
+                  <img src="img/reviews/review-1.png" alt="Google Maps yorumu" loading="lazy" />
+                </div>
+
+                <!-- Review Screenshot 2 -->
+                <div class="review-slide">
+                  <img src="img/reviews/review-2.png" alt="Google Maps yorumu" loading="lazy" />
+                </div>
+
+                <!-- Review Screenshot 3 -->
+                <div class="review-slide">
+                  <img src="img/reviews/review-3.png" alt="Google Maps yorumu" loading="lazy" />
+                </div>
+
+                <!-- Add more review screenshots as needed -->
+              </div>
+
+              <button class="review-slider-btn next" type="button" aria-label="Sonraki yorum">&#10095;</button>
+            </div>
+
+            <!-- Carousel dots indicator -->
+            <div class="review-dots"></div>
           </div>
         </div>
       </div>
+    </section>      
 
-      <div class="contact-panel reveal">
-        <h3>Hızlı Bilgi Al</h3>
-        <p>Kısa bir mesaj bırak, sana en kısa sürede dönüş yapalım.</p>
-        <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary btn-full">
-          WhatsApp Mesaj Gönder
-        </a>
-        <p class="contact-small">
-          Veya doğrudan arayabilirsin:
-          <a href="tel:+905300789500">0 530 078 95 00</a>
-        </p>
+    <!-- HOURS & INFO -->
+    <section id="hours" class="section section-alt">
+      <div class="container section-layout section-layout-reverse">
+        <div class="reveal">
+          <h2>Çalışma Saatlerimiz</h2>
+          <div class="hours-grid">
+            <div class="hours-card">
+              <span class="hours-label">Hafta İçi</span>
+              <span class="hours-time">08:00 – 22:00</span>
+            </div>
+            <div class="hours-card">
+              <span class="hours-label">Cumartesi</span>
+              <span class="hours-time">10:00 – 20:00</span>
+            </div>
+            <div class="hours-card closed">
+              <span class="hours-label">Pazar</span>
+              <span class="hours-time">Kapalı</span>
+            </div>
+          </div>
+          <p class="hours-note">* Fiyatlarımıza sauna kullanımı dahildir.</p>
+        </div>
+
+        <div class="reveal">
+          <h2>İndirimler</h2>
+          <ul class="benefits-list">
+            <li>🎓 Öğrenci kimliği ile kayıt olanlara <strong>%10 indirim</strong></li>
+            <li>⚙️ Türk Metal Sendikalı olanlara <strong>%10 indirim</strong></li>
+            <li>👥 Reformer &amp; PT paketlerinde ilk 100 üyeye özel açılış fiyatları</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="pricing-header">
+          <h2 class="reveal">Paketler &amp; Fiyat Bilgisi</h2>
+          <p class="section-intro reveal">
+            Fiyatlarımızı; hedeflerine, seçeceğin pakete ve güncel kampanyalara göre
+            kişiye özel olarak paylaşıyoruz. Aşağıdan sana uygun paketi seç,
+            WhatsApp veya telefonla bize ulaşıp güncel fiyat ve kontenjan bilgisi al.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Salon Üyelik -->
+          <article class="pricing-card reveal">
+            <h3>Salon Üyelik</h3>
+            <p class="pricing-tagline">Sınırsız salon + sauna kullanımı</p>
+            <ul class="pricing-features">
+              <li>Free weight, makineler ve fonksiyonel pist alanı</li>
+              <li>Gün içinde dilediğin saatte giriş çıkış imkânı</li>
+              <li>Yıllık, 6 aylık, 3 aylık ve aylık üyelik seçenekleri</li>
+            </ul>
+            <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link" data-track="pricing_salon">
+              Salon üyelik için fiyat al
+            </a>
+          </article>
+
+          <!-- Reformer Pilates -->
+          <article class="pricing-card reveal">
+            <h3>Reformer Pilates</h3>
+            <p class="pricing-tagline">Küçük gruplar, güçlü sonuçlar</p>
+            <ul class="pricing-features">
+              <li>4 kişilik küçük grup dersleri</li>
+              <li>2 kişilik duet ders seçenekleri</li>
+              <li>Birebir reformer seansları</li>
+              <li>Her seviyeye uygun programlama ve ilerleme takibi</li>
+            </ul>
+            <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link" data-track="pricing_reformer">
+              Reformer paketleri için fiyat al
+            </a>
+          </article>
+
+          <!-- PT -->
+          <article class="pricing-card reveal">
+            <h3>PT (Bireysel Ders)</h3>
+            <p class="pricing-tagline">Tamamen sana özel antrenman</p>
+            <ul class="pricing-features">
+              <li>Hedefe özel antrenman programı ve yakın takip</li>
+              <li>Vücut analizi ve düzenli ilerleme ölçümleri</li>
+              <li>Salon üyeliği + sauna kullanımı ile birlikte</li>
+              <li>Esnek saat seçenekleri</li>
+            </ul>
+            <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link" data-track="pricing_pt">
+              PT paket fiyatı al
+            </a>
+          </article>
+
+          <!-- Zumba & Mat Pilates -->
+          <article class="pricing-card reveal">
+            <h3>Zumba &amp; Mat Pilates</h3>
+            <p class="pricing-tagline">Grup enerjisi, yüksek motivasyon</p>
+            <ul class="pricing-features">
+              <li>Haftada 2 gün zumba grup dersleri</li>
+              <li>Küçük grup mat pilates seansları</li>
+              <li>Başlangıç ve orta seviye gruplar</li>
+              <li>Arkadaşınla birlikte katılabileceğin paketler</li>
+            </ul>
+            <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link" data-track="pricing_group">
+              Grup dersleri için fiyat al
+            </a>
+          </article>
+        </div>
+
+        <div class="pricing-cta reveal">
+          <p>
+            Tüm paketlerde <strong>salon + sauna kullanımı</strong> bulunmaktadır.
+            En güncel fiyatlar, kampanyalar ve kontenjan bilgisi için:
+          </p>
+          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary" data-track="pricing_footer_whatsapp">
+            WhatsApp'tan fiyat al
+          </a>
+          <p class="pricing-cta-note">
+            veya bizi ara:
+            <a href="tel:+905300789500" data-track="pricing_footer_phone">0 530 078 95 00</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="container section-layout">
+        <div class="reveal">
+          <h2>İletişim &amp; Konum</h2>
+          <p>Üyelik, grup dersleri veya PT paketleri için bize hemen ulaşabilirsiniz.</p>
+
+          <div class="contact-list">
+            <div>
+              <h3>Adres</h3>
+              <p>
+                Konak Mah. Kudret Sk. Elit Park Plaza No:12/A<br />
+                Nilüfer · Bursa
+              </p>
+              <p>
+                📍
+                <a href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" target="_blank" rel="noopener" data-track="contact_map">
+                  Haritada Gör
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h3>İletişim</h3>
+              <p>📞 <a href="tel:+905300789500" data-track="contact_phone">0 530 078 95 00</a></p>
+              <p>✉️ <a href="mailto:info@blackgym.com.tr" data-track="contact_email">info@blackgym.com.tr</a></p>
+              <p>📷 <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener" data-track="contact_instagram">@blackgymconcept</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-panel reveal">
+          <h3>Hızlı Bilgi Al</h3>
+          <p>Kısa bir mesaj bırak, sana en kısa sürede dönüş yapalım.</p>
+          <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary btn-full" data-track="contact_panel_whatsapp">
+            WhatsApp Mesaj Gönder
+          </a>
+          <p class="contact-small">
+            Veya doğrudan arayabilirsin:
+            <a href="tel:+905300789500" data-track="contact_panel_phone">0 530 078 95 00</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -483,19 +623,20 @@
     <div class="container footer-content">
       <span>© <span id="year"></span> BLACK GYM · Nilüfer / Bursa</span>
       <span class="footer-links">
-        <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:info@blackgym.com.tr">Mail</a>
+        <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener" data-track="footer_instagram">Instagram</a>
+        <a href="mailto:info@blackgym.com.tr" data-track="footer_email">Mail</a>
       </span>
     </div>
   </footer>
 
-    <!-- WHATSAPP FLOATING BUTTON -->
+  <!-- WhatsApp Floating Button -->
   <a
     href="https://wa.me/905300789500"
     class="whatsapp-floating"
     target="_blank"
     rel="noopener"
     aria-label="WhatsApp ile Black Gym"
+    data-track="floating_whatsapp"
   >
     <span class="wa-icon">
       <img src="img/whatsapp-logo.png" alt="WhatsApp" />
@@ -504,7 +645,7 @@
     <span class="wa-number">0 530 078 95 00</span>
   </a>
 
-  <!-- LIGHTBOX FOR FACILITIES -->
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <figure class="lightbox-content">
       <button class="lightbox-close" type="button" aria-label="Kapat">&times;</button>
@@ -514,5 +655,76 @@
   </div>
 
   <script src="script.js"></script>
+  
+  <!-- GA4 Event Tracking -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Track elements with data-track attribute
+      document.querySelectorAll('[data-track]').forEach(function(element) {
+        element.addEventListener('click', function() {
+          var eventName = this.getAttribute('data-track');
+          var eventCategory = 'engagement';
+          
+          if (eventName.includes('whatsapp')) {
+            eventCategory = 'contact_whatsapp';
+          } else if (eventName.includes('phone')) {
+            eventCategory = 'contact_phone';
+          } else if (eventName.includes('email')) {
+            eventCategory = 'contact_email';
+          } else if (eventName.includes('pricing')) {
+            eventCategory = 'conversion';
+          } else if (eventName.includes('instagram')) {
+            eventCategory = 'social';
+          }
+          
+          if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+              'event_category': eventCategory,
+              'event_label': this.href || this.textContent.trim()
+            });
+          }
+        });
+      });
+      
+      // Track video plays
+      var videos = document.querySelectorAll('video');
+      videos.forEach(function(video) {
+        var hasPlayed = false;
+        video.addEventListener('play', function() {
+          if (!hasPlayed && typeof gtag !== 'undefined') {
+            var videoName = video.id || 'unnamed_video';
+            gtag('event', 'video_play', {
+              'event_category': 'engagement',
+              'event_label': videoName
+            });
+            hasPlayed = true;
+          }
+        });
+      });
+      
+      // Track scroll depth
+      var scrollDepths = [25, 50, 75, 100];
+      var scrollMarks = {};
+      
+      window.addEventListener('scroll', function() {
+        var scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        
+        scrollDepths.forEach(function(depth) {
+          if (scrollPercent >= depth && !scrollMarks[depth]) {
+            scrollMarks[depth] = true;
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'scroll_depth', {
+                'event_category': 'engagement',
+                'event_label': depth + '%',
+                'value': depth
+              });
+            }
+          }
+        });
+      });
+      
+    });
+  </script>
 </body>
 </html>
