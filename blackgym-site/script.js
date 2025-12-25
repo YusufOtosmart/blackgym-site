@@ -165,3 +165,155 @@ document.addEventListener("DOMContentLoaded", () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 });
+/* ==========================================
+   REVIEWS CAROUSEL JAVASCRIPT
+   
+   ========================================== */
+
+(function() {
+  'use strict';
+
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    initReviewsCarousel();
+  });
+
+  function initReviewsCarousel() {
+    const carousel = document.querySelector('.reviews-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.review-slider-track');
+    const slides = Array.from(track.querySelectorAll('.review-slide'));
+    const prevBtn = carousel.querySelector('.review-slider-btn.prev');
+    const nextBtn = carousel.querySelector('.review-slider-btn.next');
+    const dotsContainer = document.querySelector('.review-dots');
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // Create dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('review-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.querySelectorAll('.review-dot'));
+
+    // Update carousel position
+    function updateCarousel(animate = true) {
+      const offset = -currentIndex * 100;
+      if (animate) {
+        track.style.transition = 'transform 0.4s ease-out';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translateX(${offset}%)`;
+
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+
+      // Update button states
+      if (prevBtn) prevBtn.disabled = currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = currentIndex === totalSlides - 1;
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+      currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+      updateCarousel();
+    }
+
+    // Previous slide
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    }
+
+    // Next slide
+    function nextSlide() {
+      if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    }
+
+    // Event listeners
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Keyboard navigation
+    carousel.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next slide
+          nextSlide();
+        } else {
+          // Swipe right - previous slide
+          prevSlide();
+        }
+      }
+    }
+
+    // Auto-play (optional - uncomment to enable)
+    /*
+    let autoplayInterval;
+    const autoplayDelay = 5000; // 5 seconds
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        if (currentIndex < totalSlides - 1) {
+          nextSlide();
+        } else {
+          currentIndex = 0;
+          updateCarousel();
+        }
+      }, autoplayDelay);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    // Pause autoplay on hover
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    // Start autoplay
+    startAutoplay();
+    */
+
+    // Initial setup
+    updateCarousel(false);
+  }
+
+})();
