@@ -349,6 +349,11 @@ a {
    For animated second line that changes text
    Example: "HAREKETE GEÇ" + "GÜÇLÜ HİSSET" → "FİT HİSSET" → "SAĞLIKLI HİSSET"
    JavaScript changes the text and toggles .is-hidden class
+   
+   PERFORMANCE OPTIMIZATION:
+   - Uses translate3d() for GPU acceleration (smoother on iOS)
+   - will-change tells browser to optimize this property
+   - backface-visibility prevents flickering on mobile
    ======================================== */
 
 /* First line of title (static) */
@@ -361,7 +366,13 @@ a {
   display: inline-block;
   color: var(--accent);  /* Cyan color to stand out */
   opacity: 1;  /* Visible by default */
-  transform: translateX(0);  /* No offset */
+  
+  /* GPU acceleration for smooth mobile performance */
+  transform: translate3d(0, 0, 0);  /* 3D transform triggers GPU */
+  will-change: opacity, transform;  /* Hint browser to optimize */
+  backface-visibility: hidden;  /* Prevent flickering on iOS */
+  -webkit-font-smoothing: antialiased;  /* Smooth text on iOS */
+  
   /* Smooth transition when text changes */
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
@@ -369,7 +380,7 @@ a {
 /* Hidden state (when transitioning to new text) */
 .hero-title-dynamic.is-hidden {
   opacity: 0;  /* Fade out */
-  transform: translateX(20px);  /* Slide right slightly */
+  transform: translate3d(20px, 0, 0);  /* Slide right (3D for GPU) */
 }
 
 /* How it works:
@@ -379,6 +390,11 @@ a {
    4. Changes text to new word
    5. Removes .is-hidden class (fades in, slides back)
    6. Repeats every few seconds
+   
+   Mobile optimization:
+   - translate3d() instead of translateX() = GPU acceleration
+   - will-change prepares browser for animation
+   - backface-visibility prevents iOS flickering
 */
 
 /* Hero subtitle - hidden by default (for SEO only) */
@@ -1503,4 +1519,4 @@ button:focus-visible,
 
 /* ==========================================
    END OF STYLESHEET
-    ========================================== */
+   ========================================== */

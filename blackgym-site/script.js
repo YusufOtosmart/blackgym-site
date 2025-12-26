@@ -553,6 +553,74 @@ document.addEventListener("DOMContentLoaded", () => {
   }, displayMs);
 })();
 
+/* ==========================================
+   HERO TITLE ANIMATION - iOS OPTIMIZED
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dynamicTitle = document.querySelector('.hero-title-dynamic');
+  
+  if (!dynamicTitle) {
+    console.warn('⚠️ Hero title element not found');
+    return;
+  }
+  
+  // Words to cycle through
+  const words = [
+    'GÜÇLÜ HİSSET',
+    'BUGÜN BAŞLA'
+  ];
+  
+  let currentIndex = 0;
+  let isAnimating = false;
+  
+  /**
+   * Change to next word with smooth animation
+   * Optimized for iOS Safari performance
+   */
+  function changeWord() {
+    // Prevent overlapping animations
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    // Step 1: Fade out current word
+    dynamicTitle.classList.add('is-hidden');
+    
+    // Step 2: Wait for fade out animation (900ms)
+    setTimeout(() => {
+      // Step 3: Change to next word
+      currentIndex = (currentIndex + 1) % words.length;
+      
+      // Use requestAnimationFrame for smoother update (iOS optimization)
+      requestAnimationFrame(() => {
+        dynamicTitle.textContent = words[currentIndex];
+        
+        // Force reflow to ensure CSS transition triggers on iOS
+        void dynamicTitle.offsetWidth;
+        
+        // Step 4: Fade in new word
+        requestAnimationFrame(() => {
+          dynamicTitle.classList.remove('is-hidden');
+          isAnimating = false;
+        });
+      });
+    }, 900); // Match CSS transition duration exactly
+  }
+  
+  // Initial setup: ensure element is visible
+  dynamicTitle.classList.remove('is-hidden');
+  
+  // Change word every 3 seconds
+  const intervalId = setInterval(changeWord, 3000);
+  
+  // Cleanup on page unload (good practice)
+  window.addEventListener('beforeunload', () => {
+    clearInterval(intervalId);
+  });
+  
+  console.log('✅ Hero title animation initialized (iOS optimized)');
+  console.log(`📝 Cycling through ${words.length} words: ${words.join(', ')}`);
+});
 
 
 /* ==========================================
