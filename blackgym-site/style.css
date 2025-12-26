@@ -364,23 +364,16 @@ a {
 /* Second line of title (dynamic, animated) */
 .hero-title-dynamic {
   display: inline-block;
-  color: var(--accent);  /* Cyan color to stand out */
-  opacity: 1;  /* Visible by default */
-  
-  /* GPU acceleration for smooth mobile performance */
-  transform: translate3d(0, 0, 0);  /* 3D transform triggers GPU */
-  will-change: opacity, transform;  /* Hint browser to optimize */
-  backface-visibility: hidden;  /* Prevent flickering on iOS */
-  -webkit-font-smoothing: antialiased;  /* Smooth text on iOS */
-  
-  /* Smooth transition when text changes */
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  color: var(--accent);
+  /* ONLY OPACITY - NO TRANSFORM */
+  transition: opacity 0.9s ease;
+  -webkit-font-smoothing: antialiased;
+  will-change: opacity;
 }
 
-/* Hidden state (when transitioning to new text) */
 .hero-title-dynamic.is-hidden {
-  opacity: 0;  /* Fade out */
-  transform: translate3d(20px, 0, 0);  /* Slide right (3D for GPU) */
+  opacity: 0;
+  /* NO TRANSFORM AT ALL */
 }
 
 /* How it works:

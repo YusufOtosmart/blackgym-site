@@ -459,136 +459,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ==========================================
      6. HERO TITLE ANIMATION - iOS OPTIMIZED
-     
-     Cycles through different action phrases with smooth
-     transitions optimized for mobile Safari.
-     
-     PERFORMANCE OPTIMIZATIONS:
-     - Uses requestAnimationFrame for 60fps timing
-     - Forced reflow ensures iOS processes changes
-     - isAnimating flag prevents overlapping animations
-     - translate3d() in CSS triggers GPU acceleration
      ========================================== */
-  
-  (function () {
-    const dynamicEl = document.querySelector('.hero-title-dynamic');
-    if (!dynamicEl) {
-      console.warn('⚠️ Hero dynamic title element not found');
-      return;
-    }
-
-    // Phrases to cycle through
-    const phrases = [
-      'GÜÇLÜ HİSSET',
-      'BUGÜN BAŞLA'
-    ];
-
-    let index = 0;
-    let isAnimating = false;
-    
-    const transitionMs = 900;  // Must match CSS transition duration
-    const displayMs = 3600;    // How long each phrase shows (3.6s)
-
-    // Set initial text
-    dynamicEl.textContent = phrases[index];
-    
-    // Ensure element starts visible
-    dynamicEl.classList.remove('is-hidden');
-
-    /**
-     * Change to next phrase with iOS-optimized animation
-     */
-    function changePhrase() {
-      // Prevent overlapping animations
-      if (isAnimating) return;
-      isAnimating = true;
-
-      // Step 1: Fade out and slide right
-      dynamicEl.classList.add('is-hidden');
-
-      // Step 2: Wait for CSS transition to complete
-      setTimeout(() => {
-        // Step 3: Use RAF for smoother updates on iOS
-        requestAnimationFrame(() => {
-          // Update to next phrase
-          index = (index + 1) % phrases.length;
-          dynamicEl.textContent = phrases[index];
-
-          // Force reflow - ensures iOS Safari processes the change
-          // This is critical for smooth animations on iPhone!
-          void dynamicEl.offsetWidth;
-
-          // Step 4: Fade in and slide back (next frame)
-          requestAnimationFrame(() => {
-            dynamicEl.classList.remove('is-hidden');
-            isAnimating = false;
-          });
-        });
-      }, transitionMs);
-    }
-
-    // Start animation cycle
-    setInterval(changePhrase, displayMs);
-
-    console.log(`✅ Hero title animation initialized (iOS optimized)`);
-    console.log(`   Cycling through ${phrases.length} phrases every ${displayMs/1000}s`);
-  })();
-
-  /* ==========================================
-     7. LIGHTBOX
-     Image popup viewer for facility images
-     Click any facility image to view full-screen
-     ========================================== */
-  const lightbox = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-image");
-  const lbCaption = document.getElementById("lightbox-caption");
-  const lbClose = document.querySelector(".lightbox-close");
-
-  if (lightbox && lbImg && lbCaption && lbClose) {
-    /**
-     * Open lightbox with image
-     * @param {string} src - Image source URL
-     * @param {string} altText - Image alt text / caption
-     */
-    const openLightbox = (src, altText) => {
-      lbImg.src = src;
-      lbImg.alt = altText || "";
-      lbCaption.textContent = altText || "";
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden"; // Prevent scrolling
-    };
-
-    /**
-     * Close lightbox
-     */
-    const closeLightbox = () => {
-      lightbox.classList.remove("open");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = ""; // Restore scrolling
-    };
-
-    // Make all facility images clickable
-    document.querySelectorAll(".facility-slide img").forEach((img) => {
-      img.style.cursor = "zoom-in";
-      img.addEventListener("click", () => {
-        openLightbox(img.src, img.alt);
-      });
-    });
-
-    // Close button
-    lbClose.addEventListener("click", closeLightbox);
-
-    // Close when clicking outside image
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    // Close with Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLightbox();
-    });
+  // ULTRA-MINIMAL VERSION
+(function () {
+  const el = document.querySelector('.hero-title-dynamic');
+  if (!el) {
+    console.log('❌ Hero element not found');
+    return;
   }
+
+  const phrases = [
+    'GÜÇLÜ HİSSET',
+    'BUGÜN BAŞLA'
+  ];
+
+  let i = 0;
+  el.textContent = phrases[i];
+
+  setInterval(() => {
+    console.log('🔄 Changing phrase...');
+    
+    // Fade out
+    el.style.opacity = '0';
+    
+    // Change text halfway
+    setTimeout(() => {
+      i = (i + 1) % phrases.length;
+      el.textContent = phrases[i];
+      console.log('   → Now showing:', phrases[i]);
+      
+      // Fade in
+      setTimeout(() => {
+        el.style.opacity = '1';
+      }, 50);
+    }, 450);
+  }, 3000);
+  
+  console.log('✅ Minimal animation started');
+})();
 
   /* ==========================================
      8. FOOTER YEAR AUTO-UPDATE
