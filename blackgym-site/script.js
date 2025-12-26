@@ -10,7 +10,7 @@
    3. Reveal animations (scroll effects)
    4. Facilities carousel
    5. Reviews carousel (DYNAMIC)
-   6. Hero title animation (iOS optimized)
+   6. Hero title animation (EXACT TEST CODE - iOS optimized)
    7. Lightbox (image popups)
    8. Footer year auto-update
    ========================================== */
@@ -458,45 +458,129 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewsCarousel();
 
   /* ==========================================
-     6. HERO TITLE ANIMATION - iOS OPTIMIZED
+     6. HERO TITLE ANIMATION - EXACT TEST CODE
+     
+     This uses the EXACT same code as ios-animation-test.html
+     (Test 2) which works smoothly on iOS!
+     
+     Cycles through different action phrases with smooth
+     fade transitions using simple class toggle.
+     
+     HOW IT WORKS (same as test):
+     1. Add .hidden class → fade out (opacity 0)
+     2. Wait 900ms for fade to complete
+     3. Change text content
+     4. Remove .hidden class → fade in (opacity 1)
+     5. Repeat every 3 seconds
+     
+     WHY THIS WORKS ON iOS:
+     - Simple class toggle (no RAF complexity)
+     - Only opacity transition (no transforms)
+     - Direct setTimeout (no complex timing)
+     - Proven to work (test file works!)
      ========================================== */
-  // ULTRA-MINIMAL VERSION
-(function () {
-  const el = document.querySelector('.hero-title-dynamic');
-  if (!el) {
-    console.log('❌ Hero element not found');
-    return;
-  }
-
-  const phrases = [
-    'GÜÇLÜ HİSSET',
-    'BUGÜN BAŞLA'
-  ];
-
-  let i = 0;
-  el.textContent = phrases[i];
-
-  setInterval(() => {
-    console.log('🔄 Changing phrase...');
-    
-    // Fade out
-    el.style.opacity = '0';
-    
-    // Change text halfway
-    setTimeout(() => {
-      i = (i + 1) % phrases.length;
-      el.textContent = phrases[i];
-      console.log('   → Now showing:', phrases[i]);
-      
-      // Fade in
-      setTimeout(() => {
-        el.style.opacity = '1';
-      }, 50);
-    }, 450);
-  }, 3000);
   
-  console.log('✅ Minimal animation started');
-})();
+  (function() {
+    const dynamicTitle = document.querySelector('.hero-title-dynamic');
+    
+    if (!dynamicTitle) {
+      console.warn('⚠️ Hero title element not found');
+      return;
+    }
+
+    // Phrases to cycle through
+    const words = [
+      'GÜÇLÜ HİSSET',
+      'BUGÜN BAŞLA',
+      'FİT YAŞA',
+      'AKTİF KAL'
+    ];
+    
+    let currentIndex = 0;
+
+    // Set initial text
+    dynamicTitle.textContent = words[currentIndex];
+
+    /**
+     * Change to next phrase - EXACT test file code
+     */
+    function changeWord() {
+      // Add 'hidden' class to fade out
+      dynamicTitle.classList.add('hidden');
+      
+      // Wait for fade out to complete (900ms matches CSS transition)
+      setTimeout(function() {
+        // Change to next word
+        currentIndex = (currentIndex + 1) % words.length;
+        dynamicTitle.textContent = words[currentIndex];
+        
+        // Remove 'hidden' class to fade in
+        dynamicTitle.classList.remove('hidden');
+      }, 900);
+    }
+
+    // Change word every 3 seconds
+    setInterval(changeWord, 3000);
+
+    console.log('✅ Hero animation started (exact test code)');
+    console.log(`📝 Cycling through ${words.length} phrases:`, words.join(', '));
+  })();
+
+  /* ==========================================
+     7. LIGHTBOX
+     Image popup viewer for facility images
+     Click any facility image to view full-screen
+     ========================================== */
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-image");
+  const lbCaption = document.getElementById("lightbox-caption");
+  const lbClose = document.querySelector(".lightbox-close");
+
+  if (lightbox && lbImg && lbCaption && lbClose) {
+    /**
+     * Open lightbox with image
+     * @param {string} src - Image source URL
+     * @param {string} altText - Image alt text / caption
+     */
+    const openLightbox = (src, altText) => {
+      lbImg.src = src;
+      lbImg.alt = altText || "";
+      lbCaption.textContent = altText || "";
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+    };
+
+    /**
+     * Close lightbox
+     */
+    const closeLightbox = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = ""; // Restore scrolling
+    };
+
+    // Make all facility images clickable
+    document.querySelectorAll(".facility-slide img").forEach((img) => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => {
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    // Close button
+    lbClose.addEventListener("click", closeLightbox);
+
+    // Close when clicking outside image
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Close with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
 
   /* ==========================================
      8. FOOTER YEAR AUTO-UPDATE
@@ -513,6 +597,6 @@ document.addEventListener("DOMContentLoaded", () => {
    END OF MAIN JAVASCRIPT
    
    Total functions: 8
-   iOS optimized: Yes
+   Hero title: Using EXACT test code (proven on iOS)
    Browser support: Modern browsers + graceful fallbacks
    ========================================== */

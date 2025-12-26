@@ -344,16 +344,15 @@ a {
   line-height: 1.1;
 }
 
-/* Dynamic Title Animation
+/* Dynamic Title Animation - EXACT TEST CODE
    ========================================
    For animated second line that changes text
-   Example: "HAREKETE GEÇ" + "GÜÇLÜ HİSSET" → "FİT HİSSET" → "SAĞLIKLI HİSSET"
-   JavaScript changes the text and toggles .is-hidden class
+   Example: "GÜÇLÜ HİSSET" → "BUGÜN BAŞLA" → "FİT YAŞA" → "AKTİF KAL"
    
-   PERFORMANCE OPTIMIZATION:
-   - Uses translate3d() for GPU acceleration (smoother on iOS)
-   - will-change tells browser to optimize this property
-   - backface-visibility prevents flickering on mobile
+   This uses the EXACT same code as ios-animation-test.html (Test 2)
+   which works smoothly on iOS!
+   
+   JavaScript toggles .hidden class to fade text in/out
    ======================================== */
 
 /* First line of title (static) */
@@ -361,33 +360,32 @@ a {
   display: inline-block;  /* Allows for proper line breaking */
 }
 
-/* Second line of title (dynamic, animated) */
+/* Second line of title (dynamic, animated) - EXACT TEST CODE */
 .hero-title-dynamic {
   display: inline-block;
-  color: var(--accent);
-  /* ONLY OPACITY - NO TRANSFORM */
+  color: var(--accent);  /* Cyan color to stand out */
+  -webkit-font-smoothing: antialiased;  /* Smooth text rendering */
+  
+  /* Simple transition - EXACT same as test file */
   transition: opacity 0.9s ease;
-  -webkit-font-smoothing: antialiased;
-  will-change: opacity;
 }
 
-.hero-title-dynamic.is-hidden {
-  opacity: 0;
-  /* NO TRANSFORM AT ALL */
+/* Hidden state - EXACT same as test file */
+.hero-title-dynamic.hidden {
+  opacity: 0;  /* Fade out */
 }
 
-/* How it works:
-   1. JavaScript changes text content
-   2. Adds .is-hidden class (fades out, slides right)
-   3. Waits 900ms
-   4. Changes text to new word
-   5. Removes .is-hidden class (fades in, slides back)
-   6. Repeats every few seconds
+/* How it works (same as test file):
+   1. JavaScript adds .hidden class → opacity goes to 0 (fade out)
+   2. Waits 900ms for fade to complete
+   3. Changes text content
+   4. Removes .hidden class → opacity goes to 1 (fade in)
+   5. Repeats every 3 seconds
    
-   Mobile optimization:
-   - translate3d() instead of translateX() = GPU acceleration
-   - will-change prepares browser for animation
-   - backface-visibility prevents iOS flickering
+   Why this works on iOS:
+   - Simple class toggle (no complex RAF)
+   - Only opacity (no transforms)
+   - Proven to work (test file works on iOS)
 */
 
 /* Hero subtitle - hidden by default (for SEO only) */
@@ -1512,4 +1510,4 @@ button:focus-visible,
 
 /* ==========================================
    END OF STYLESHEET
-   ========================================== */
+    ========================================== */
