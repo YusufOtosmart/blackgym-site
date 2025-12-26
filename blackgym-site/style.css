@@ -9,7 +9,7 @@
    2. Reset & Base Styles
    3. Layout & Containers
    4. Header & Navigation
-   5. Hero Section
+   5. Hero Section (with Dynamic Title Animation)
    6. Buttons & Links
    7. Content Sections
    8. Facilities Carousel
@@ -19,46 +19,48 @@
    12. UI Components (Lightbox, WhatsApp button)
    13. Animations
    14. Responsive Design
+   15. Accessibility
    ========================================== */
 
 /* ==========================================
    1. CSS VARIABLES
    Define all colors and design tokens here
+   Change these to update colors site-wide
    ========================================== */
 :root {
   /* Background colors */
-  --bg-main: #05070a;
-  --bg-alt: #0b1118;
-  --bg-hero: #020617;
+  --bg-main: #05070a;       /* Main dark background */
+  --bg-alt: #0b1118;        /* Alternate darker background */
+  --bg-hero: #020617;       /* Hero section background */
   
   /* Card backgrounds */
-  --card-bg: #101621;
-  --card-soft: #121826;
+  --card-bg: #101621;       /* Card background */
+  --card-soft: #121826;     /* Softer card background */
   
-  /* Accent color (cyan) */
-  --accent: #35f0e8;
-  --accent-soft: rgba(53, 240, 232, 0.16);
+  /* Accent color (cyan) - Primary brand color */
+  --accent: #35f0e8;                    /* Main cyan color */
+  --accent-soft: rgba(53, 240, 232, 0.16);  /* Transparent cyan */
   
   /* Text colors */
-  --text-main: #f9fafb;
-  --text-muted: #9ca3af;
+  --text-main: #f9fafb;     /* White text (main content) */
+  --text-muted: #9ca3af;    /* Gray text (secondary content) */
   
   /* Border colors */
-  --border-soft: #1f2933;
+  --border-soft: #1f2933;   /* Subtle border color */
 }
 
 /* ==========================================
    2. RESET & BASE STYLES
-   Normalize browser defaults
+   Normalize browser defaults for consistency
    ========================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: border-box;  /* Include padding/border in element width */
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
 }
 
 body {
@@ -66,17 +68,17 @@ body {
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #020617 0, #020617 35%, #05070a 70%);
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.6;  /* Comfortable reading line height */
 }
 
 img {
-  max-width: 100%;
-  display: block;
+  max-width: 100%;  /* Prevent images from overflowing */
+  display: block;   /* Remove extra spacing below images */
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit;           /* Inherit text color from parent */
+  text-decoration: none;    /* Remove underline */
 }
 
 /* ==========================================
@@ -84,21 +86,21 @@ a {
    Grid layouts and section spacing
    ========================================== */
 
-/* Main content container */
+/* Main content container - centers content and adds padding */
 .container {
   width: 100%;
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  max-width: 1360px;  /* Maximum width for large screens */
+  margin: 0 auto;     /* Center horizontally */
+  padding: 0 1.5rem;  /* Side padding */
 }
 
 /* Standard section with light background */
 .section {
-  padding: 5rem 0;
+  padding: 5rem 0;          /* Vertical spacing */
   background: transparent;
 }
 
-/* Alternate section with darker background */
+/* Alternate section with darker background (for visual variety) */
 .section-alt {
   padding: 5rem 0;
   background: var(--bg-alt);
@@ -110,14 +112,14 @@ a {
   margin: 0 0 1rem;
 }
 
-/* Section intro paragraph */
+/* Section intro paragraph (descriptive text below heading) */
 .section-intro {
   max-width: 560px;
   color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
-/* Two-column section layout */
+/* Two-column section layout (text + content) */
 .section-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
@@ -125,7 +127,7 @@ a {
   align-items: flex-start;
 }
 
-/* Reverse column order */
+/* Reverse column order (content + text) */
 .section-layout-reverse {
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
 }
@@ -135,17 +137,17 @@ a {
    Sticky header with logo and menu
    ========================================== */
 
-/* Sticky header bar */
+/* Sticky header bar - stays at top when scrolling */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 40;  /* Above other content */
   background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.82));
   border-bottom: 1px solid rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);  /* Frosted glass effect */
 }
 
-/* Add shadow when scrolled */
+/* Add shadow when page is scrolled */
 .site-header.scrolled {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
@@ -185,11 +187,11 @@ a {
 }
 
 .logo-text-main {
-  color: #f9fafb;
+  color: #f9fafb;  /* White */
 }
 
 .logo-text-accent {
-  color: var(--accent);
+  color: var(--accent);  /* Cyan */
   margin-left: 0.18rem;
 }
 
@@ -220,9 +222,9 @@ a {
   color: var(--accent);
 }
 
-/* Mobile menu toggle (hamburger) */
+/* Mobile menu toggle (hamburger button) */
 .nav-toggle {
-  display: none;
+  display: none;  /* Hidden by default, shown on mobile */
   background: none;
   border: none;
   cursor: pointer;
@@ -238,23 +240,23 @@ a {
   transition: transform 0.2s, opacity 0.2s;
 }
 
-/* Hamburger animation when open */
+/* Hamburger animation when menu is open */
 .nav-toggle.open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);  /* Top line rotates */
 }
 
 .nav-toggle.open span:nth-child(2) {
-  opacity: 0;
+  opacity: 0;  /* Middle line disappears */
 }
 
 .nav-toggle.open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);  /* Bottom line rotates */
 }
 
 /* Skip link for screen readers (accessibility) */
 .skip-link {
   position: absolute;
-  left: -9999px;
+  left: -9999px;  /* Hidden off-screen */
   top: 0;
   padding: 0.75rem 1rem;
   background: var(--accent);
@@ -265,6 +267,7 @@ a {
   text-decoration: none;
 }
 
+/* Show skip link when focused with keyboard */
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
@@ -273,11 +276,12 @@ a {
 /* ==========================================
    5. HERO SECTION
    Full-screen video background with CTAs
+   Includes dynamic title animation
    ========================================== */
 
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 92vh;  /* Almost full viewport height */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -286,14 +290,14 @@ a {
 /* Background video */
 .hero-video {
   position: absolute;
-  inset: 0;
+  inset: 0;  /* Cover entire hero section */
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -2;
+  object-fit: cover;  /* Fill space without distortion */
+  z-index: -2;  /* Behind content */
 }
 
-/* Desktop video visible by default */
+/* Desktop video visible by default, mobile hidden */
 .hero-video-mobile {
   display: none;
 }
@@ -303,13 +307,13 @@ a {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.55));
-  z-index: -1;
+  z-index: -1;  /* Behind text, in front of video */
 }
 
 /* Hero content wrapper */
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 1;  /* Above overlay */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -332,35 +336,54 @@ a {
   margin-bottom: 0.8rem;
 }
 
-/* Main hero title */
+/* Main hero title - base styles */
 .hero-title {
   margin: 0 0 1rem;
-  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);  /* Responsive sizing */
   letter-spacing: 0.12em;
   line-height: 1.1;
 }
+
+/* Dynamic Title Animation
+   ========================================
+   For animated second line that changes text
+   Example: "HAREKETE GEÇ" + "GÜÇLÜ HİSSET" → "FİT HİSSET" → "SAĞLIKLI HİSSET"
+   JavaScript changes the text and toggles .is-hidden class
+   ======================================== */
+
+/* First line of title (static) */
 .hero-title-main {
-  display: inline-block;
+  display: inline-block;  /* Allows for proper line breaking */
 }
 
-/* Dinamik ikinci satır */
+/* Second line of title (dynamic, animated) */
 .hero-title-dynamic {
   display: inline-block;
-  color: var(--accent);              /* Temadaki mavi */
-  opacity: 0;
-  transform: translateY(16px);       /* Aşağıdan gelsin */
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  color: var(--accent);  /* Cyan color to stand out */
+  opacity: 1;  /* Visible by default */
+  transform: translateX(0);  /* No offset */
+  /* Smooth transition when text changes */
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
-/* Görünürken uygulanacak durum */
-.hero-title-dynamic.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Hidden state (when transitioning to new text) */
+.hero-title-dynamic.is-hidden {
+  opacity: 0;  /* Fade out */
+  transform: translateX(20px);  /* Slide right slightly */
 }
 
-/* Hero subtitle - hidden by default, shown conditionally */
+/* How it works:
+   1. JavaScript changes text content
+   2. Adds .is-hidden class (fades out, slides right)
+   3. Waits 900ms
+   4. Changes text to new word
+   5. Removes .is-hidden class (fades in, slides back)
+   6. Repeats every few seconds
+*/
+
+/* Hero subtitle - hidden by default (for SEO only) */
 .hero-subtitle {
-  display: none; /* Long SEO text hidden */
+  display: none;  /* Long SEO text hidden from view */
   margin: 0 0 2rem;
   font-size: 0.98rem;
   color: var(--text-muted);
@@ -368,7 +391,7 @@ a {
 
 /* Short subtitle - shown on mobile only */
 .hero-subtitle-secondary {
-  display: none;
+  display: none;  /* Hidden on desktop */
   margin-top: 0.75rem;
   font-size: 0.95rem;
   max-width: 26rem;
@@ -456,7 +479,7 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0.78rem 1.5rem;
-  border-radius: 999px;
+  border-radius: 999px;  /* Fully rounded */
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
@@ -470,11 +493,11 @@ a {
 /* Primary button (cyan background) */
 .btn.primary {
   background: var(--accent);
-  color: #020617;
+  color: #020617;  /* Dark text on cyan background */
 }
 
 .btn.primary:hover {
-  filter: brightness(1.06);
+  filter: brightness(1.06);  /* Slightly brighter on hover */
 }
 
 /* Ghost button (transparent with border) */
@@ -528,7 +551,7 @@ a {
   margin: 0;
 }
 
-/* General card styling */
+/* General card styling (for facilities, etc.) */
 .card {
   background: radial-gradient(circle at top, rgba(53, 240, 232, 0.08), transparent 60%), var(--card-bg);
   border-radius: 1.2rem;
@@ -562,7 +585,7 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px);  /* Lift up on hover */
   border-color: var(--accent);
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
 }
@@ -582,6 +605,7 @@ a {
   border: 1px solid var(--border-soft);
 }
 
+/* Closed days have dashed red border */
 .hours-card.closed {
   border-style: dashed;
   border-color: rgba(248, 113, 113, 0.7);
@@ -629,7 +653,7 @@ a {
 }
 
 .video-wrapper {
-  max-width: 420px;
+  max-width: 420px;  /* Phone-like aspect */
   margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
@@ -661,7 +685,7 @@ a {
 }
 
 .facility-slide {
-  flex: 0 0 100%;
+  flex: 0 0 100%;  /* Each slide takes full width */
   display: flex;
   justify-content: center;
   padding: 0 0.5rem;
@@ -677,7 +701,7 @@ a {
 .slider-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%);  /* Center vertically */
   width: 38px;
   height: 38px;
   border-radius: 999px;
@@ -753,7 +777,7 @@ a {
 /* Google Reviews badge */
 .google-badge {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start;  /* Left-aligned on desktop */
   padding: 0;
 }
 
@@ -788,7 +812,7 @@ a {
 }
 
 .stars {
-  color: #FDB241;
+  color: #FDB241;  /* Gold stars */
   font-size: 1.1rem;
   letter-spacing: 2px;
   margin-bottom: 0.25rem;
@@ -833,7 +857,7 @@ a {
   border-radius: 1.2rem;
   background: var(--card-bg);
   border: 1px solid var(--border-soft);
-  /* Desktop: 20% smaller, centered */
+  /* Desktop: 20% smaller, centered for better balance */
   max-width: 80%;
   margin: 0 auto;
 }
@@ -844,7 +868,7 @@ a {
 }
 
 .review-slide {
-  flex: 0 0 100%;
+  flex: 0 0 100%;  /* Each slide takes full width */
   min-width: 100%;
 }
 
@@ -909,6 +933,7 @@ a {
   transition: all 0.3s ease;
 }
 
+/* Active dot is wider and cyan */
 .review-dot.active {
   background: var(--accent);
   width: 24px;
@@ -938,7 +963,7 @@ a {
 /* Pricing cards grid */
 #pricing .pricing-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);  /* Single column on mobile */
   gap: 2.4rem;
   margin-bottom: 3rem;
 }
@@ -988,6 +1013,7 @@ a {
   color: var(--accent);
 }
 
+/* Arrow after pricing link */
 #pricing .pricing-link::after {
   content: "→";
   font-size: 0.9rem;
@@ -1087,20 +1113,20 @@ a {
 /* Lightbox for image popups */
 .lightbox {
   position: fixed;
-  inset: 0;
+  inset: 0;  /* Cover entire viewport */
   background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none;  /* Can't interact when hidden */
   transition: opacity 0.2s ease-out;
-  z-index: 60;
+  z-index: 60;  /* Above everything */
 }
 
 .lightbox.open {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto;  /* Can interact when open */
 }
 
 .lightbox-content {
@@ -1113,7 +1139,7 @@ a {
 .lightbox-content img {
   width: 100%;
   max-height: 85vh;
-  object-fit: contain;
+  object-fit: contain;  /* Fit within bounds */
   border-radius: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.6);
 }
@@ -1156,7 +1182,7 @@ a {
 }
 
 .whatsapp-floating:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px);  /* Lift up on hover */
 }
 
 .wa-icon {
@@ -1193,13 +1219,13 @@ a {
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(24px);  /* Start slightly below */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0);  /* Move to normal position */
 }
 
 /* ==========================================
@@ -1322,6 +1348,7 @@ a {
     padding-bottom: 3.5rem;
   }
 
+  /* Smaller hero title on mobile */
   .hero-title {
     font-size: 2.2rem;
     line-height: 1.1;
@@ -1341,7 +1368,7 @@ a {
   }
 
   .hero-side {
-    display: none; /* Hide hero card on mobile */
+    display: none;  /* Hide hero card on mobile */
   }
 
   /* Switch to vertical video on mobile */
@@ -1476,4 +1503,4 @@ button:focus-visible,
 
 /* ==========================================
    END OF STYLESHEET
-   ========================================== */
+    ========================================== */
