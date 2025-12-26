@@ -1507,6 +1507,11 @@ button:focus-visible,
     transition-duration: 0.01ms !important;
   }
 }
+@media (max-width: 768px) {
+  .hero-subtitle-secondary {
+    margin-bottom: 4rem;   /* mobilde boşluğu biraz daha artırır */
+  }
+}
 
 /* ==========================================
    END OF STYLESHEET
