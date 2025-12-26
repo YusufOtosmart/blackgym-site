@@ -130,6 +130,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
+<style>
+.hero-title-dynamic {
+  transition: opacity 0.9s ease !important;
+}
+.hero-title-dynamic.hidden {
+  opacity: 0 !important;
+}
+</style>
+
+<script>
+(function() {
+  const el = document.querySelector('.hero-title-dynamic');
+  if (!el) return;
+  const words = ['GÜÇLÜ HİSSET', 'BUGÜN BAŞLA', 'FİT YAŞA', 'AKTİF KAL'];
+  let i = 0;
+  el.textContent = words[i];
+  setInterval(() => {
+    el.classList.add('hidden');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      el.textContent = words[i];
+      el.classList.remove('hidden');
+    }, 900);
+  }, 3000);
+  console.log('✅ INLINE animation working!');
+})();
+</script>
 <body>
   <!-- Skip link for accessibility (screen readers) -->
   <a href="#main" class="skip-link">İçeriğe atla</a>
