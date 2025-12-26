@@ -522,6 +522,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 }); // End DOMContentLoaded
+// HERO DİNAMİK BAŞLIK ROTASYONU
+(function () {
+  const dynamicEl = document.querySelector('.hero-title-dynamic');
+  if (!dynamicEl) return;
+
+  const phrases = [
+    'GÜÇLÜ HİSSET',
+    'GÜCÜNÜ KEŞFET',
+    'SINIRLARINI AŞ',
+    'ÖZGÜVEN KAZAN'
+  ];
+
+  let index = 0;
+  dynamicEl.textContent = phrases[index];
+
+  // 1 sn sonra ilk kez göster
+  setTimeout(() => {
+    dynamicEl.classList.add('is-visible');
+
+    // Sonra sürekli döngü: 2 sn kal + 0.5 sn animasyon
+    setInterval(() => {
+      // Çıkış animasyonu
+      dynamicEl.classList.remove('is-visible');
+
+      // CSS transition süresiyle (0.5s) uyumlu bekleme
+      setTimeout(() => {
+        index = (index + 1) % phrases.length;
+        dynamicEl.textContent = phrases[index];
+
+        // Yeni metni göster
+        dynamicEl.classList.add('is-visible');
+      }, 500);
+    }, 2500); // 2000 ms dur + 500 ms geçiş
+  }, 1000); // Sayfa açıldıktan 1 sn sonra başla
+})();
 
 /* ==========================================
    END OF MAIN JAVASCRIPT

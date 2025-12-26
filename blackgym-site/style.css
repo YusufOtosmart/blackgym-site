@@ -339,6 +339,24 @@ a {
   letter-spacing: 0.12em;
   line-height: 1.1;
 }
+.hero-title-main {
+  display: inline-block;
+}
+
+/* Dinamik ikinci satır */
+.hero-title-dynamic {
+  display: inline-block;
+  color: var(--accent);              /* Temadaki mavi */
+  opacity: 0;
+  transform: translateY(16px);       /* Aşağıdan gelsin */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Görünürken uygulanacak durum */
+.hero-title-dynamic.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Hero subtitle - hidden by default, shown conditionally */
 .hero-subtitle {
