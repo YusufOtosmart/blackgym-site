@@ -1233,7 +1233,7 @@ a {
     gap: 2.5rem;
   }
 
-  /* Reviews: Keep left-aligned (matches other sections) */
+  /* Reviews header: Keep left-aligned (matches other sections) */
   .reviews-header {
     text-align: left;
   }
@@ -1243,10 +1243,12 @@ a {
     max-width: 100%;
   }
 
+  /* Google badge: Centered on mobile for visual balance */
   .google-badge {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
+  /* CTA button: Keep left-aligned */
   .reviews-cta {
     text-align: left;
   }
