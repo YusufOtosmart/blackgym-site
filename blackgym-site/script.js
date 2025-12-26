@@ -491,9 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Phrases to cycle through
     const words = [
       'GÜÇLÜ HİSSET',
-      'BUGÜN BAŞLA',
-      'FİT YAŞA',
-      'AKTİF KAL'
+      'BUGÜN BAŞLA'
     ];
     
     let currentIndex = 0;
