@@ -11,7 +11,8 @@
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://blackgym.com.tr/" />
 
-  <!-- Open Graph / Social -->
+  <!-- ==================== SOCIAL MEDIA / SHARING ==================== -->
+  <!-- When someone shares your site on Facebook, WhatsApp, etc. -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="BLACK GYM Nilüfer | Spor Salonu & Fitness Bursa" />
   <meta property="og:description" content="Nilüfer / Bursa'da fonksiyonel pist, free weight alanı, reformer & mat pilates stüdyosu, sauna ve cafe sunan modern spor salonu." />
@@ -19,19 +20,24 @@
   <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
+  <!-- Twitter sharing -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BLACK GYM Nilüfer | Spor Salonu & Fitness" />
   <meta name="twitter:description" content="Nilüfer / Bursa'da fonksiyonel pist, free weight alanı, reformer &amp; mat pilates stüdyosu, sauna ve cafe sunan modern spor salonu." />
 
+  <!-- ==================== FAVICONS / ICONS ==================== -->
+  <!-- Small icons for browser tabs -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
+  
+  <!-- Larger logos for Google Search, Mobile Apps, etc. -->
   <link rel="icon" type="image/png" sizes="192x192" href="/img/logo-square-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/img/logo-square-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 
-  <!-- Structured Data for SEO -->
+  <!-- ==================== SEO / SEARCH ENGINES ==================== -->
+  <!-- Tells Google and other search engines about your business -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -102,7 +108,9 @@
   }
   </script>
 
-  <!-- Google Analytics 4 -->
+  <!-- ==================== GOOGLE ANALYTICS 4 ==================== -->
+  <!-- Tracks visitors, clicks, and behavior on your website -->
+  <!-- Your Measurement ID: G-RLTN0JV889 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -114,20 +122,23 @@
     });
   </script>
 
+  <!-- ==================== STYLESHEETS ==================== -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Fonts -->
+  <!-- ==================== FONTS ==================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Skip link -->
+  <!-- Skip link for accessibility (screen readers) -->
   <a href="#main" class="skip-link">İçeriğe atla</a>
   
-  <!-- HEADER -->
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <!-- Sticky header with logo and navigation menu -->
   <header class="site-header" id="top">
     <div class="container nav-container">
+      <!-- Logo -->
       <a href="#hero" class="logo">
         <img src="img/logo-mark.png" alt="BLACK GYM Nilüfer Bursa spor salonu logosu" class="logo-mark" />
         <span class="logo-text">
@@ -136,10 +147,12 @@
         </span>
       </a>
 
+      <!-- Mobile menu toggle button (hamburger) -->
       <button class="nav-toggle" aria-label="Menü">
         <span></span><span></span><span></span>
       </button>
 
+      <!-- Navigation menu -->
       <nav class="nav">
         <ul class="nav-links">
           <li><a href="#about">Stüdyo</a></li>
@@ -155,9 +168,10 @@
 
   <main id="main">
 
-    <!-- HERO -->
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- Full-screen video background with main heading and CTAs -->
     <section id="hero" class="hero">
-      <!-- Desktop video -->
+      <!-- Background video for desktop -->
       <video
         class="hero-video hero-video-desktop"
         autoplay
@@ -170,7 +184,7 @@
         Tarayıcınız video oynatmayı desteklemiyor.
       </video>
 
-      <!-- Mobile video -->
+      <!-- Background video for mobile (vertical format) -->
       <video
         class="hero-video hero-video-mobile"
         autoplay
@@ -183,20 +197,30 @@
         Tarayıcınız video oynatmayı desteklemiyor.
       </video>
 
+      <!-- Dark overlay for better text readability -->
       <div class="hero-overlay"></div>
 
+      <!-- Hero content -->
       <div class="container hero-inner">
         <div class="hero-content">
+          <!-- Main heading -->
           <h1 class="hero-title">HAREKETE GEÇ<br />GÜÇLÜ HİSSET</h1>
+          
+          <!-- SEO description (hidden on mobile for cleaner look) -->
           <p class="hero-subtitle">
             BLACK GYM, Nilüfer / Bursa'da karanlık konseptli premium bir spor salonudur; fitness, bodybuilding, ağırlık çalışması, fonksiyonel antrenman,
             reformer &amp; mat pilates, zumba grup dersleri, kickboks dersleri, çocuk kickboks dersleri, kişisel antrenör (PT) ve sauna hizmeti sunar.
+          </p>
+          
+          <!-- Shorter description (shown on mobile) -->
           <p class="hero-subtitle hero-subtitle-secondary">
             Geniş serbest ağırlık alanı, reformer &amp; mat pilates stüdyosu,
             sauna &amp; recovery alanı ve protein bar &amp; cafe ile Nilüfer / Bursa'da
             premium bir spor deneyimi sunuyoruz.
           </p>
 
+          <!-- Call-to-action buttons -->
+          <!-- data-track attributes enable Google Analytics tracking -->
           <div class="hero-actions">
             <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="btn primary" data-track="hero_whatsapp">
               WhatsApp'tan Yaz
@@ -206,6 +230,7 @@
             </a>
           </div>
 
+          <!-- Quick info (address, hours, contact) -->
           <div class="hero-meta">
             <div>
               <span class="meta-label">Adres</span>
@@ -223,6 +248,7 @@
           </div>
         </div>
 
+        <!-- Side card (desktop only) - highlights features -->
         <div class="hero-side reveal">
           <div class="hero-card">
             <h2>BLACK GYM</h2>
@@ -239,7 +265,8 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <!-- Introduces the gym concept and highlights -->
     <section id="about" class="section">
       <div class="container section-layout">
         <div class="reveal">
@@ -254,6 +281,8 @@
             hedeflerinize odaklanabileceğiniz, kalabalıktan kopmadan ama karmaşadan uzak bir ortam sunuyoruz.
           </p>
         </div>
+        
+        <!-- Three highlight cards -->
         <div class="highlight-grid reveal">
           <div class="highlight-item">
             <span class="highlight-title">Performans Odaklı</span>
@@ -271,7 +300,8 @@
       </div>
     </section>
 
-    <!-- VIDEO GALLERY -->
+    <!-- ==================== VIDEO GALLERY ==================== -->
+    <!-- Virtual tour video of the gym -->
     <section id="gallery" class="section">
       <div class="container">
         <p class="video-tagline reveal">BLACK GYM'İ 1 DAKİKADA HİSSET.</p>
@@ -294,15 +324,19 @@
       </div>
     </section>
 
-    <!-- FACILITIES -->
+    <!-- ==================== FACILITIES SECTION ==================== -->
+    <!-- Carousel showcasing different areas of the gym -->
     <section id="facilities" class="section section-alt">
       <div class="container">
         <h2 class="reveal">Alanlarımız</h2>
 
         <div class="facilities-slider reveal">
+          <!-- Previous button -->
           <button class="slider-btn prev" type="button" aria-label="Önceki alan">&#10094;</button>
 
+          <!-- Carousel track with all facility slides -->
           <div class="slider-track">
+            <!-- Slide 1: Weight Area -->
             <article class="facility-slide">
               <div class="card">
                 <img src="img/hero-gym.jpg" alt="BLACK GYM Nilüfer Bursa spor salonu free weight ve makine alanı" />
@@ -313,6 +347,7 @@
               </div>
             </article>
 
+            <!-- Slide 2: Functional Track -->
             <article class="facility-slide">
               <div class="card">
                 <img src="img/gym-wide.jpg" alt="BLACK GYM fonksiyonel pist ve koşu alanı" />
@@ -323,6 +358,7 @@
               </div>
             </article>
 
+            <!-- Slide 3: Reformer Studio -->
             <article class="facility-slide">
               <div class="card">
                 <img src="img/studio.jpg" alt="BLACK GYM Nilüfer reformer ve mat pilates stüdyosu" />
@@ -333,6 +369,7 @@
               </div>
             </article>
 
+            <!-- Slide 4: Sauna -->
             <article class="facility-slide">
               <div class="card">
                 <img src="img/sauna.jpg" alt="BLACK GYM Bursa sauna ve recovery alanı" />
@@ -343,6 +380,7 @@
               </div>
             </article>
 
+            <!-- Slide 5: Cafe -->
             <article class="facility-slide">
               <div class="card">
                 <img src="img/cafe.jpg" alt="BLACK GYM cafe ve lounge alanı" />
@@ -354,17 +392,24 @@
             </article>
           </div>
 
+          <!-- Next button -->
           <button class="slider-btn next" type="button" aria-label="Sonraki alan">&#10095;</button>
         </div>
       </div>
     </section>
 
-    <!-- REVIEWS - Updated Structure -->
+    <!-- ==================== REVIEWS SECTION ==================== -->
+    <!-- Google reviews with carousel of review screenshots -->
+    <!-- IMPORTANT: This carousel is DYNAMIC - built by JavaScript -->
+    <!-- To add/remove reviews, edit the reviewImages array in script.js -->
     <section id="reviews" class="section">
       <div class="container">
+        <!-- Two-column layout: Left = Text, Right = Carousel -->
         <div class="reviews-layout">
-          <!-- Left: Header + Badge -->
+          
+          <!-- LEFT COLUMN: Header, Badge, CTA -->
           <div class="reviews-left">
+            <!-- Section header -->
             <div class="reviews-header reveal">
               <h2>Üyelerimiz Ne Diyor?</h2>
               <p class="section-intro">
@@ -373,6 +418,7 @@
             </div>
 
             <!-- Google Reviews Badge -->
+            <!-- Shows your 5.0 rating and links to Google Maps -->
             <div class="google-badge reveal">
               <a 
                 href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" 
@@ -382,7 +428,7 @@
                 data-track="google_reviews_click"
               >
                 <div class="google-badge-inner">
-                  <!-- Google Icon -->
+                  <!-- Google logo (colored) -->
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -390,14 +436,14 @@
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
                   
-                  <!-- Rating Info -->
+                  <!-- Rating display -->
                   <div class="rating-info">
                     <div class="stars">★★★★★</div>
                     <div class="rating-number">5.0 / 5.0</div>
                   </div>
                 </div>
                 
-                <!-- Review Count -->
+                <!-- Review count -->
                 <div class="review-count">
                   <div class="count-label">Google'da Değerlendir</div>
                   <div class="count-number">33 üye yorumu</div>
@@ -405,7 +451,7 @@
               </a>
             </div>
 
-            <!-- CTA Button -->
+            <!-- CTA button -->
             <div class="reviews-cta reveal">
               <a 
                 href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" 
@@ -419,43 +465,37 @@
             </div>
           </div>
 
-          <!-- Right: Review Screenshots Carousel -->
+          <!-- RIGHT COLUMN: Review Screenshots Carousel -->
+          <!-- DYNAMIC: This is populated by JavaScript from the reviewImages array -->
+          <!-- To add more reviews: Just add filenames to the array in script.js -->
           <div class="reviews-right reveal">
             <div class="reviews-carousel">
+              <!-- Previous arrow -->
               <button class="review-slider-btn prev" type="button" aria-label="Önceki yorum">&#10094;</button>
 
-              <div class="review-slider-track">
-                <!-- Review Screenshot 1 -->
-                <div class="review-slide">
-                  <img src="img/reviews/review-1.png" alt="Google Maps yorumu" loading="lazy" />
-                </div>
-
-                <!-- Review Screenshot 2 -->
-                <div class="review-slide">
-                  <img src="img/reviews/review-2.png" alt="Google Maps yorumu" loading="lazy" />
-                </div>
-
-                <!-- Review Screenshot 3 -->
-                <div class="review-slide">
-                  <img src="img/reviews/review-3.png" alt="Google Maps yorumu" loading="lazy" />
-                </div>
-
-                <!-- Add more review screenshots as needed -->
+              <!-- Carousel track - slides are added by JavaScript -->
+              <!-- This div starts empty and gets filled automatically -->
+              <div class="review-slider-track" id="review-slider-track">
+                <!-- JavaScript builds the slides here from the reviewImages array -->
+                <!-- No need to manually add <div class="review-slide"> elements -->
               </div>
 
+              <!-- Next arrow -->
               <button class="review-slider-btn next" type="button" aria-label="Sonraki yorum">&#10095;</button>
             </div>
 
-            <!-- Carousel dots indicator -->
+            <!-- Dots indicator - also built by JavaScript -->
             <div class="review-dots"></div>
           </div>
         </div>
       </div>
-    </section>      
+    </section>
 
-    <!-- HOURS & INFO -->
+    <!-- ==================== HOURS & DISCOUNTS ==================== -->
+    <!-- Operating hours and special offers -->
     <section id="hours" class="section section-alt">
       <div class="container section-layout section-layout-reverse">
+        <!-- Operating hours -->
         <div class="reveal">
           <h2>Çalışma Saatlerimiz</h2>
           <div class="hours-grid">
@@ -475,6 +515,7 @@
           <p class="hours-note">* Fiyatlarımıza sauna kullanımı dahildir.</p>
         </div>
 
+        <!-- Discounts -->
         <div class="reveal">
           <h2>İndirimler</h2>
           <ul class="benefits-list">
@@ -486,9 +527,11 @@
       </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- ==================== PRICING SECTION ==================== -->
+    <!-- Membership packages and pricing information -->
     <section id="pricing" class="section">
       <div class="container">
+        <!-- Section header -->
         <div class="pricing-header">
           <h2 class="reveal">Paketler &amp; Fiyat Bilgisi</h2>
           <p class="section-intro reveal">
@@ -498,8 +541,10 @@
           </p>
         </div>
 
+        <!-- Pricing cards grid -->
         <div class="pricing-grid">
-          <!-- Salon Üyelik -->
+          
+          <!-- Package 1: Gym Membership -->
           <article class="pricing-card reveal">
             <h3>Salon Üyelik</h3>
             <p class="pricing-tagline">Sınırsız salon + sauna kullanımı</p>
@@ -513,7 +558,7 @@
             </a>
           </article>
 
-          <!-- Reformer Pilates -->
+          <!-- Package 2: Reformer Pilates -->
           <article class="pricing-card reveal">
             <h3>Reformer Pilates</h3>
             <p class="pricing-tagline">Küçük gruplar, güçlü sonuçlar</p>
@@ -528,7 +573,7 @@
             </a>
           </article>
 
-          <!-- PT -->
+          <!-- Package 3: Personal Training -->
           <article class="pricing-card reveal">
             <h3>PT (Bireysel Ders)</h3>
             <p class="pricing-tagline">Tamamen sana özel antrenman</p>
@@ -543,7 +588,7 @@
             </a>
           </article>
 
-          <!-- Zumba & Mat Pilates -->
+          <!-- Package 4: Group Classes -->
           <article class="pricing-card reveal">
             <h3>Zumba &amp; Mat Pilates</h3>
             <p class="pricing-tagline">Grup enerjisi, yüksek motivasyon</p>
@@ -559,6 +604,7 @@
           </article>
         </div>
 
+        <!-- Bottom CTA -->
         <div class="pricing-cta reveal">
           <p>
             Tüm paketlerde <strong>salon + sauna kullanımı</strong> bulunmaktadır.
@@ -575,14 +621,17 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <!-- Contact information and location -->
     <section id="contact" class="section section-alt">
       <div class="container section-layout">
+        <!-- Contact info -->
         <div class="reveal">
           <h2>İletişim &amp; Konum</h2>
           <p>Üyelik, grup dersleri veya PT paketleri için bize hemen ulaşabilirsiniz.</p>
 
           <div class="contact-list">
+            <!-- Address -->
             <div>
               <h3>Adres</h3>
               <p>
@@ -597,6 +646,7 @@
               </p>
             </div>
 
+            <!-- Contact details -->
             <div>
               <h3>İletişim</h3>
               <p>📞 <a href="tel:+905300789500" data-track="contact_phone">0 530 078 95 00</a></p>
@@ -606,6 +656,7 @@
           </div>
         </div>
 
+        <!-- Quick contact panel -->
         <div class="contact-panel reveal">
           <h3>Hızlı Bilgi Al</h3>
           <p>Kısa bir mesaj bırak, sana en kısa sürede dönüş yapalım.</p>
@@ -622,7 +673,7 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container footer-content">
       <span>© <span id="year"></span> BLACK GYM · Nilüfer / Bursa</span>
@@ -633,7 +684,8 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
+  <!-- ==================== WHATSAPP FLOATING BUTTON ==================== -->
+  <!-- Fixed button in bottom-right corner -->
   <a
     href="https://wa.me/905300789500"
     class="whatsapp-floating"
@@ -649,7 +701,7 @@
     <span class="wa-number">0 530 078 95 00</span>
   </a>
 
-  <!-- Lightbox -->
+  <!-- ==================== LIGHTBOX (for image popups) ==================== -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <figure class="lightbox-content">
       <button class="lightbox-close" type="button" aria-label="Kapat">&times;</button>
@@ -658,18 +710,22 @@
     </figure>
   </div>
 
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <!-- Main scripts for interactivity and animations -->
   <script src="script.js"></script>
   
-  <!-- GA4 Event Tracking -->
+  <!-- ==================== GOOGLE ANALYTICS EVENT TRACKING ==================== -->
+  <!-- Automatically tracks user interactions with buttons, videos, etc. -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // Track elements with data-track attribute
+      // Track all elements with data-track attribute
       document.querySelectorAll('[data-track]').forEach(function(element) {
         element.addEventListener('click', function() {
           var eventName = this.getAttribute('data-track');
           var eventCategory = 'engagement';
           
+          // Categorize events
           if (eventName.includes('whatsapp')) {
             eventCategory = 'contact_whatsapp';
           } else if (eventName.includes('phone')) {
@@ -682,6 +738,7 @@
             eventCategory = 'social';
           }
           
+          // Send event to GA4
           if (typeof gtag !== 'undefined') {
             gtag('event', eventName, {
               'event_category': eventCategory,

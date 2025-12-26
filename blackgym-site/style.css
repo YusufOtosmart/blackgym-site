@@ -1,18 +1,56 @@
+/* ==========================================
+   BLACK GYM - MAIN STYLESHEET
+   
+   Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
+   Contact: info@otosmart.com.tr
+   
+   Structure:
+   1. CSS Variables
+   2. Reset & Base Styles
+   3. Layout & Containers
+   4. Header & Navigation
+   5. Hero Section
+   6. Buttons & Links
+   7. Content Sections
+   8. Facilities Carousel
+   9. Reviews Section
+   10. Pricing Section
+   11. Contact & Footer
+   12. UI Components (Lightbox, WhatsApp button)
+   13. Animations
+   14. Responsive Design
+   ========================================== */
+
+/* ==========================================
+   1. CSS VARIABLES
+   Define all colors and design tokens here
+   ========================================== */
 :root {
+  /* Background colors */
   --bg-main: #05070a;
   --bg-alt: #0b1118;
   --bg-hero: #020617;
+  
+  /* Card backgrounds */
   --card-bg: #101621;
   --card-soft: #121826;
+  
+  /* Accent color (cyan) */
   --accent: #35f0e8;
   --accent-soft: rgba(53, 240, 232, 0.16);
+  
+  /* Text colors */
   --text-main: #f9fafb;
   --text-muted: #9ca3af;
+  
+  /* Border colors */
   --border-soft: #1f2933;
 }
 
-/* RESET & BASE */
-
+/* ==========================================
+   2. RESET & BASE STYLES
+   Normalize browser defaults
+   ========================================== */
 *,
 *::before,
 *::after {
@@ -28,6 +66,7 @@ body {
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #020617 0, #020617 35%, #05070a 70%);
   color: var(--text-main);
+  line-height: 1.6;
 }
 
 img {
@@ -37,30 +76,15 @@ img {
 
 a {
   color: inherit;
-}
-
-/* SKIP LINK (erişilebilirlik) */
-
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  padding: 0.75rem 1rem;
-  background: var(--accent);
-  color: #02111f;
-  font-weight: 600;
-  border-radius: 999px;
-  z-index: 1000;
   text-decoration: none;
 }
 
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-}
+/* ==========================================
+   3. LAYOUT & CONTAINERS
+   Grid layouts and section spacing
+   ========================================== */
 
-/* LAYOUT */
-
+/* Main content container */
 .container {
   width: 100%;
   max-width: 1360px;
@@ -68,27 +92,32 @@ a {
   padding: 0 1.5rem;
 }
 
+/* Standard section with light background */
 .section {
   padding: 5rem 0;
   background: transparent;
 }
 
+/* Alternate section with darker background */
 .section-alt {
   padding: 5rem 0;
   background: var(--bg-alt);
 }
 
+/* Section headings */
 .section h2 {
   font-size: 2.1rem;
   margin: 0 0 1rem;
 }
 
+/* Section intro paragraph */
 .section-intro {
   max-width: 560px;
   color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
+/* Two-column section layout */
 .section-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
@@ -96,12 +125,17 @@ a {
   align-items: flex-start;
 }
 
+/* Reverse column order */
 .section-layout-reverse {
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
 }
 
-/* HEADER / NAV */
+/* ==========================================
+   4. HEADER & NAVIGATION
+   Sticky header with logo and menu
+   ========================================== */
 
+/* Sticky header bar */
 .site-header {
   position: sticky;
   top: 0;
@@ -111,10 +145,12 @@ a {
   backdrop-filter: blur(12px);
 }
 
+/* Add shadow when scrolled */
 .site-header.scrolled {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Navigation container */
 .nav-container {
   display: flex;
   align-items: center;
@@ -122,8 +158,7 @@ a {
   padding: 0.75rem 1.5rem;
 }
 
-/* HEADER LOGO */
-
+/* Logo styling */
 .logo {
   display: flex;
   align-items: center;
@@ -137,8 +172,6 @@ a {
   width: auto;
   background: transparent;
 }
-
-/* Yazıyı logodaki stile yaklaştıralım */
 
 .logo-text {
   display: flex;
@@ -160,20 +193,7 @@ a {
   margin-left: 0.18rem;
 }
 
-/* Büyük ekranlarda logo biraz daha büyüsün */
-
-@media (min-width: 1200px) {
-  .logo-mark {
-    height: 52px;
-  }
-
-  .logo-text {
-    font-size: 1.55rem;
-  }
-}
-
-/* NAV */
-
+/* Navigation menu */
 .nav {
   display: flex;
 }
@@ -193,14 +213,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 600;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
   color: var(--accent);
 }
 
-/* NAV TOGGLE (MOBILE) */
-
+/* Mobile menu toggle (hamburger) */
 .nav-toggle {
   display: none;
   background: none;
@@ -218,6 +238,7 @@ a {
   transition: transform 0.2s, opacity 0.2s;
 }
 
+/* Hamburger animation when open */
 .nav-toggle.open span:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
@@ -230,7 +251,29 @@ a {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* HERO */
+/* Skip link for screen readers (accessibility) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: #02111f;
+  font-weight: 600;
+  border-radius: 999px;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ==========================================
+   5. HERO SECTION
+   Full-screen video background with CTAs
+   ========================================== */
 
 .hero {
   position: relative;
@@ -240,8 +283,7 @@ a {
   overflow: hidden;
 }
 
-/* Arka plan video */
-
+/* Background video */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -251,12 +293,12 @@ a {
   z-index: -2;
 }
 
-/* Varsayılan: desktop videosu açık, mobile kapalı */
-
+/* Desktop video visible by default */
 .hero-video-mobile {
   display: none;
 }
 
+/* Dark overlay for text readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -264,6 +306,7 @@ a {
   z-index: -1;
 }
 
+/* Hero content wrapper */
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -280,6 +323,7 @@ a {
   max-width: 520px;
 }
 
+/* Hero label (small text above title) */
 .hero-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -288,18 +332,33 @@ a {
   margin-bottom: 0.8rem;
 }
 
+/* Main hero title */
 .hero-title {
   margin: 0 0 1rem;
   font-size: clamp(2.4rem, 3.8vw, 3.6rem);
   letter-spacing: 0.12em;
+  line-height: 1.1;
 }
 
+/* Hero subtitle - hidden by default, shown conditionally */
 .hero-subtitle {
+  display: none; /* Long SEO text hidden */
   margin: 0 0 2rem;
   font-size: 0.98rem;
   color: var(--text-muted);
 }
 
+/* Short subtitle - shown on mobile only */
+.hero-subtitle-secondary {
+  display: none;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  max-width: 26rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* CTA buttons container */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -307,8 +366,7 @@ a {
   margin-bottom: 1.8rem;
 }
 
-/* HERO META */
-
+/* Quick info cards (address, hours, contact) */
 .hero-meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -330,8 +388,7 @@ a {
   color: var(--accent);
 }
 
-/* HERO SIDE CARD */
-
+/* Hero side card (desktop only) */
 .hero-side {
   display: flex;
   justify-content: flex-end;
@@ -371,15 +428,10 @@ a {
   color: var(--accent);
 }
 
-/* Hero sağ kart sadece desktopta görünsün */
-
-@media (max-width: 768px) {
-  .hero-side {
-    display: none;
-  }
-}
-
-/* BUTTONS */
+/* ==========================================
+   6. BUTTONS & LINKS
+   Reusable button styles
+   ========================================== */
 
 .btn {
   display: inline-flex;
@@ -394,8 +446,10 @@ a {
   letter-spacing: 0.14em;
   border: 1px solid transparent;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+/* Primary button (cyan background) */
 .btn.primary {
   background: var(--accent);
   color: #020617;
@@ -405,6 +459,7 @@ a {
   filter: brightness(1.06);
 }
 
+/* Ghost button (transparent with border) */
 .btn.ghost {
   background: rgba(15, 23, 42, 0.7);
   border-color: var(--accent-soft);
@@ -415,12 +470,17 @@ a {
   border-color: var(--accent);
 }
 
+/* Full-width button */
 .btn-full {
   width: 100%;
 }
 
-/* ABOUT / HIGHLIGHTS */
+/* ==========================================
+   7. CONTENT SECTIONS
+   About, highlights, hours, etc.
+   ========================================== */
 
+/* Highlight cards grid (About section) */
 .highlight-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -447,17 +507,10 @@ a {
 .highlight-item p {
   font-size: 0.9rem;
   color: var(--text-muted);
+  margin: 0;
 }
 
-/* CARDS / FACILITIES */
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.75rem;
-  margin-top: 2rem;
-}
-
+/* General card styling */
 .card {
   background: radial-gradient(circle at top, rgba(53, 240, 232, 0.08), transparent 60%), var(--card-bg);
   border-radius: 1.2rem;
@@ -496,118 +549,7 @@ a {
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* FACILITIES SLIDER */
-
-.facilities-slider {
-  position: relative;
-  margin-top: 2rem;
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.4s ease-out;
-}
-
-.facility-slide {
-  flex: 0 0 100%;
-  display: flex;
-  justify-content: center;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-}
-
-.facility-slide .card {
-  width: 100%;
-  max-width: 840px;
-}
-
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.3rem;
-  z-index: 2;
-}
-
-.slider-btn.prev {
-  left: 0.5rem;
-}
-
-.slider-btn.next {
-  right: 0.5rem;
-}
-
-.slider-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* LIGHTBOX */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease-out;
-  z-index: 60;
-}
-
-.lightbox.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: min(1000px, 90vw);
-  max-height: 85vh;
-  margin: 0 1rem;
-}
-
-.lightbox-content img {
-  width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-}
-
-.lightbox-caption {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: #e5e7eb;
-  text-align: center;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -2.2rem;
-  right: 0;
-  border: none;
-  background: transparent;
-  color: #e5e7eb;
-  font-size: 1.9rem;
-  cursor: pointer;
-}
-
-/* HOURS */
-
+/* Hours section */
 .hours-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -643,8 +585,10 @@ a {
 .hours-note {
   font-size: 0.85rem;
   color: var(--text-muted);
+  margin-top: 1rem;
 }
 
+/* Benefits/discounts list */
 .benefits-list {
   list-style: none;
   padding: 0;
@@ -656,134 +600,7 @@ a {
   margin-bottom: 0.7rem;
 }
 
-/* PRICING – yeni tasarım */
-
-#pricing .pricing-header {
-  max-width: 780px;
-  margin: 0 auto 3rem;
-}
-
-#pricing .pricing-header h2 {
-  margin-bottom: 1rem;
-}
-
-#pricing .section-intro {
-  max-width: 100%;
-  line-height: 1.7;
-  color: var(--text-muted);
-}
-
-/* Kart grid */
-
-#pricing .pricing-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 2.4rem;
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 900px) {
-  #pricing .pricing-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-#pricing .pricing-card {
-  background: rgba(15, 23, 42, 0.96);
-  border-radius: 1.6rem;
-  padding: 2.2rem 2.4rem;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-}
-
-#pricing .pricing-card h3 {
-  font-size: 1.15rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin: 0 0 0.5rem;
-}
-
-#pricing .pricing-tagline {
-  margin: 0 0 1.4rem;
-  font-weight: 500;
-  color: var(--accent);
-}
-
-#pricing .pricing-features {
-  list-style: disc;
-  padding-left: 1.1rem;
-  margin: 0 0 1.6rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-#pricing .pricing-features li + li {
-  margin-top: 0.4rem;
-}
-
-#pricing .pricing-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--accent);
-}
-
-#pricing .pricing-link::after {
-  content: "→";
-  font-size: 0.9rem;
-}
-
-/* Alt CTA alanı */
-
-#pricing .pricing-cta {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-#pricing .pricing-cta p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-#pricing .pricing-cta .btn {
-  padding-inline: 2.6rem;
-  margin-bottom: 0.6rem;
-}
-
-#pricing .pricing-cta-note {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-#pricing .pricing-cta-note a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-/* GALLERY */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.gallery-grid img {
-  border-radius: 0.9rem;
-  border: 1px solid var(--border-soft);
-  height: 180px;
-  object-fit: cover;
-}
-
-/* VIDEO GALLERY */
-
+/* Video gallery */
 .video-tagline {
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -792,8 +609,6 @@ a {
   margin: 0 0 0.75rem;
   text-align: center;
 }
-
-/* Dikey video için “telefon ekranı” genişliği */
 
 .video-wrapper {
   max-width: 420px;
@@ -811,315 +626,80 @@ a {
   height: auto;
 }
 
-/* CONTACT */
+/* ==========================================
+   8. FACILITIES CAROUSEL
+   Slideshow of gym areas
+   ========================================== */
 
-.contact-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.3rem;
+.facilities-slider {
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
 }
 
-.contact-list h3 {
-  margin-top: 0;
-}
-
-.contact-panel {
-  background: var(--card-bg);
-  border-radius: 1.1rem;
-  border: 1px solid var(--border-soft);
-  padding: 1.6rem 1.5rem;
-}
-
-.contact-small {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.8rem;
-}
-
-.contact-small a {
-  color: var(--accent);
-}
-
-/* FOOTER */
-
-.site-footer {
-  border-top: 1px solid var(--border-soft);
-  background: #020617;
-  padding: 1rem 0;
-  font-size: 0.8rem;
-}
-
-.footer-content {
+.slider-track {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  transition: transform 0.4s ease-out;
 }
 
-.footer-links a {
-  text-decoration: none;
-  color: var(--text-muted);
-  margin-left: 1rem;
+.facility-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
 }
 
-.footer-links a:hover {
-  color: var(--accent);
+.facility-slide .card {
+  width: 100%;
+  max-width: 840px;
 }
 
-/* WHATSAPP FLOATING BUTTON */
-
-.whatsapp-floating {
-  position: fixed;
-  right: 1.4rem;
-  bottom: 1.4rem;
-  z-index: 50;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.95rem;
+/* Carousel navigation buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #f9fafb;
-  text-decoration: none;
-  font-size: 0.8rem;
-  box-shadow: 0 18px 50px rgba(22, 163, 74, 0.7);
-}
-
-.wa-icon {
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.15);
-  margin-right: 0.7rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+  z-index: 2;
+  transition: all 0.2s ease;
 }
 
-.wa-icon img {
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
+.slider-btn.prev {
+  left: 0.5rem;
 }
 
-.wa-text {
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.slider-btn.next {
+  right: 0.5rem;
 }
 
-.wa-number {
-  opacity: 0.9;
+.slider-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* REVEAL ANIMATION */
+/* ==========================================
+   9. REVIEWS SECTION
+   Google reviews with carousel
+   DYNAMIC: Slides built by JavaScript from reviewImages array
+   ========================================== */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-
-/* Tablet ve altı: section layout tek kolona iner */
-
-@media (max-width: 960px) {
-  .section-layout,
-  .section-layout-reverse {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-inner {
-    padding: 5rem 1.5rem 3rem;
-  }
-
-  .hero-side {
-    justify-content: flex-start;
-  }
-
-  .hero-card {
-    margin-top: 1.5rem;
-  }
-}
-
-/* Mobil nav + hero + footer düzeni */
-
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #020617;
-    border-bottom: 1px solid var(--border-soft);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-  }
-
-  .nav.open {
-    max-height: 260px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    padding: 0.75rem 1.5rem 1.2rem;
-  }
-
-  .nav-links li {
-    padding: 0.2rem 0;
-  }
-
-  .hero {
-    min-height: 100vh;
-  }
-
-  .hero-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 7rem;
-    padding-bottom: 3rem;
-  }
-
-  .hero-side {
-    margin-top: 2.5rem;
-    width: 100%;
-  }
-
-  /* Mobilde dikey hero videosu devreye girsin */
-  .hero-video-desktop {
-    display: none;
-  }
-
-  .hero-video-mobile {
-    display: block;
-  }
-
-  .whatsapp-floating {
-    right: 1rem;
-    bottom: 1rem;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* Çok küçük ekranlar */
-
-@media (max-width: 480px) {
-  .hero-title {
-    letter-spacing: 0.1em;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .whatsapp-floating .wa-number {
-    display: none;
-  }
-}
-/* Uzun SEO paragrafını tamamen gizle (hem mobil hem desktop) */
-.hero-subtitle {
-  display: none;
-}
-
-/* Kısa öne çıkan satır: sadece secondary görünsün */
-.hero-subtitle-secondary {
-  display: block;
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  max-width: 26rem;
-  color: var(--text-muted);
-}
-
-/* Desktop'ta hero-card zaten aynı bilgiyi verdiği için secondary'yi gizle */
-@media (min-width: 992px) {
-  .hero-subtitle-secondary {
-    display: none;
-  }
-}
-/* Mobil hero düzenlemeleri (max 768px) */
-@media (max-width: 768px) {
-
-  /* Hero içeriğini dikeyde biraz daha ortala */
-  .hero-inner {
-    padding-top: 5.5rem;      /* header'dan sonra boşluk */
-    padding-bottom: 3.5rem;
-  }
-
-  /* Başlığı 1 tık küçültüp dengeli yap */
-  .hero-title {
-    font-size: 2.2rem;
-    line-height: 1.1;
-  }
-
-  /* Uzun hero-subtitle'ı gizle, sadece secondary kalsın */
-  .hero-subtitle:not(.hero-subtitle-secondary) {
-    display: none;
-  }
-
-  /* Görünen subtitle'ı (secondary) rahat okunur yap */
-  .hero-subtitle-secondary {
-    font-size: 0.98rem;
-    line-height: 1.55;
-    max-width: 32rem;
-    margin-bottom: 1.6rem;    /* butonlardan önce nefes alanı */
-  }
-
-  /* İki buton arasında biraz boşluk */
-  .hero-actions .btn {
-    margin-bottom: 0.6rem;
-  }
-}
-/* Klavye odak stilleri (erişilebilirlik) ------------------ */
-a:focus-visible,
-button:focus-visible,
-.btn:focus-visible,
-.slider-btn:focus-visible,
-.whatsapp-floating:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-/* Hareketi azalt tercihine saygı duy (prefers-reduced-motion) --------- */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/* Reviews Section - Reduced Padding */
 #reviews {
   background: var(--bg-alt);
-  padding: 3.5rem 0; /* Reduced from 5rem */
+  padding: 3.5rem 0;
 }
 
-/* Two-column layout */
+/* Two-column layout: text left, carousel right */
 .reviews-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
@@ -1127,7 +707,7 @@ button:focus-visible,
   align-items: center;
 }
 
-/* Left Column */
+/* Left column: header, badge, CTA */
 .reviews-left {
   display: flex;
   flex-direction: column;
@@ -1135,8 +715,8 @@ button:focus-visible,
 }
 
 .reviews-header {
-  text-align: left; /* Changed from center */
-  margin-bottom: 0; /* Removed bottom margin */
+  text-align: left;
+  margin-bottom: 0;
 }
 
 .reviews-header h2 {
@@ -1152,10 +732,10 @@ button:focus-visible,
   text-align: left;
 }
 
-/* Google Badge - Adjusted for left alignment */
+/* Google Reviews badge */
 .google-badge {
   display: flex;
-  justify-content: flex-start; /* Changed from center */
+  justify-content: flex-start;
   padding: 0;
 }
 
@@ -1218,13 +798,13 @@ button:focus-visible,
   color: var(--text-muted);
 }
 
-/* CTA */
+/* Reviews CTA button */
 .reviews-cta {
-  text-align: left; /* Changed from center */
+  text-align: left;
   margin-top: 0;
 }
 
-/* Right Column - Carousel */
+/* Right column: carousel container */
 .reviews-right {
   position: relative;
 }
@@ -1235,6 +815,9 @@ button:focus-visible,
   border-radius: 1.2rem;
   background: var(--card-bg);
   border: 1px solid var(--border-soft);
+  /* Desktop: 20% smaller, centered */
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .review-slider-track {
@@ -1252,9 +835,12 @@ button:focus-visible,
   height: auto;
   display: block;
   border-radius: 1.2rem;
+  /* Consistent sizing and no distortion */
+  object-fit: contain;
+  max-height: 450px;
 }
 
-/* Carousel Navigation Buttons */
+/* Carousel navigation buttons */
 .review-slider-btn {
   position: absolute;
   top: 50%;
@@ -1288,7 +874,7 @@ button:focus-visible,
   right: 0.75rem;
 }
 
-/* Carousel Dots */
+/* Carousel dots indicator */
 .review-dots {
   display: flex;
   justify-content: center;
@@ -1310,33 +896,444 @@ button:focus-visible,
   width: 24px;
 }
 
-/* Tablet & Mobile Responsive */
+/* ==========================================
+   10. PRICING SECTION
+   Membership packages and pricing
+   ========================================== */
+
+#pricing .pricing-header {
+  max-width: 780px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+#pricing .pricing-header h2 {
+  margin-bottom: 1rem;
+}
+
+#pricing .section-intro {
+  max-width: 100%;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Pricing cards grid */
+#pricing .pricing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.4rem;
+  margin-bottom: 3rem;
+}
+
+#pricing .pricing-card {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 1.6rem;
+  padding: 2.2rem 2.4rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+#pricing .pricing-card h3 {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+#pricing .pricing-tagline {
+  margin: 0 0 1.4rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+#pricing .pricing-features {
+  list-style: disc;
+  padding-left: 1.1rem;
+  margin: 0 0 1.6rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+#pricing .pricing-features li + li {
+  margin-top: 0.4rem;
+}
+
+#pricing .pricing-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+#pricing .pricing-link::after {
+  content: "→";
+  font-size: 0.9rem;
+}
+
+/* Bottom CTA section */
+#pricing .pricing-cta {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+#pricing .pricing-cta p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+#pricing .pricing-cta .btn {
+  padding-inline: 2.6rem;
+  margin-bottom: 0.6rem;
+}
+
+#pricing .pricing-cta-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+#pricing .pricing-cta-note a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ==========================================
+   11. CONTACT & FOOTER
+   Contact info and footer styling
+   ========================================== */
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.3rem;
+}
+
+.contact-list h3 {
+  margin-top: 0;
+}
+
+.contact-panel {
+  background: var(--card-bg);
+  border-radius: 1.1rem;
+  border: 1px solid var(--border-soft);
+  padding: 1.6rem 1.5rem;
+}
+
+.contact-small {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+}
+
+.contact-small a {
+  color: var(--accent);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-soft);
+  background: #020617;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  margin-left: 1rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* ==========================================
+   12. UI COMPONENTS
+   Lightbox and WhatsApp floating button
+   ========================================== */
+
+/* Lightbox for image popups */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+  z-index: 60;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: min(1000px, 90vw);
+  max-height: 85vh;
+  margin: 0 1rem;
+}
+
+.lightbox-content img {
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.lightbox-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.2rem;
+  right: 0;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 1.9rem;
+  cursor: pointer;
+}
+
+/* WhatsApp floating button (bottom-right corner) */
+.whatsapp-floating {
+  position: fixed;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #f9fafb;
+  text-decoration: none;
+  font-size: 0.8rem;
+  box-shadow: 0 18px 50px rgba(22, 163, 74, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-floating:hover {
+  transform: translateY(-2px);
+}
+
+.wa-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.15);
+  margin-right: 0.7rem;
+}
+
+.wa-icon img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.wa-text {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wa-number {
+  opacity: 0.9;
+}
+
+/* ==========================================
+   13. ANIMATIONS
+   Reveal animation for scroll effects
+   ========================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   14. RESPONSIVE DESIGN
+   Mobile and tablet adjustments
+   ========================================== */
+
+/* Large screens: Bigger logo */
+@media (min-width: 1200px) {
+  .logo-mark {
+    height: 52px;
+  }
+
+  .logo-text {
+    font-size: 1.55rem;
+  }
+}
+
+/* Desktop: 2x2 pricing grid */
+@media (min-width: 900px) {
+  #pricing .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablet and below: Single column layouts */
 @media (max-width: 960px) {
+  /* Section layouts stack vertically */
+  .section-layout,
+  .section-layout-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-inner {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .hero-side {
+    justify-content: flex-start;
+  }
+
+  .hero-card {
+    margin-top: 1.5rem;
+  }
+
+  /* Reviews section: stack vertically */
   .reviews-layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
+  /* Reviews: Keep left-aligned (matches other sections) */
   .reviews-header {
-    text-align: center;
+    text-align: left;
   }
 
   .reviews-header .section-intro {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 600px;
+    text-align: left;
+    max-width: 100%;
   }
 
   .google-badge {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .reviews-cta {
-    text-align: center;
+    text-align: left;
+  }
+
+  /* Reviews carousel: full width on mobile */
+  .reviews-carousel {
+    max-width: 100%;
   }
 }
 
+/* Mobile: Navigation and hero adjustments */
 @media (max-width: 768px) {
+  /* Mobile navigation toggle */
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #020617;
+    border-bottom: 1px solid var(--border-soft);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .nav.open {
+    max-height: 260px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 0.75rem 1.5rem 1.2rem;
+  }
+
+  .nav-links li {
+    padding: 0.2rem 0;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  /* Show short subtitle on mobile */
+  .hero-subtitle-secondary {
+    display: block;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    max-width: 32rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-actions .btn {
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-side {
+    display: none; /* Hide hero card on mobile */
+  }
+
+  /* Switch to vertical video on mobile */
+  .hero-video-desktop {
+    display: none;
+  }
+
+  .hero-video-mobile {
+    display: block;
+  }
+
+  /* Reviews section mobile */
   #reviews {
     padding: 2.5rem 0;
   }
@@ -1349,6 +1346,7 @@ button:focus-visible,
     font-size: 1.75rem;
   }
 
+  /* Google badge: stack vertically on mobile */
   .google-review-link {
     flex-direction: column;
     padding: 1rem;
@@ -1372,6 +1370,7 @@ button:focus-visible,
     text-align: center;
   }
 
+  /* Smaller carousel buttons on mobile */
   .review-slider-btn {
     width: 32px;
     height: 32px;
@@ -1385,4 +1384,76 @@ button:focus-visible,
   .review-slider-btn.next {
     right: 0.5rem;
   }
+
+  /* WhatsApp button adjustment */
+  .whatsapp-floating {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  /* Footer stacks vertically */
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .hero-title {
+    letter-spacing: 0.1em;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide phone number in WhatsApp button */
+  .whatsapp-floating .wa-number {
+    display: none;
+  }
+}
+
+/* ==========================================
+   15. ACCESSIBILITY
+   Focus states and reduced motion
+   ========================================== */
+
+/* Keyboard focus indicators */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.slider-btn:focus-visible,
+.review-slider-btn:focus-visible,
+.whatsapp-floating:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   END OF STYLESHEET
+   ========================================== */
