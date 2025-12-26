@@ -10,8 +10,9 @@
    3. Reveal animations (scroll effects)
    4. Facilities carousel
    5. Reviews carousel (DYNAMIC)
-   6. Lightbox (image popups)
-   7. Footer year auto-update
+   6. Hero title animation (iOS optimized)
+   7. Lightbox (image popups)
+   8. Footer year auto-update
    ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -191,8 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
     'review-1.png',
     'review-2.png',
     'review-3.png',
-    'review-4.png',  // ← ADD THIS
-    'review-5.png'   // ← ADD THIS
+    'review-4.png',
+    'review-5.png'
   ];
 
   const reviewImagesPath = 'img/reviews/'; // Folder path
@@ -457,7 +458,84 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewsCarousel();
 
   /* ==========================================
-     6. LIGHTBOX
+     6. HERO TITLE ANIMATION - iOS OPTIMIZED
+     
+     Cycles through different action phrases with smooth
+     transitions optimized for mobile Safari.
+     
+     PERFORMANCE OPTIMIZATIONS:
+     - Uses requestAnimationFrame for 60fps timing
+     - Forced reflow ensures iOS processes changes
+     - isAnimating flag prevents overlapping animations
+     - translate3d() in CSS triggers GPU acceleration
+     ========================================== */
+  
+  (function () {
+    const dynamicEl = document.querySelector('.hero-title-dynamic');
+    if (!dynamicEl) {
+      console.warn('⚠️ Hero dynamic title element not found');
+      return;
+    }
+
+    // Phrases to cycle through
+    const phrases = [
+      'GÜÇLÜ HİSSET',
+      'BUGÜN BAŞLA'
+    ];
+
+    let index = 0;
+    let isAnimating = false;
+    
+    const transitionMs = 900;  // Must match CSS transition duration
+    const displayMs = 3600;    // How long each phrase shows (3.6s)
+
+    // Set initial text
+    dynamicEl.textContent = phrases[index];
+    
+    // Ensure element starts visible
+    dynamicEl.classList.remove('is-hidden');
+
+    /**
+     * Change to next phrase with iOS-optimized animation
+     */
+    function changePhrase() {
+      // Prevent overlapping animations
+      if (isAnimating) return;
+      isAnimating = true;
+
+      // Step 1: Fade out and slide right
+      dynamicEl.classList.add('is-hidden');
+
+      // Step 2: Wait for CSS transition to complete
+      setTimeout(() => {
+        // Step 3: Use RAF for smoother updates on iOS
+        requestAnimationFrame(() => {
+          // Update to next phrase
+          index = (index + 1) % phrases.length;
+          dynamicEl.textContent = phrases[index];
+
+          // Force reflow - ensures iOS Safari processes the change
+          // This is critical for smooth animations on iPhone!
+          void dynamicEl.offsetWidth;
+
+          // Step 4: Fade in and slide back (next frame)
+          requestAnimationFrame(() => {
+            dynamicEl.classList.remove('is-hidden');
+            isAnimating = false;
+          });
+        });
+      }, transitionMs);
+    }
+
+    // Start animation cycle
+    setInterval(changePhrase, displayMs);
+
+    console.log(`✅ Hero title animation initialized (iOS optimized)`);
+    console.log(`   Cycling through ${phrases.length} phrases every ${displayMs/1000}s`);
+  })();
+
+  /* ==========================================
+     7. LIGHTBOX
      Image popup viewer for facility images
      Click any facility image to view full-screen
      ========================================== */
@@ -513,7 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================
-     7. FOOTER YEAR AUTO-UPDATE
+     8. FOOTER YEAR AUTO-UPDATE
      Automatically updates copyright year
      ========================================== */
   const yearSpan = document.getElementById("year");
@@ -522,107 +600,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 }); // End DOMContentLoaded
-// HERO DİNAMİK BAŞLIK ROTASYONU
-(function () {
-  var dynamicEl = document.querySelector('.hero-title-dynamic');
-  if (!dynamicEl) return;
-
-  var phrases = [
-    'GÜÇLÜ HİSSET',
-    'BUGÜN BAŞLA'
-  ];
-
-  var index = 0;
-  var transitionMs = 900;   // 0.9 sn animasyon
-  var displayMs    = 3600;  // 2.6 sn’de bir değişim (2 sn görünür + 0.9 sn geçiş)
-
-  dynamicEl.textContent = phrases[index];
-
-  setInterval(function () {
-    // Mevcut yazıyı yavaşça sağa kaydırıp sil
-    dynamicEl.classList.add('is-hidden');
-
-    // CSS transition süresini bekle
-    setTimeout(function () {
-      index = (index + 1) % phrases.length;
-      dynamicEl.textContent = phrases[index];
-
-      // Yeni yazıyı sağdan yavaşça getir
-      dynamicEl.classList.remove('is-hidden');
-    }, transitionMs);
-  }, displayMs);
-})();
-
-/* ==========================================
-   HERO TITLE ANIMATION - iOS OPTIMIZED
-   ========================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const dynamicTitle = document.querySelector('.hero-title-dynamic');
-  
-  if (!dynamicTitle) {
-    console.warn('⚠️ Hero title element not found');
-    return;
-  }
-  
-  // Words to cycle through
-  const words = [
-    'GÜÇLÜ HİSSET',
-    'BUGÜN BAŞLA'
-  ];
-  
-  let currentIndex = 0;
-  let isAnimating = false;
-  
-  /**
-   * Change to next word with smooth animation
-   * Optimized for iOS Safari performance
-   */
-  function changeWord() {
-    // Prevent overlapping animations
-    if (isAnimating) return;
-    isAnimating = true;
-    
-    // Step 1: Fade out current word
-    dynamicTitle.classList.add('is-hidden');
-    
-    // Step 2: Wait for fade out animation (900ms)
-    setTimeout(() => {
-      // Step 3: Change to next word
-      currentIndex = (currentIndex + 1) % words.length;
-      
-      // Use requestAnimationFrame for smoother update (iOS optimization)
-      requestAnimationFrame(() => {
-        dynamicTitle.textContent = words[currentIndex];
-        
-        // Force reflow to ensure CSS transition triggers on iOS
-        void dynamicTitle.offsetWidth;
-        
-        // Step 4: Fade in new word
-        requestAnimationFrame(() => {
-          dynamicTitle.classList.remove('is-hidden');
-          isAnimating = false;
-        });
-      });
-    }, 900); // Match CSS transition duration exactly
-  }
-  
-  // Initial setup: ensure element is visible
-  dynamicTitle.classList.remove('is-hidden');
-  
-  // Change word every 3 seconds
-  const intervalId = setInterval(changeWord, 3000);
-  
-  // Cleanup on page unload (good practice)
-  window.addEventListener('beforeunload', () => {
-    clearInterval(intervalId);
-  });
-  
-  console.log('✅ Hero title animation initialized (iOS optimized)');
-  console.log(`📝 Cycling through ${words.length} words: ${words.join(', ')}`);
-});
-
 
 /* ==========================================
    END OF MAIN JAVASCRIPT
+   
+   Total functions: 8
+   iOS optimized: Yes
+   Browser support: Modern browsers + graceful fallbacks
    ========================================== */
