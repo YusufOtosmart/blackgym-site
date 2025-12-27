@@ -1,66 +1,44 @@
 /* ==========================================
-   BLACK GYM - MAIN STYLESHEET
+   BLACK GYM - CLEAN STYLESHEET (FINAL FIXED)
    
    Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
    Contact: info@otosmart.com.tr
    
-   Structure:
-   1. CSS Variables
-   2. Reset & Base Styles
-   3. Layout & Containers
-   4. Header & Navigation
-   5. Hero Section (with Dynamic Title Animation)
-   6. Buttons & Links
-   7. Content Sections
-   8. Facilities Carousel
-   9. Reviews Section
-   10. Pricing Section
-   11. Contact & Footer
-   12. UI Components (Lightbox, WhatsApp button)
-   13. Animations
-   14. Responsive Design
-   15. Accessibility
+   FIXES:
+   - Title alignment: "Üyelerimiz Ne Diyor?" now aligned with "Çalışma Saatlerimiz"
+   - Mobile menu: Increased height + scrollable, "İLETİŞİM" fully visible
+   
+   Hero title animation: Moved to inline HTML (working!)
+   This file contains NO hero animation CSS
    ========================================== */
 
 /* ==========================================
    1. CSS VARIABLES
-   Define all colors and design tokens here
-   Change these to update colors site-wide
    ========================================== */
 :root {
-  /* Background colors */
-  --bg-main: #05070a;       /* Main dark background */
-  --bg-alt: #0b1118;        /* Alternate darker background */
-  --bg-hero: #020617;       /* Hero section background */
-  
-  /* Card backgrounds */
-  --card-bg: #101621;       /* Card background */
-  --card-soft: #121826;     /* Softer card background */
-  
-  /* Accent color (cyan) - Primary brand color */
-  --accent: #35f0e8;                    /* Main cyan color */
-  --accent-soft: rgba(53, 240, 232, 0.16);  /* Transparent cyan */
-  
-  /* Text colors */
-  --text-main: #f9fafb;     /* White text (main content) */
-  --text-muted: #9ca3af;    /* Gray text (secondary content) */
-  
-  /* Border colors */
-  --border-soft: #1f2933;   /* Subtle border color */
+  --bg-main: #05070a;
+  --bg-alt: #0b1118;
+  --bg-hero: #020617;
+  --card-bg: #101621;
+  --card-soft: #121826;
+  --accent: #35f0e8;
+  --accent-soft: rgba(53, 240, 232, 0.16);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-soft: #1f2933;
 }
 
 /* ==========================================
    2. RESET & BASE STYLES
-   Normalize browser defaults for consistency
    ========================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;  /* Include padding/border in element width */
+  box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -68,58 +46,50 @@ body {
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #020617 0, #020617 35%, #05070a 70%);
   color: var(--text-main);
-  line-height: 1.6;  /* Comfortable reading line height */
+  line-height: 1.6;
 }
 
 img {
-  max-width: 100%;  /* Prevent images from overflowing */
-  display: block;   /* Remove extra spacing below images */
+  max-width: 100%;
+  display: block;
 }
 
 a {
-  color: inherit;           /* Inherit text color from parent */
-  text-decoration: none;    /* Remove underline */
+  color: inherit;
+  text-decoration: none;
 }
 
 /* ==========================================
    3. LAYOUT & CONTAINERS
-   Grid layouts and section spacing
    ========================================== */
-
-/* Main content container - centers content and adds padding */
 .container {
   width: 100%;
-  max-width: 1360px;  /* Maximum width for large screens */
-  margin: 0 auto;     /* Center horizontally */
-  padding: 0 1.5rem;  /* Side padding */
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Standard section with light background */
 .section {
-  padding: 5rem 0;          /* Vertical spacing */
+  padding: 5rem 0;
   background: transparent;
 }
 
-/* Alternate section with darker background (for visual variety) */
 .section-alt {
   padding: 5rem 0;
   background: var(--bg-alt);
 }
 
-/* Section headings */
 .section h2 {
   font-size: 2.1rem;
   margin: 0 0 1rem;
 }
 
-/* Section intro paragraph (descriptive text below heading) */
 .section-intro {
   max-width: 560px;
   color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
-/* Two-column section layout (text + content) */
 .section-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
@@ -127,32 +97,26 @@ a {
   align-items: flex-start;
 }
 
-/* Reverse column order (content + text) */
 .section-layout-reverse {
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
 }
 
 /* ==========================================
    4. HEADER & NAVIGATION
-   Sticky header with logo and menu
    ========================================== */
-
-/* Sticky header bar - stays at top when scrolling */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 40;  /* Above other content */
+  z-index: 40;
   background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.82));
   border-bottom: 1px solid rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);  /* Frosted glass effect */
+  backdrop-filter: blur(12px);
 }
 
-/* Add shadow when page is scrolled */
 .site-header.scrolled {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Navigation container */
 .nav-container {
   display: flex;
   align-items: center;
@@ -160,7 +124,6 @@ a {
   padding: 0.75rem 1.5rem;
 }
 
-/* Logo styling */
 .logo {
   display: flex;
   align-items: center;
@@ -187,15 +150,14 @@ a {
 }
 
 .logo-text-main {
-  color: #f9fafb;  /* White */
+  color: #f9fafb;
 }
 
 .logo-text-accent {
-  color: var(--accent);  /* Cyan */
+  color: var(--accent);
   margin-left: 0.18rem;
 }
 
-/* Navigation menu */
 .nav {
   display: flex;
 }
@@ -222,9 +184,8 @@ a {
   color: var(--accent);
 }
 
-/* Mobile menu toggle (hamburger button) */
 .nav-toggle {
-  display: none;  /* Hidden by default, shown on mobile */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -240,23 +201,21 @@ a {
   transition: transform 0.2s, opacity 0.2s;
 }
 
-/* Hamburger animation when menu is open */
 .nav-toggle.open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);  /* Top line rotates */
+  transform: translateY(6px) rotate(45deg);
 }
 
 .nav-toggle.open span:nth-child(2) {
-  opacity: 0;  /* Middle line disappears */
+  opacity: 0;
 }
 
 .nav-toggle.open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);  /* Bottom line rotates */
+  transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Skip link for screen readers (accessibility) */
 .skip-link {
   position: absolute;
-  left: -9999px;  /* Hidden off-screen */
+  left: -9999px;
   top: 0;
   padding: 0.75rem 1rem;
   background: var(--accent);
@@ -267,7 +226,6 @@ a {
   text-decoration: none;
 }
 
-/* Show skip link when focused with keyboard */
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
@@ -275,45 +233,41 @@ a {
 
 /* ==========================================
    5. HERO SECTION
-   Full-screen video background with CTAs
-   Includes dynamic title animation
+   
+   NOTE: Hero title animation CSS is in inline <style>
+   in HTML for better iOS compatibility
    ========================================== */
-
 .hero {
   position: relative;
-  min-height: 92vh;  /* Almost full viewport height */
+  min-height: 92vh;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-/* Background video */
 .hero-video {
   position: absolute;
-  inset: 0;  /* Cover entire hero section */
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* Fill space without distortion */
-  z-index: -2;  /* Behind content */
+  object-fit: cover;
+  z-index: -2;
 }
 
-/* Desktop video visible by default, mobile hidden */
 .hero-video-mobile {
   display: none;
 }
 
-/* Dark overlay for text readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.55));
-  z-index: -1;  /* Behind text, in front of video */
+  z-index: -1;
 }
 
-/* Hero content wrapper */
 .hero-inner {
   position: relative;
-  z-index: 1;  /* Above overlay */
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -327,7 +281,6 @@ a {
   max-width: 520px;
 }
 
-/* Hero label (small text above title) */
 .hero-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -336,69 +289,28 @@ a {
   margin-bottom: 0.8rem;
 }
 
-/* Main hero title - base styles */
 .hero-title {
   margin: 0 0 1rem;
-  font-size: clamp(2.4rem, 3.8vw, 3.6rem);  /* Responsive sizing */
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
   letter-spacing: 0.12em;
   line-height: 1.1;
 }
 
-/* Dynamic Title Animation - EXACT TEST CODE
-   ========================================
-   For animated second line that changes text
-   Example: "GÜÇLÜ HİSSET" → "BUGÜN BAŞLA" → "FİT YAŞA" → "AKTİF KAL"
-   
-   This uses the EXACT same code as ios-animation-test.html (Test 2)
-   which works smoothly on iOS!
-   
-   JavaScript toggles .hidden class to fade text in/out
-   ======================================== */
-
-/* First line of title (static) */
 .hero-title-main {
-  display: inline-block;  /* Allows for proper line breaking */
-}
-
-/* Second line of title (dynamic, animated) - EXACT TEST CODE */
-.hero-title-dynamic {
   display: inline-block;
-  color: var(--accent);  /* Cyan color to stand out */
-  -webkit-font-smoothing: antialiased;  /* Smooth text rendering */
-  
-  /* Simple transition - EXACT same as test file */
-  transition: opacity 0.9s ease;
 }
 
-/* Hidden state - EXACT same as test file */
-.hero-title-dynamic.hidden {
-  opacity: 0;  /* Fade out */
-}
+/* Hero title dynamic styles are in inline HTML */
 
-/* How it works (same as test file):
-   1. JavaScript adds .hidden class → opacity goes to 0 (fade out)
-   2. Waits 900ms for fade to complete
-   3. Changes text content
-   4. Removes .hidden class → opacity goes to 1 (fade in)
-   5. Repeats every 3 seconds
-   
-   Why this works on iOS:
-   - Simple class toggle (no complex RAF)
-   - Only opacity (no transforms)
-   - Proven to work (test file works on iOS)
-*/
-
-/* Hero subtitle - hidden by default (for SEO only) */
 .hero-subtitle {
-  display: none;  /* Long SEO text hidden from view */
+  display: none;
   margin: 0 0 2rem;
   font-size: 0.98rem;
   color: var(--text-muted);
 }
 
-/* Short subtitle - shown on mobile only */
 .hero-subtitle-secondary {
-  display: none;  /* Hidden on desktop */
+  display: none;
   margin-top: 0.75rem;
   font-size: 0.95rem;
   max-width: 26rem;
@@ -406,7 +318,6 @@ a {
   line-height: 1.55;
 }
 
-/* CTA buttons container */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -414,7 +325,6 @@ a {
   margin-bottom: 1.8rem;
 }
 
-/* Quick info cards (address, hours, contact) */
 .hero-meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -436,7 +346,6 @@ a {
   color: var(--accent);
 }
 
-/* Hero side card (desktop only) */
 .hero-side {
   display: flex;
   justify-content: flex-end;
@@ -478,15 +387,13 @@ a {
 
 /* ==========================================
    6. BUTTONS & LINKS
-   Reusable button styles
    ========================================== */
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.78rem 1.5rem;
-  border-radius: 999px;  /* Fully rounded */
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
@@ -497,17 +404,15 @@ a {
   transition: all 0.2s ease;
 }
 
-/* Primary button (cyan background) */
 .btn.primary {
   background: var(--accent);
-  color: #020617;  /* Dark text on cyan background */
+  color: #020617;
 }
 
 .btn.primary:hover {
-  filter: brightness(1.06);  /* Slightly brighter on hover */
+  filter: brightness(1.06);
 }
 
-/* Ghost button (transparent with border) */
 .btn.ghost {
   background: rgba(15, 23, 42, 0.7);
   border-color: var(--accent-soft);
@@ -518,17 +423,13 @@ a {
   border-color: var(--accent);
 }
 
-/* Full-width button */
 .btn-full {
   width: 100%;
 }
 
 /* ==========================================
    7. CONTENT SECTIONS
-   About, highlights, hours, etc.
    ========================================== */
-
-/* Highlight cards grid (About section) */
 .highlight-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -558,7 +459,6 @@ a {
   margin: 0;
 }
 
-/* General card styling (for facilities, etc.) */
 .card {
   background: radial-gradient(circle at top, rgba(53, 240, 232, 0.08), transparent 60%), var(--card-bg);
   border-radius: 1.2rem;
@@ -592,12 +492,11 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-4px);  /* Lift up on hover */
+  transform: translateY(-4px);
   border-color: var(--accent);
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* Hours section */
 .hours-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -612,7 +511,6 @@ a {
   border: 1px solid var(--border-soft);
 }
 
-/* Closed days have dashed red border */
 .hours-card.closed {
   border-style: dashed;
   border-color: rgba(248, 113, 113, 0.7);
@@ -637,7 +535,27 @@ a {
   margin-top: 1rem;
 }
 
-/* Benefits/discounts list */
+/* ==========================================
+   HOURS & REVIEWS SECTION ALIGNMENT FIX
+   ========================================== */
+/* Make sure both columns align at the top */
+#hours .section-layout-reverse > div {
+  align-self: start;
+}
+
+/* Remove any top margin from h2 elements in hours section */
+#hours h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Consistent spacing for section intro */
+#hours .section-intro {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* Benefits list */
 .benefits-list {
   list-style: none;
   padding: 0;
@@ -660,7 +578,7 @@ a {
 }
 
 .video-wrapper {
-  max-width: 420px;  /* Phone-like aspect */
+  max-width: 420px;
   margin: 1.5rem auto 0;
   border-radius: 1.3rem;
   overflow: hidden;
@@ -677,9 +595,7 @@ a {
 
 /* ==========================================
    8. FACILITIES CAROUSEL
-   Slideshow of gym areas
    ========================================== */
-
 .facilities-slider {
   position: relative;
   margin-top: 2rem;
@@ -692,7 +608,7 @@ a {
 }
 
 .facility-slide {
-  flex: 0 0 100%;  /* Each slide takes full width */
+  flex: 0 0 100%;
   display: flex;
   justify-content: center;
   padding: 0 0.5rem;
@@ -704,11 +620,10 @@ a {
   max-width: 840px;
 }
 
-/* Carousel navigation buttons */
 .slider-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);  /* Center vertically */
+  transform: translateY(-50%);
   width: 38px;
   height: 38px;
   border-radius: 999px;
@@ -738,53 +653,11 @@ a {
 }
 
 /* ==========================================
-   9. REVIEWS SECTION
-   Google reviews with carousel
-   DYNAMIC: Slides built by JavaScript from reviewImages array
+   9. REVIEWS SECTION (SIMPLIFIED)
    ========================================== */
-
-#reviews {
-  background: var(--bg-alt);
-  padding: 3.5rem 0;
-}
-
-/* Two-column layout: text left, carousel right */
-.reviews-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: 3rem;
-  align-items: center;
-}
-
-/* Left column: header, badge, CTA */
-.reviews-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.reviews-header {
-  text-align: left;
-  margin-bottom: 0;
-}
-
-.reviews-header h2 {
-  margin-bottom: 0.75rem;
-  font-size: 2rem;
-}
-
-.reviews-header .section-intro {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  max-width: 100%;
-  margin: 0;
-  text-align: left;
-}
-
-/* Google Reviews badge */
 .google-badge {
   display: flex;
-  justify-content: flex-start;  /* Left-aligned on desktop */
+  justify-content: flex-start;
   padding: 0;
 }
 
@@ -819,7 +692,7 @@ a {
 }
 
 .stars {
-  color: #FDB241;  /* Gold stars */
+  color: #FDB241;
   font-size: 1.1rem;
   letter-spacing: 2px;
   margin-bottom: 0.25rem;
@@ -847,110 +720,14 @@ a {
   color: var(--text-muted);
 }
 
-/* Reviews CTA button */
 .reviews-cta {
   text-align: left;
   margin-top: 0;
 }
 
-/* Right column: carousel container */
-.reviews-right {
-  position: relative;
-}
-
-.reviews-carousel {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.2rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border-soft);
-  /* Desktop: 20% smaller, centered for better balance */
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.review-slider-track {
-  display: flex;
-  transition: transform 0.4s ease-out;
-}
-
-.review-slide {
-  flex: 0 0 100%;  /* Each slide takes full width */
-  min-width: 100%;
-}
-
-.review-slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 1.2rem;
-  /* Consistent sizing and no distortion */
-  object-fit: contain;
-  max-height: 450px;
-}
-
-/* Carousel navigation buttons */
-.review-slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  background: rgba(15, 23, 42, 0.95);
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.2rem;
-  z-index: 2;
-  transition: all 0.2s ease;
-}
-
-.review-slider-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(15, 23, 42, 1);
-}
-
-.review-slider-btn.prev {
-  left: 0.75rem;
-}
-
-.review-slider-btn.next {
-  right: 0.75rem;
-}
-
-/* Carousel dots indicator */
-.review-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.review-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--border-soft);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Active dot is wider and cyan */
-.review-dot.active {
-  background: var(--accent);
-  width: 24px;
-}
-
 /* ==========================================
    10. PRICING SECTION
-   Membership packages and pricing
    ========================================== */
-
 #pricing .pricing-header {
   max-width: 780px;
   margin: 0 auto 3rem;
@@ -967,10 +744,9 @@ a {
   color: var(--text-muted);
 }
 
-/* Pricing cards grid */
 #pricing .pricing-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);  /* Single column on mobile */
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.4rem;
   margin-bottom: 3rem;
 }
@@ -1020,13 +796,11 @@ a {
   color: var(--accent);
 }
 
-/* Arrow after pricing link */
 #pricing .pricing-link::after {
   content: "→";
   font-size: 0.9rem;
 }
 
-/* Bottom CTA section */
 #pricing .pricing-cta {
   text-align: center;
   max-width: 720px;
@@ -1055,9 +829,7 @@ a {
 
 /* ==========================================
    11. CONTACT & FOOTER
-   Contact info and footer styling
    ========================================== */
-
 .contact-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -1086,7 +858,6 @@ a {
   color: var(--accent);
 }
 
-/* Footer */
 .site-footer {
   border-top: 1px solid var(--border-soft);
   background: #020617;
@@ -1114,26 +885,23 @@ a {
 
 /* ==========================================
    12. UI COMPONENTS
-   Lightbox and WhatsApp floating button
    ========================================== */
-
-/* Lightbox for image popups */
 .lightbox {
   position: fixed;
-  inset: 0;  /* Cover entire viewport */
+  inset: 0;
   background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  pointer-events: none;  /* Can't interact when hidden */
+  pointer-events: none;
   transition: opacity 0.2s ease-out;
-  z-index: 60;  /* Above everything */
+  z-index: 60;
 }
 
 .lightbox.open {
   opacity: 1;
-  pointer-events: auto;  /* Can interact when open */
+  pointer-events: auto;
 }
 
 .lightbox-content {
@@ -1146,7 +914,7 @@ a {
 .lightbox-content img {
   width: 100%;
   max-height: 85vh;
-  object-fit: contain;  /* Fit within bounds */
+  object-fit: contain;
   border-radius: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.6);
 }
@@ -1169,7 +937,6 @@ a {
   cursor: pointer;
 }
 
-/* WhatsApp floating button (bottom-right corner) */
 .whatsapp-floating {
   position: fixed;
   right: 1.4rem;
@@ -1189,7 +956,7 @@ a {
 }
 
 .whatsapp-floating:hover {
-  transform: translateY(-2px);  /* Lift up on hover */
+  transform: translateY(-2px);
 }
 
 .wa-icon {
@@ -1221,26 +988,21 @@ a {
 
 /* ==========================================
    13. ANIMATIONS
-   Reveal animation for scroll effects
    ========================================== */
-
 .reveal {
   opacity: 0;
-  transform: translateY(24px);  /* Start slightly below */
+  transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);  /* Move to normal position */
+  transform: translateY(0);
 }
 
 /* ==========================================
    14. RESPONSIVE DESIGN
-   Mobile and tablet adjustments
    ========================================== */
-
-/* Large screens: Bigger logo */
 @media (min-width: 1200px) {
   .logo-mark {
     height: 52px;
@@ -1251,16 +1013,13 @@ a {
   }
 }
 
-/* Desktop: 2x2 pricing grid */
 @media (min-width: 900px) {
   #pricing .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Tablet and below: Single column layouts */
 @media (max-width: 960px) {
-  /* Section layouts stack vertically */
   .section-layout,
   .section-layout-reverse {
     grid-template-columns: 1fr;
@@ -1278,41 +1037,19 @@ a {
     margin-top: 1.5rem;
   }
 
-  /* Reviews section: stack vertically */
-  .reviews-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  /* Reviews header: Keep left-aligned (matches other sections) */
-  .reviews-header {
-    text-align: left;
-  }
-
-  .reviews-header .section-intro {
-    text-align: left;
-    max-width: 100%;
-  }
-
-  /* Google badge: Centered on mobile for visual balance */
   .google-badge {
     justify-content: center;
   }
 
-  /* CTA button: Keep left-aligned */
   .reviews-cta {
     text-align: left;
   }
-
-  /* Reviews carousel: full width on mobile */
-  .reviews-carousel {
-    max-width: 100%;
-  }
 }
 
-/* Mobile: Navigation and hero adjustments */
+/* ==========================================
+   MOBILE FIXES - NAVIGATION & LAYOUT
+   ========================================== */
 @media (max-width: 768px) {
-  /* Mobile navigation toggle */
   .nav-toggle {
     display: block;
   }
@@ -1326,23 +1063,25 @@ a {
     border-bottom: 1px solid var(--border-soft);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.3s ease-out;
   }
 
   .nav.open {
-    max-height: 260px;
+    max-height: 400px;  /* Increased for all items */
+    overflow-y: auto;  /* Enable scrolling */
+    -webkit-overflow-scrolling: touch;  /* Smooth iOS scrolling */
   }
 
   .nav-links {
     flex-direction: column;
-    padding: 0.75rem 1.5rem 1.2rem;
+    padding: 0.75rem 1.5rem 1.5rem;  /* More bottom padding */
+    gap: 0;
   }
 
   .nav-links li {
-    padding: 0.2rem 0;
+    padding: 0.5rem 0;  /* Better touch targets */
   }
 
-  /* Hero adjustments */
   .hero {
     min-height: 100vh;
   }
@@ -1355,13 +1094,11 @@ a {
     padding-bottom: 3.5rem;
   }
 
-  /* Smaller hero title on mobile */
   .hero-title {
     font-size: 2.2rem;
     line-height: 1.1;
   }
 
-  /* Show short subtitle on mobile */
   .hero-subtitle-secondary {
     display: block;
     font-size: 0.98rem;
@@ -1375,10 +1112,9 @@ a {
   }
 
   .hero-side {
-    display: none;  /* Hide hero card on mobile */
+    display: none;
   }
 
-  /* Switch to vertical video on mobile */
   .hero-video-desktop {
     display: none;
   }
@@ -1387,20 +1123,6 @@ a {
     display: block;
   }
 
-  /* Reviews section mobile */
-  #reviews {
-    padding: 2.5rem 0;
-  }
-
-  .reviews-layout {
-    gap: 2rem;
-  }
-
-  .reviews-header h2 {
-    font-size: 1.75rem;
-  }
-
-  /* Google badge: stack vertically on mobile */
   .google-review-link {
     flex-direction: column;
     padding: 1rem;
@@ -1424,35 +1146,17 @@ a {
     text-align: center;
   }
 
-  /* Smaller carousel buttons on mobile */
-  .review-slider-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-
-  .review-slider-btn.prev {
-    left: 0.5rem;
-  }
-
-  .review-slider-btn.next {
-    right: 0.5rem;
-  }
-
-  /* WhatsApp button adjustment */
   .whatsapp-floating {
     right: 1rem;
     bottom: 1rem;
   }
 
-  /* Footer stacks vertically */
   .footer-content {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
-/* Very small screens */
 @media (max-width: 480px) {
   .hero-title {
     letter-spacing: 0.1em;
@@ -1467,7 +1171,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  /* Hide phone number in WhatsApp button */
   .whatsapp-floating .wa-number {
     display: none;
   }
@@ -1475,21 +1178,16 @@ a {
 
 /* ==========================================
    15. ACCESSIBILITY
-   Focus states and reduced motion
    ========================================== */
-
-/* Keyboard focus indicators */
 a:focus-visible,
 button:focus-visible,
 .btn:focus-visible,
 .slider-btn:focus-visible,
-.review-slider-btn:focus-visible,
 .whatsapp-floating:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1507,12 +1205,22 @@ button:focus-visible,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================
+   MOBILE SUBTITLE SPACING FIX
+   ========================================== */
 @media (max-width: 768px) {
   .hero-subtitle-secondary {
-    margin-bottom: 4rem;   /* mobilde boşluğu biraz daha artırır */
+    margin-bottom: 4rem;   
   }
 }
 
 /* ==========================================
    END OF STYLESHEET
-    ========================================== */
+   
+   Last updated: December 2025
+   Fixes applied:
+   - Title alignment in hours section
+   - Mobile menu scrollable with proper height
+   Hero animation: Inline in HTML (iOS compatible)
+   ========================================== */
