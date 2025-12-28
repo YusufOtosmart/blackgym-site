@@ -93,12 +93,12 @@ a {
 .section-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-  gap: 2.5rem;
+  gap: 3.5rem;
   align-items: flex-start;
 }
 
 .section-layout-reverse {
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 /* ==========================================
