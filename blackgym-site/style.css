@@ -3,13 +3,6 @@
    
    Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
    Contact: info@otosmart.com.tr
-   
-   FIXES:
-   - Title alignment: "Üyelerimiz Ne Diyor?" now aligned with "Çalışma Saatlerimiz"
-   - Mobile menu: Increased height + scrollable, "İLETİŞİM" fully visible
-   
-   Hero title animation: Moved to inline HTML (working!)
-   This file contains NO hero animation CSS
    ========================================== */
 
 /* ==========================================
@@ -1108,6 +1101,9 @@ a {
   .hero-actions {
     margin-top: auto;  /* Push buttons to bottom */
     width: 100%;
+    display: flex;
+    flex-direction: column;  /* Stack buttons vertically */
+    gap: 0.75rem;
   }
 
   .hero-subtitle-secondary {
@@ -1119,7 +1115,8 @@ a {
   }
 
   .hero-actions .btn {
-    margin-bottom: 0.6rem;
+    width: 100%;  /* Full width buttons on mobile */
+    margin-bottom: 0;  /* Remove extra margin since we're using gap */
   }
 
   /* Hide hero meta (Adres, Çalışma Saatleri, İletişim) on mobile */
@@ -1260,10 +1257,4 @@ button:focus-visible,
 
 /* ==========================================
    END OF STYLESHEET
-   
-   Last updated: December 2025
-   Fixes applied:
-   - Title alignment in hours section
-   - Mobile menu scrollable with proper height
-   Hero animation: Inline in HTML (iOS compatible)
    ========================================== */
