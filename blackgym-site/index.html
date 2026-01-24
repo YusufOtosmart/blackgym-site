@@ -16,11 +16,16 @@
   <meta property="og:description" content="Nilüfer / Bursa'da fonksiyonel pist, free weight alanı, reformer & mat pilates stüdyosu, sauna ve cafe sunan modern spor salonu." />
   <meta property="og:url" content="https://blackgym.com.tr/" />
   <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
+  <meta property="og:logo" content="https://blackgym.com.tr/img/logo-square-512.png" />
   <meta property="og:locale" content="tr_TR" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BLACK GYM Nilüfer | Spor Salonu & Fitness" />
   <meta name="twitter:description" content="Nilüfer / Bursa'da fonksiyonel pist, free weight alanı, reformer & mat pilates stüdyosu." />
+  <meta name="twitter:image" content="https://blackgym.com.tr/img/logo-square-512.png" />
+  
+  <!-- Google Search Logo -->
+  <link rel="image_src" href="https://blackgym.com.tr/img/logo-square-512.png" />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -34,10 +39,16 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HealthClub",
+    "@type": ["HealthClub", "Organization"],
     "name": "BLACK GYM",
+    "alternateName": "BLACK GYM Nilüfer",
     "url": "https://blackgym.com.tr/",
-    "logo": "https://blackgym.com.tr/img/logo-square-512.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blackgym.com.tr/img/logo-square-512.png",
+      "width": 512,
+      "height": 512
+    },
     "image": "https://blackgym.com.tr/img/hero-gym.jpg",
     "telephone": "+90 530 078 95 00",
     "address": {
@@ -440,7 +451,7 @@
   <style>
   .hero-title-dynamic {
     display: inline-block;
-    color: #35f0e8 !important;
+    color: #8DD5F5 !important;
     white-space: nowrap !important;
     transition: opacity 0.9s ease !important;
   }
