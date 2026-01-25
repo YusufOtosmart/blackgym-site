@@ -226,9 +226,6 @@ a {
 
 /* ==========================================
    5. HERO SECTION
-   
-   NOTE: Hero title animation CSS is in inline <style>
-   in HTML for better iOS compatibility
    ========================================== */
 .hero {
   position: relative;
@@ -877,7 +874,7 @@ a {
 }
 
 /* ==========================================
-   12. UI COMPONENTS
+   12. UI COMPONENTS & FLOATING ACTIONS
    ========================================== */
 .lightbox {
   position: fixed;
@@ -930,6 +927,7 @@ a {
   cursor: pointer;
 }
 
+/* WhatsApp Floating Button (Right) */
 .whatsapp-floating {
   position: fixed;
   right: 1.4rem;
@@ -977,6 +975,50 @@ a {
 
 .wa-number {
   opacity: 0.9;
+}
+
+/* Chrono Floating Button (Left) */
+.chrono-floating {
+  position: fixed;
+  left: 1.4rem;
+  bottom: 1.4rem;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  /* Brand Gradient: Bright Blue to Brand Blue */
+  background: linear-gradient(135deg, #0ea5e9, #8DD5F5); 
+  color: #020617; /* Dark text for contrast against bright BG */
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 18px 50px rgba(14, 165, 233, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.chrono-floating:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.6);
+}
+
+.chrono-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* SVG Styling */
+.chrono-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
 }
 
 /* ==========================================
@@ -1164,6 +1206,12 @@ a {
     bottom: 1rem;
   }
 
+  /* Mobile positioning for Chrono button */
+  .chrono-floating {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
   /* Contact section - clean cards on mobile */
   .contact-list {
     grid-template-columns: 1fr;
@@ -1223,7 +1271,8 @@ a:focus-visible,
 button:focus-visible,
 .btn:focus-visible,
 .slider-btn:focus-visible,
-.whatsapp-floating:focus-visible {
+.whatsapp-floating:focus-visible,
+.chrono-floating:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -1252,6 +1301,221 @@ button:focus-visible,
 @media (max-width: 768px) {
   .hero-subtitle-secondary {
     margin-bottom: 4rem;   
+  }
+}
+
+/* ==========================================
+   16. CHRONOMETER PAGE STYLES (NEW)
+   ========================================== */
+.chrono-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Removed unused back-link styles */
+
+.chrono-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.chrono-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoration Glow */
+.chrono-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.time-display {
+  font-family: 'Montserrat', monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 5rem;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(141, 213, 245, 0.3);
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  display: inline-block;
+  min-width: 380px;
+}
+
+/* Updated Milliseconds Styling: Smaller relative size */
+.milliseconds {
+  font-size: 0.6em; /* 60% of parent font size */
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  vertical-align: baseline; /* Ensures it sits nicely on the line */
+}
+
+/* Specific adjustment for main display to ensure alignment */
+.time-display .milliseconds {
+  margin-left: 2px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Specific Chrono Buttons */
+.btn-main {
+  grid-column: span 2;
+  background-color: var(--accent);
+  color: #0b0b0f;
+  box-shadow: 0 0 15px var(--accent-soft);
+}
+
+.btn-main:hover {
+  background-color: #fff;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-reset {
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.btn-reset:hover {
+  border-color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
+}
+
+/* Laps */
+.laps-wrapper {
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.laps-header {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.laps-list {
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.lap-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  font-family: 'Montserrat', monospace;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  animation: slideIn 0.3s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.lap-index {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.lap-time {
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Scrollbar for laps */
+.laps-list::-webkit-scrollbar {
+  width: 6px;
+}
+.laps-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.laps-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.simple-footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg-alt);
+}
+
+/* Mobile overrides for chrono */
+@media (max-width: 600px) {
+  .time-display {
+    font-size: 3.5rem;
+    min-width: auto;
+  }
+  .milliseconds {
+    /* If stacked, we might want it larger, but relative size should work */
+    /* font-size: 1.8rem;  Removed fixed size */
+    display: inline-block; /* Changed from block to inline-block to keep on same line if space permits, or let relative sizing handle it */
+    margin-top: 0; 
+  }
+  .chrono-container {
+    padding: 2rem 1.5rem;
+  }
+  .back-link span {
+    display: none;
   }
 }
 
