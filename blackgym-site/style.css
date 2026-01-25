@@ -1305,15 +1305,13 @@ button:focus-visible,
 }
 
 /* ==========================================
-   16. CHRONOMETER PAGE STYLES (NEW)
+   16. CHRONOMETER PAGE STYLES
    ========================================== */
 .chrono-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* Removed unused back-link styles */
 
 .chrono-section {
   flex: 1;
@@ -1364,7 +1362,6 @@ button:focus-visible,
   min-width: 380px;
 }
 
-/* Updated Milliseconds Styling: Smaller relative size */
 .milliseconds {
   font-size: 0.6em; /* 60% of parent font size */
   color: var(--accent);
@@ -1372,7 +1369,6 @@ button:focus-visible,
   vertical-align: baseline; /* Ensures it sits nicely on the line */
 }
 
-/* Specific adjustment for main display to ensure alignment */
 .time-display .milliseconds {
   margin-left: 2px;
 }
@@ -1506,16 +1502,207 @@ button:focus-visible,
     min-width: auto;
   }
   .milliseconds {
-    /* If stacked, we might want it larger, but relative size should work */
-    /* font-size: 1.8rem;  Removed fixed size */
-    display: inline-block; /* Changed from block to inline-block to keep on same line if space permits, or let relative sizing handle it */
+    display: inline-block;
     margin-top: 0; 
   }
   .chrono-container {
     padding: 2rem 1.5rem;
   }
-  .back-link span {
-    display: none;
+}
+
+/* ==========================================
+   17. BOOKING PAGE STYLES
+   ========================================== */
+.booking-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  background: radial-gradient(circle at center, #1a2230 0%, #05070a 100%);
+}
+
+.booking-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  align-items: stretch;
+}
+
+.booking-container {
+  flex: 1;
+  background: #101621;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.map-container {
+  flex: 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  background: #101621;
+  position: relative;
+  min-height: 400px;
+}
+
+.map-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.booking-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.booking-header h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.booking-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Explicitly set height for alignment on desktop */
+.form-input {
+  width: 100%;
+  padding: 0 1rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  background: #05070a;
+  border: 1px solid var(--border-soft);
+  border-radius: 0.75rem;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  display: block;
+}
+
+.form-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-input::placeholder {
+  color: #4b5563;
+  line-height: normal;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-row .form-group {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--accent), #38bdf8);
+  color: #020617;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Russo One', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(141, 213, 245, 0.3);
+}
+
+.disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive for Booking Page */
+@media (max-width: 900px) {
+  .booking-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .booking-section {
+    padding: 1rem 1rem 3rem;
+    align-items: flex-start;
+  }
+
+  .booking-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .map-container {
+    height: 300px;
+    min-height: 300px;
+    order: 2;
+  }
+  
+  .booking-container {
+    padding: 1.5rem;
+    order: 1;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* IOS Date Fix - Only apply on Mobile */
+  input[type="date"].form-input {
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: left;
+    min-height: 3.5rem;
   }
 }
 
