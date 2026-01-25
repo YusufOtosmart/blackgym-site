@@ -45,7 +45,6 @@
       <div class="booking-container">
         <div class="booking-header">
           <h1>Ücretsiz Dene</h1>
-          <p>Formu doldur, WhatsApp ile gönder. Ekibimiz randevunu hızlıca planlasın.</p>
         </div>
 
         <form id="bookingForm" novalidate>
@@ -66,14 +65,15 @@
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="date">Planlanan Tarih</label>
+              <!-- lang="tr" ensures correct formatting on supported browsers -->
               <input type="date" id="date" class="form-input" required lang="tr" />
             </div>
             <div class="form-group">
               <label class="form-label" for="time">Saat Aralığı</label>
               <select id="time" class="form-input" required>
-                <option value="Sabah">Sabah (09:00 - 12:00)</option>
-                <option value="Öğle">Öğle (12:00 - 17:00)</option>
-                <option value="Akşam">Akşam (17:00 - 21:00)</option>
+                <option value="Sabah (09:00 - 12:00)">Sabah (09:00 - 12:00)</option>
+                <option value="Öğle (12:00 - 17:00)">Öğle (12:00 - 17:00)</option>
+                <option value="Akşam (17:00 - 21:00)">Akşam (17:00 - 21:00)</option>
               </select>
             </div>
           </div>
@@ -112,7 +112,7 @@
       <div class="map-container">
         <iframe 
           class="map-frame"
-          src="https://maps.google.com/maps?q=Konak+Mah.+Kudret+Sk.+Elit+Park+Plaza+No:12/A+Nil%C3%BCfer+Bursa&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.9137416704525!2d28.980144976798652!3d40.210981671473604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca15d86f2fcf0d%3A0xe55f76e9f7973931!2sBlack%20Gym%20Concept!5e0!3m2!1sfr!2sde!4v1769368418530!5m2!1sfr!2sde" 
           allowfullscreen="" 
           loading="lazy" 
           referrerpolicy="no-referrer-when-downgrade">

@@ -1485,7 +1485,7 @@ button:focus-visible,
 .booking-section {
   min-height: auto;
   display: block; 
-  padding: 6rem 1.5rem 4rem; 
+  padding: 1rem 1.5rem 4rem; /* Reduced top padding to move form up */
   background: radial-gradient(circle at center, #1a2230 0%, #05070a 100%);
 }
 
@@ -1531,7 +1531,7 @@ button:focus-visible,
 
 .booking-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem; /* Reduced margin to bring form closer to title */
 }
 
 .booking-header h1 {
@@ -1721,15 +1721,15 @@ button:focus-visible,
 /* Mobile Responsive */
 @media (max-width: 900px) {
   .booking-section {
-    padding: 1.5rem 1rem 3rem; /* Fixed top padding for header */
+    padding: 0.5rem 1rem 3rem; /* Mobile: Reduced top padding to almost zero */
   }
   .booking-wrapper {
     flex-direction: column;
     gap: 1.5rem;
   }
   .map-container {
-    height: 300px;
-    min-height: 300px;
+    height: 350px; /* Fixed height for iPhone map visibility */
+    min-height: 350px;
     order: 2;
   }
   .booking-container {
