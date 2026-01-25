@@ -45,10 +45,10 @@
       <div class="booking-container">
         <div class="booking-header">
           <h1>Ücretsiz Dene</h1>
-          <p>Formu doldur, antrenörlerimiz seni arayıp en uygun zamanı planlasın.</p>
+          <p>Formu doldur, WhatsApp ile gönder. Ekibimiz randevunu hızlıca planlasın.</p>
         </div>
 
-        <form id="bookingForm">
+        <form id="bookingForm" novalidate>
           
           <div class="form-group">
             <label class="form-label" for="name">Ad Soyad</label>
@@ -56,8 +56,11 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="phone">Telefon Numarası</label>
-            <input type="tel" id="phone" class="form-input" placeholder="5XX XXX XX XX" value="" required />
+            <label class="form-label" for="phone">Telefon (WhatsApp)</label>
+            <div class="phone-wrap">
+              <span class="phone-prefix" aria-hidden="true">+90</span>
+              <input type="tel" id="phone" class="form-input" placeholder="5XX XXX XX XX" value="" required />
+            </div>
           </div>
 
           <div class="form-row">
@@ -66,13 +69,31 @@
               <input type="date" id="date" class="form-input" required lang="tr" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="time">Saat</label>
-              <select id="time" class="form-input">
+              <label class="form-label" for="time">Saat Aralığı</label>
+              <select id="time" class="form-input" required>
                 <option value="Sabah">Sabah (09:00 - 12:00)</option>
                 <option value="Öğle">Öğle (12:00 - 17:00)</option>
                 <option value="Akşam">Akşam (17:00 - 21:00)</option>
               </select>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="service">İlgilendiğiniz</label>
+            <select id="service" class="form-input" required>
+              <option value="Salon (Fitness/Ağırlık)">Salon (Fitness/Ağırlık)</option>
+              <option value="Reformer Pilates">Reformer Pilates</option>
+              <option value="Personal Trainer (PT)">Personal Trainer (PT)</option>
+              <option value="Zumba">Zumba</option>
+              <option value="Kickboks">Kickboks</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex;gap:.6rem;align-items:flex-start;color:#cbd5e1;font-size:.95rem;">
+              <input id="consent" type="checkbox" required style="margin-top:.2rem;" />
+              KVKK kapsamında aranmayı/WhatsApp’tan iletişim kurulmasını kabul ediyorum.
+            </label>
           </div>
 
           <button type="submit" class="submit-btn">
@@ -82,6 +103,8 @@
           <p class="disclaimer">
             * Butona tıkladığınızda bilgilerinizle hazırlanmış bir WhatsApp mesajı açılacaktır.
           </p>
+
+          <div id="formError" class="form-error" role="alert"></div>
         </form>
       </div>
 
@@ -89,7 +112,7 @@
       <div class="map-container">
         <iframe 
           class="map-frame"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d905.8525805088034!2d28.982510732024508!3d40.21100371206397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca15d86f2fcf0d%3A0xe55f76e9f7973931!2sBlack%20Gym%20Concept!5e0!3m2!1sfr!2sde!4v1769367999575!5m2!1sfr!2sde" 
+          src="https://maps.google.com/maps?q=Konak+Mah.+Kudret+Sk.+Elit+Park+Plaza+No:12/A+Nil%C3%BCfer+Bursa&t=&z=15&ie=UTF8&iwloc=&output=embed" 
           allowfullscreen="" 
           loading="lazy" 
           referrerpolicy="no-referrer-when-downgrade">
@@ -97,6 +120,38 @@
       </div>
 
     </div>
+
+    <!-- SEO Content Block (Separated) -->
+    <section class="seo-block">
+      <h2>Nilüfer (Konak) Ücretsiz Deneme Spor Salonu Randevusu</h2>
+      <p>
+        BLACK GYM, <strong>Bursa Nilüfer Konak</strong> bölgesinde premium spor salonu deneyimi sunar.
+        Ücretsiz denemede hedefinizi konuşur, uygun programı önerir ve randevunuzu netleştiririz.
+      </p>
+
+      <h2>Neler Var?</h2>
+      <p>
+        Fitness & ağırlık alanı, reformer pilates, personal trainer (PT), zumba, kickboks ve sauna.
+        Adres: Konak Mah. Kudret Sk. Elit Park Plaza No:12/A, Nilüfer · Bursa.
+      </p>
+
+      <div class="faq-block">
+        <h2>Sık Sorulan Sorular</h2>
+        <details>
+          <summary>Ücretsiz deneme nasıl planlanıyor?</summary>
+          <p>Formu doldurduğunuzda WhatsApp’ta hazır bir mesaj açılır. Mesajı gönderdiğinizde ekibimiz sizinle iletişime geçerek günü/saat aralığını netleştirir.</p>
+        </details>
+        <details>
+          <summary>Randevu kesin saat mi, yoksa saat aralığı mı?</summary>
+          <p>Bu sayfa saat aralığı seçtirir (Sabah/Öğle/Akşam). Müsaitliğe göre kesin saati WhatsApp üzerinden birlikte belirleriz.</p>
+        </details>
+        <details>
+          <summary>Ücretsiz deneme için yanımda ne getirmeliyim?</summary>
+          <p>Spor kıyafeti, temiz spor ayakkabı ve su şişesi yeterli. İsterseniz havlu da getirebilirsiniz.</p>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" style="text-align: center;">
@@ -116,33 +171,96 @@
     dateInput.min = localDate;
     dateInput.value = localDate;
 
+    // Phone formatting
     const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function (e) {
-      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-      e.target.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '');
+    function normalizeTRPhone(raw) {
+      let digits = String(raw || '').replace(/\D/g, '');
+      if (digits.startsWith('90')) digits = digits.slice(2);
+      if (digits.startsWith('0')) digits = digits.slice(1);
+      digits = digits.slice(0, 10);
+      return digits;
+    }
+
+    function formatTRPhone(digits10) {
+      const d = (digits10 || '').slice(0, 10);
+      const p1 = d.slice(0,3);
+      const p2 = d.slice(3,6);
+      const p3 = d.slice(6,8);
+      const p4 = d.slice(8,10);
+      let out = p1;
+      if (p2) out += ' ' + p2;
+      if (p3) out += ' ' + p3;
+      if (p4) out += ' ' + p4;
+      return out.trim();
+    }
+
+    phoneInput.addEventListener('input', (e) => {
+      const digits = normalizeTRPhone(e.target.value);
+      e.target.value = formatTRPhone(digits);
     });
 
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+    // Form Submission
+    const form = document.getElementById('bookingForm');
+    const formError = document.getElementById('formError');
 
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
+    function showError(msg) {
+      formError.textContent = msg;
+      formError.style.display = 'block';
+    }
+    function clearError() {
+      formError.textContent = '';
+      formError.style.display = 'none';
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      clearError();
+
+      const name = document.getElementById('name').value.trim();
+      const phoneDigits = normalizeTRPhone(document.getElementById('phone').value);
       const rawDate = document.getElementById('date').value;
       const time = document.getElementById('time').value;
+      const service = document.getElementById('service').value;
+      const consent = document.getElementById('consent').checked;
 
-      let formattedDate = rawDate;
-      if(rawDate) {
-        const parts = rawDate.split('-'); 
-        if(parts.length === 3) {
-          formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
-        }
+      if (!name || name.length < 3) {
+        showError("Lütfen ad soyad alanını doğru girin (en az 3 karakter).");
+        return;
+      }
+      if (!phoneDigits || phoneDigits.length !== 10 || !phoneDigits.startsWith('5')) {
+        showError("Lütfen 10 haneli, 5 ile başlayan cep telefonu numarası girin. Örn: 5XX XXX XX XX");
+        return;
+      }
+      if (!rawDate) {
+        showError("Lütfen tarih seçin.");
+        return;
+      }
+      if (!consent) {
+        showError("Devam etmek için KVKK onayını işaretlemelisiniz.");
+        return;
       }
 
-      const message = `*ÜCRETSİZ DENEME*%0A%0AMerhaba Black Gym, ücretsiz deneme antrenmanı için randevu almak istiyorum.%0A%0A👤 *İsim:* ${name}%0A📱 *Tel:* ${phone}%0A📅 *Tarih:* ${formattedDate}%0A⏰ *Zaman:* ${time}`;
+      // format date DD.MM.YYYY
+      let formattedDate = rawDate;
+      const parts = rawDate.split('-'); 
+      if (parts.length === 3) formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
+
+      const fullPhone = `+90 ${formatTRPhone(phoneDigits)}`;
+
+      const text =
+`*ÜCRETSİZ DENEME RANDEVUSU*
+Merhaba BLACK GYM, ücretsiz deneme için randevu almak istiyorum.
+
+👤 İsim: ${name}
+📱 Tel: ${fullPhone}
+🎯 İlgilendiğim: ${service}
+📅 Tarih: ${formattedDate}
+⏰ Saat Aralığı: ${time}`;
       
       const whatsappNumber = "905300789500";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
-      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      window.open(url, '_blank');
     });
   </script>
 
