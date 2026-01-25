@@ -14,28 +14,60 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- External CSS (Mevcut stil dosyanızı kullanıyoruz) -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
 
   <style>
     /* Booking Page Specific Styles */
     .booking-section {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8rem 1.5rem 4rem;
+      padding: 4rem 1.5rem;
       background: radial-gradient(circle at center, #1a2230 0%, #05070a 100%);
     }
 
-    .booking-container {
+    /* Wrapper to hold Form + Map side by side */
+    .booking-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
       width: 100%;
-      max-width: 500px;
+      max-width: 1100px;
+      align-items: stretch;
+    }
+
+    /* Form Container */
+    .booking-container {
+      flex: 1;
       background: #101621;
       padding: 2.5rem;
       border-radius: 1.5rem;
       border: 1px solid var(--border-soft);
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Map Container - FIXED for FULL COVERAGE */
+    .map-container {
+      flex: 1;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      background: #101621;
+      position: relative; /* Essential for absolute child */
+      min-height: 400px; /* Default desktop height */
+    }
+
+    .map-frame {
+      position: absolute; /* Locks to corners */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     .booking-header {
@@ -83,10 +115,19 @@
       transition: all 0.2s ease;
     }
 
+    .form-input::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+
     .form-input:focus {
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .form-input::placeholder {
+      color: #4b5563;
     }
 
     /* Date & Time Row */
@@ -124,12 +165,46 @@
       text-align: center;
       line-height: 1.5;
     }
+
+    /* Mobile Responsive Layout */
+    @media (max-width: 900px) {
+      .booking-wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .booking-section {
+        /* GAP FIXED: Reduced top padding to almost zero for mobile */
+        padding: 1rem 1rem 3rem; 
+        align-items: flex-start;
+      }
+
+      .booking-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .map-container {
+        /* MAP FIXED: Explicit height + absolute positioning inside ensures full fill */
+        height: 300px; 
+        min-height: 300px;
+        order: 2; 
+      }
+      
+      .booking-container {
+        padding: 1.5rem; /* Slightly less padding on mobile */
+        order: 1;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr; 
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Header (Aynen korundu) -->
+  <!-- Header -->
   <header class="site-header" id="top">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -139,57 +214,72 @@
           <span class="logo-text-accent">GYM</span>
         </span>
       </a>
-      <!-- Basit navigasyon -->
       <nav class="nav">
         <ul class="nav-links">
-          <li><a href="index.html">← Ana Sayfaya Dön</a></li>
+          <li><a href="index.html">← Ana Sayfa</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="booking-section">
-    <div class="booking-container">
-      <div class="booking-header">
-        <h1>Ücretsiz Dene</h1>
-        <p>Formu doldur, antrenörlerimiz seni arayıp en uygun zamanı planlasın.</p>
+    <div class="booking-wrapper">
+      
+      <!-- Left Column: Form -->
+      <div class="booking-container">
+        <div class="booking-header">
+          <h1>Ücretsiz Dene</h1>
+          <p>Formu doldur, antrenörlerimiz seni arayıp en uygun zamanı planlasın.</p>
+        </div>
+
+        <form id="bookingForm">
+          
+          <div class="form-group">
+            <label class="form-label" for="name">Ad Soyad</label>
+            <input type="text" id="name" class="form-input" placeholder="Örn: Ahmet Yılmaz" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Telefon Numarası</label>
+            <input type="tel" id="phone" class="form-input" placeholder="5XX XXX XX XX" value="" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="date">Planlanan Tarih</label>
+              <input type="date" id="date" class="form-input" required lang="tr" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="time">Saat</label>
+              <select id="time" class="form-input">
+                <option value="Sabah">Sabah (09:00 - 12:00)</option>
+                <option value="Öğle">Öğle (12:00 - 17:00)</option>
+                <option value="Akşam">Akşam (17:00 - 21:00)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            WhatsApp İle Gönder 
+          </button>
+
+          <p class="disclaimer">
+            * Butona tıkladığınızda bilgilerinizle hazırlanmış bir WhatsApp mesajı açılacaktır.
+          </p>
+        </form>
       </div>
 
-      <form id="bookingForm">
-        
-        <div class="form-group">
-          <label class="form-label" for="name">Ad Soyad</label>
-          <input type="text" id="name" class="form-input" placeholder="Örn: Ahmet Yılmaz" required />
-        </div>
+      <!-- Right Column: Map -->
+      <div class="map-container">
+        <iframe 
+          class="map-frame"
+          src="https://maps.google.com/maps?q=Konak+Mah.+Kudret+Sk.+Elit+Park+Plaza+No:12/A+Nil%C3%BCfer+Bursa&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-        <div class="form-group">
-          <label class="form-label" for="phone">Telefon Numarası</label>
-          <input type="tel" id="phone" class="form-input" placeholder="5XX XXX XX XX" value="" required />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="date">Planlanan Tarih</label>
-            <input type="date" id="date" class="form-input" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="time">Saat</label>
-            <select id="time" class="form-input">
-              <option value="Sabah">Sabah (09:00 - 12:00)</option>
-              <option value="Öğle">Öğle (12:00 - 17:00)</option>
-              <option value="Akşam">Akşam (17:00 - 21:00)</option>
-            </select>
-          </div>
-        </div>
-
-        <button type="submit" class="submit-btn">
-          WhatsApp İle Gönder 
-        </button>
-
-        <p class="disclaimer">
-          * Butona tıkladığınızda bilgilerinizle hazırlanmış bir WhatsApp mesajı açılacaktır. Mesajı göndererek randevu talebinizi iletmiş olursunuz.
-        </p>
-      </form>
     </div>
   </main>
 
@@ -200,35 +290,47 @@
   </footer>
 
   <script>
-    // Tarih alanına bugünün tarihini min olarak ata
+    // Correctly calculate local date
     const dateInput = document.getElementById('date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-    dateInput.value = today;
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const localDate = `${year}-${month}-${day}`;
+    
+    dateInput.min = localDate;
+    dateInput.value = localDate;
 
-    // Telefon input maskeleme (Basit)
+    // Phone input masking
     const phoneInput = document.getElementById('phone');
     phoneInput.addEventListener('input', function (e) {
       let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
       e.target.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '');
     });
 
-    // Form Gönderimi
+    // Form Submission
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
-      const date = document.getElementById('date').value;
+      const rawDate = document.getElementById('date').value;
       const time = document.getElementById('time').value;
 
-      // WhatsApp Mesajı Oluşturma
-      const message = `Merhaba Black Gym, ücretsiz deneme antrenmanı için randevu almak istiyorum.%0A%0A👤 *İsim:* ${name}%0A📱 *Tel:* ${phone}%0A📅 *Tarih:* ${date}%0A⏰ *Zaman:* ${time}`;
+      // Force format DD.MM.YYYY
+      let formattedDate = rawDate;
+      if(rawDate) {
+        const parts = rawDate.split('-'); 
+        if(parts.length === 3) {
+          formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
+        }
+      }
 
-      // Black Gym Numarası (Sizin numaranız)
+      // WhatsApp Mesajı - Header eklendi
+      const message = `*ÜCRETSİZ DENEME*%0A%0AMerhaba Black Gym, ücretsiz deneme antrenmanı için randevu almak istiyorum.%0A%0A👤 *İsim:* ${name}%0A📱 *Tel:* ${phone}%0A📅 *Tarih:* ${formattedDate}%0A⏰ *Zaman:* ${time}`;
+      
       const whatsappNumber = "905300789500";
 
-      // WhatsApp'ı aç
       window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
     });
   </script>
