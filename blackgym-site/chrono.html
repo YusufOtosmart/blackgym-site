@@ -153,6 +153,10 @@
       margin: 0 0.15rem;
       background: rgba(0,0,0,0.25);
     }
+    /* Mobile Hide Shortcuts */
+    @media (max-width: 768px) {
+      .shortcuts-legend { display: none !important; }
+    }
   </style>
 
   <!-- Google Analytics -->
@@ -212,13 +216,13 @@
 
       <div class="laps-wrapper">
         <div class="laps-header">
-          <span>Son 5 Tur</span>
+          <span>Turlar</span>
           <span id="lapCount">0 Kayıt</span>
         </div>
         <ul class="laps-list" id="lapsList"></ul>
       </div>
 
-      <p style="margin-top:0.9rem; color:#9ca3af; font-size:0.9rem; text-align:center;">
+      <p class="shortcuts-legend" style="margin-top:0.9rem; color:#9ca3af; font-size:0.9rem; text-align:center;">
         Kısayollar: <span class="kbd">Space</span> Başlat/Duraklat • <span class="kbd">L</span> Tur • <span class="kbd">R</span> Sıfırla
       </p>
     </div>
@@ -354,7 +358,7 @@
     function recordLap() {
       if (!isRunning) return;
       laps.unshift(elapsedTime);
-      if (laps.length > 5) laps.pop();
+      // LIMIT REMOVED: if (laps.length > 5) laps.pop();
       renderLaps();
       vibrate(12);
     }
@@ -366,7 +370,7 @@
         const li = document.createElement('li');
         li.className = 'lap-item';
         li.innerHTML = `
-          <span class="lap-index">#${index + 1}</span>
+          <span class="lap-index">#${laps.length - index}</span>
           <span class="lap-time">${formatTime(lapTime)}</span>
         `;
         lapsList.appendChild(li);
