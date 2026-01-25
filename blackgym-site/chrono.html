@@ -373,10 +373,15 @@
       });
     }
 
-    // Keyboard shortcuts (robust Space handling)
+    // --- ADDED MISSING EVENT LISTENERS HERE ---
+    startStopBtn.addEventListener('click', toggleTimer);
+    resetBtn.addEventListener('click', resetTimer);
+    lapBtn.addEventListener('click', recordLap);
+
+    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       const key = (e.key || '').toLowerCase();
-      if (e.code === 'Space') { e.preventDefault(); toggleTimer(); }
+      if (key === ' ' || e.code === 'Space') { e.preventDefault(); toggleTimer(); }
       if (key === 'l') recordLap();
       if (key === 'r') resetTimer();
     });
