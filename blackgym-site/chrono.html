@@ -82,9 +82,10 @@
 
   <!-- Page-specific styles (keep light) -->
   <style>
+    /* FIXED: Push SEO content way down - user sees chrono first, then scrolls */
     .seo-content{
       max-width: 860px;
-      margin: 2.5rem auto 0;
+      margin: 70vh auto 0; /* 70% of viewport height = content appears after scroll */
       padding: 0 1rem 2.5rem;
       text-align: center;
       color: #9ca3af;
@@ -111,6 +112,7 @@
       text-decoration: none;
       font-weight: 600;
     }
+    /* FAQ section also pushed down */
     .faq{
       margin-top: 2rem;
       text-align: left;
@@ -153,9 +155,11 @@
       margin: 0 0.15rem;
       background: rgba(0,0,0,0.25);
     }
-    /* Mobile Hide Shortcuts */
+    /* Mobile: Hide keyboard shortcuts text */
     @media (max-width: 768px) {
       .shortcuts-legend { display: none !important; }
+      /* Mobile: Reduce top margin so content isn't too far */
+      .seo-content { margin-top: 40vh; }
     }
   </style>
 
@@ -227,7 +231,7 @@
       </p>
     </div>
 
-    <!-- Visible SEO Content -->
+    <!-- Visible SEO Content (NOW APPEARS AFTER SCROLL!) -->
     <article class="seo-content">
       <h1>Online Antrenman Kronometresi</h1>
       <p>
@@ -249,7 +253,7 @@
       </p>
 
       <p>
-        Nilüfer / Bursa’da antrenman yapmak ister misin?
+        Nilüfer / Bursa'da antrenman yapmak ister misin?
         <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
       </p>
     </article>
@@ -358,7 +362,7 @@
     function recordLap() {
       if (!isRunning) return;
       laps.unshift(elapsedTime);
-      // LIMIT REMOVED: if (laps.length > 5) laps.pop();
+      // No 5-lap limit - show all laps!
       renderLaps();
       vibrate(12);
     }
@@ -377,12 +381,12 @@
       });
     }
 
-    // --- ADDED MISSING EVENT LISTENERS HERE ---
+    // Event listeners (IMPORTANT: Connect buttons to functions!)
     startStopBtn.addEventListener('click', toggleTimer);
     resetBtn.addEventListener('click', resetTimer);
     lapBtn.addEventListener('click', recordLap);
 
-    // Keyboard shortcuts
+    // Keyboard shortcuts (desktop only)
     document.addEventListener('keydown', (e) => {
       const key = (e.key || '').toLowerCase();
       if (key === ' ' || e.code === 'Space') { e.preventDefault(); toggleTimer(); }

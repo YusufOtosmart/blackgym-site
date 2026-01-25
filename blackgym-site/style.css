@@ -1485,7 +1485,7 @@ button:focus-visible,
 .booking-section {
   min-height: auto;
   display: block; 
-  padding: 1rem 1.5rem 4rem; /* Reduced top padding to move form up */
+  padding: 6rem 1.5rem 4rem; /* Desktop: Increased padding to add space between header and content */
   background: radial-gradient(circle at center, #1a2230 0%, #05070a 100%);
 }
 
@@ -1531,7 +1531,7 @@ button:focus-visible,
 
 .booking-header {
   text-align: center;
-  margin-bottom: 1.2rem; /* Reduced margin to bring form closer to title */
+  margin-bottom: 2rem;
 }
 
 .booking-header h1 {
@@ -1672,6 +1672,17 @@ button:focus-visible,
 }
 
 /* SEO Content Block (New) */
+.seo-content {
+  margin: 40vh auto 0; /* Pushes content down so user sees chrono first */
+  max-width: 900px;
+  padding: 2rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 1rem;
+  border: 1px solid var(--border-soft);
+  text-align: center;
+}
+
+/* For booking page, use .seo-block */
 .seo-block {
   max-width: 900px;
   margin: 4rem auto 0;
@@ -1682,13 +1693,13 @@ button:focus-visible,
   text-align: center;
 }
 
-.seo-block h2 {
+.seo-block h2, .seo-content h2 {
   color: var(--accent);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
-.seo-block p {
+.seo-block p, .seo-content p {
   color: var(--text-muted);
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -1721,14 +1732,14 @@ button:focus-visible,
 /* Mobile Responsive */
 @media (max-width: 900px) {
   .booking-section {
-    padding: 0.5rem 1rem 3rem; /* Mobile: Reduced top padding to almost zero */
+    padding: 1rem 1rem 3rem; /* Mobile: Reduced top padding to minimize header gap */
   }
   .booking-wrapper {
     flex-direction: column;
     gap: 1.5rem;
   }
   .map-container {
-    height: 350px; /* Fixed height for iPhone map visibility */
+    height: 350px;
     min-height: 350px;
     order: 2;
   }
