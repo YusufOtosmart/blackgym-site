@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ücretsiz Deneme Antrenmanı Randevusu | BLACK GYM</title>
+  <meta name="description" content="Black Gym Bursa ücretsiz deneme antrenmanı için randevu oluşturun. Sizi arayalım, hedeflerinizi konuşalım." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- External CSS (Mevcut stil dosyanızı kullanıyoruz) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Booking Page Specific Styles */
+    .booking-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 1.5rem 4rem;
+      background: radial-gradient(circle at center, #1a2230 0%, #05070a 100%);
+    }
+
+    .booking-container {
+      width: 100%;
+      max-width: 500px;
+      background: #101621;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .booking-header h1 {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .booking-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      background: #05070a;
+      border: 1px solid var(--border-soft);
+      border-radius: 0.75rem;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    /* Date & Time Row */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      margin-top: 1rem;
+      background: linear-gradient(135deg, var(--accent), #38bdf8);
+      color: #020617;
+      border: none;
+      border-radius: 999px;
+      font-family: 'Russo One', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(141, 213, 245, 0.3);
+    }
+
+    .disclaimer {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header (Aynen korundu) -->
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="img/logo-mark.png" alt="BLACK GYM logo" class="logo-mark" />
+        <span class="logo-text">
+          <span class="logo-text-main">BLACK</span>
+          <span class="logo-text-accent">GYM</span>
+        </span>
+      </a>
+      <!-- Basit navigasyon -->
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">← Ana Sayfaya Dön</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="booking-section">
+    <div class="booking-container">
+      <div class="booking-header">
+        <h1>Ücretsiz Dene</h1>
+        <p>Formu doldur, antrenörlerimiz seni arayıp en uygun zamanı planlasın.</p>
+      </div>
+
+      <form id="bookingForm">
+        
+        <div class="form-group">
+          <label class="form-label" for="name">Ad Soyad</label>
+          <input type="text" id="name" class="form-input" placeholder="Örn: Ahmet Yılmaz" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">Telefon Numarası</label>
+          <input type="tel" id="phone" class="form-input" placeholder="5XX XXX XX XX" value="" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="date">Planlanan Tarih</label>
+            <input type="date" id="date" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="time">Saat</label>
+            <select id="time" class="form-input">
+              <option value="Sabah">Sabah (09:00 - 12:00)</option>
+              <option value="Öğle">Öğle (12:00 - 17:00)</option>
+              <option value="Akşam">Akşam (17:00 - 21:00)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          WhatsApp İle Gönder 
+        </button>
+
+        <p class="disclaimer">
+          * Butona tıkladığınızda bilgilerinizle hazırlanmış bir WhatsApp mesajı açılacaktır. Mesajı göndererek randevu talebinizi iletmiş olursunuz.
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="text-align: center;">
+    <div class="container">
+      <span>© 2025 BLACK GYM · Nilüfer / Bursa</span>
+    </div>
+  </footer>
+
+  <script>
+    // Tarih alanına bugünün tarihini min olarak ata
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+
+    // Telefon input maskeleme (Basit)
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function (e) {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '');
+    });
+
+    // Form Gönderimi
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      // WhatsApp Mesajı Oluşturma
+      const message = `Merhaba Black Gym, ücretsiz deneme antrenmanı için randevu almak istiyorum.%0A%0A👤 *İsim:* ${name}%0A📱 *Tel:* ${phone}%0A📅 *Tarih:* ${date}%0A⏰ *Zaman:* ${time}`;
+
+      // Black Gym Numarası (Sizin numaranız)
+      const whatsappNumber = "905300789500";
+
+      // WhatsApp'ı aç
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    });
+  </script>
+
+</body>
+</html>
