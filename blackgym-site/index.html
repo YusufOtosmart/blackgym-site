@@ -46,6 +46,95 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
+  <!-- NEW STYLES FOR HERO CARD IMPROVEMENT -->
+  <style>
+    /* Hero Card Improvements */
+    .hero-card {
+      background: rgba(16, 20, 28, 0.85) !important; /* Glassmorphism background */
+      backdrop-filter: blur(16px) !important;       /* Blur effect */
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-top: 4px solid #8DD5F5 !important;    /* Brand accent color */
+      padding: 2.5rem !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(141, 213, 245, 0.3) !important;
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #fff;
+      font-family: 'Russo One', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+
+    .hero-features-list li {
+      display: flex;
+      align-items: center;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      color: #8DD5F5;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .hero-card-link {
+      display: inline-flex;
+      align-items: center;
+      color: #8DD5F5;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      background: none !important; /* Ensure no conflicting bg */
+      padding: 0 !important;
+    }
+
+    .hero-card-link .arrow {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .hero-card-link:hover {
+      color: #fff;
+    }
+
+    .hero-card-link:hover .arrow {
+      transform: translateX(5px);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card {
+        padding: 1.5rem !important;
+      }
+    }
+  </style>
+
   <!-- LocalBusiness Schema (Updated with Social Links) -->
   <script type="application/ld+json">
   {
@@ -220,16 +309,36 @@
         </div>
 
         <div class="hero-side reveal">
+          <!-- IMPROVED HERO CARD STRUCTURE -->
           <div class="hero-card">
-            <h2>BLACK GYM</h2>
-            <ul>
-              <li>Geniş serbest ağırlık alanı</li>
-              <li>Fonksiyonel koşu pisti</li>
-              <li>Reformer & mat pilates stüdyosu</li>
-              <li>Sauna & recovery alanı</li>
-              <li>Protein bar & cafe</li>
+            <h2>PREMIUM DENEYİM</h2>
+            <ul class="hero-features-list">
+              <li>
+                  <!-- Checkmark Icon SVG -->
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Geniş & Modern Ekipmanlar
+              </li>
+              <li>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Fonksiyonel Performans Pisti
+              </li>
+              <li>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Reformer Pilates Stüdyosu
+              </li>
+              <li>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Ücretsiz Sauna & Recovery
+              </li>
+              <li>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Lounge & Protein Bar
+              </li>
             </ul>
-            <a href="#about" class="hero-card-link">Stüdyoyu keşfet</a>
+            <a href="#about" class="hero-card-link">
+                Stüdyoyu Keşfet 
+                <span class="arrow">→</span>
+            </a>
           </div>
         </div>
       </div>
