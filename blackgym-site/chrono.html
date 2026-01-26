@@ -50,7 +50,7 @@
   }
   </script>
 
-  <!-- FAQ Schema (ensure FAQ section below stays visible) -->
+  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -80,89 +80,6 @@
   }
   </script>
 
-  <!-- Page-specific styles (keep light) -->
-  <style>
-    /* FIXED: Push SEO content way down - user sees chrono first, then scrolls */
-    .seo-content{
-      max-width: 860px;
-      margin: 70vh auto 0; /* 70% of viewport height = content appears after scroll */
-      padding: 0 1rem 2.5rem;
-      text-align: center;
-      color: #9ca3af;
-      font-size: 0.95rem;
-    }
-    .seo-content h1{
-      font-family: 'Russo One', sans-serif;
-      color: #fff;
-      font-size: 1.6rem;
-      margin: 1.25rem 0 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .seo-content h2{
-      color: #8DD5F5;
-      font-size: 1.15rem;
-      margin: 1.75rem 0 0.5rem;
-    }
-    .seo-content p{ line-height: 1.7; margin: 0.75rem 0; }
-    .seo-content .mini-cta{
-      margin-top: 1.25rem;
-      display: inline-block;
-      color: #8DD5F5;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    /* FAQ section also pushed down */
-    .faq{
-      margin-top: 2rem;
-      text-align: left;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 1rem 2.5rem;
-      color: #cbd5e1;
-    }
-    .faq h2{
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .faq details{
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 0.85rem 1rem;
-      margin: 0.7rem 0;
-      background: rgba(255,255,255,0.02);
-    }
-    .faq summary{
-      cursor: pointer;
-      font-weight: 600;
-      color: #fff;
-      outline: none;
-    }
-    .faq p{
-      margin: 0.75rem 0 0;
-      color: #9ca3af;
-      line-height: 1.65;
-    }
-    .kbd{
-      display:inline-block;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-bottom-width: 2px;
-      border-radius: 8px;
-      padding: 0.1rem 0.45rem;
-      font-size: 0.85em;
-      color: #e5e7eb;
-      margin: 0 0.15rem;
-      background: rgba(0,0,0,0.25);
-    }
-    /* Mobile: Hide keyboard shortcuts text */
-    @media (max-width: 768px) {
-      .shortcuts-legend { display: none !important; }
-      /* Mobile: Reduce top margin so content isn't too far */
-      .seo-content { margin-top: 40vh; }
-    }
-  </style>
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
   <script>
@@ -187,11 +104,11 @@
         </span>
       </a>
 
-      <button class="nav-toggle" aria-label="Menü">
+      <button class="nav-toggle" aria-label="Menü" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
       </button>
 
-      <nav class="nav">
+      <nav class="nav" id="primary-nav">
         <ul class="nav-links">
           <li><a href="/#about">Stüdyo</a></li>
           <li><a href="/#facilities">Alanlar</a></li>
@@ -204,62 +121,65 @@
     </div>
   </header>
 
-  <!-- App -->
-  <main id="main" class="chrono-section">
-    <div class="chrono-container">
-
-      <div class="time-display" id="display" aria-live="polite" aria-label="Kronometre">
-        00:00<span class="milliseconds">.00</span>
-      </div>
-
-      <div class="controls">
-        <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
-        <button class="btn btn-secondary" id="lapBtn" disabled>TUR (LAP)</button>
-        <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
-      </div>
-
-      <div class="laps-wrapper">
-        <div class="laps-header">
-          <span>Turlar</span>
-          <span id="lapCount">0 Kayıt</span>
+  <main id="main">
+    <!-- FULL SCREEN APP (first screen only) -->
+    <section class="chrono-app" aria-label="Kronometre Uygulaması">
+      <div class="chrono-container">
+        <div class="time-display" id="display" aria-live="polite" aria-label="Kronometre">
+          00:00<span class="milliseconds">.00</span>
         </div>
-        <ul class="laps-list" id="lapsList"></ul>
+
+        <div class="controls">
+          <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
+          <button class="btn btn-secondary" id="lapBtn" disabled>TUR (LAP)</button>
+          <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
+        </div>
+
+        <div class="laps-wrapper">
+          <div class="laps-header">
+            <span>Turlar</span>
+            <span id="lapCount">0 Kayıt</span>
+          </div>
+          <ul class="laps-list" id="lapsList"></ul>
+        </div>
+
+        <p class="shortcuts-legend" style="margin-top:0.9rem; color:#9ca3af; font-size:0.9rem; text-align:center;">
+          Kısayollar: <span class="kbd">Space</span> Başlat/Duraklat • <span class="kbd">L</span> Tur • <span class="kbd">R</span> Sıfırla
+        </p>
       </div>
+    </section>
 
-      <p class="shortcuts-legend" style="margin-top:0.9rem; color:#9ca3af; font-size:0.9rem; text-align:center;">
-        Kısayollar: <span class="kbd">Space</span> Başlat/Duraklat • <span class="kbd">L</span> Tur • <span class="kbd">R</span> Sıfırla
-      </p>
-    </div>
+    <!-- SEO CONTENT (below fold) -->
+    <section class="chrono-seo" aria-label="Kronometre Açıklama">
+      <article>
+        <h1>Online Antrenman Kronometresi</h1>
+        <p>
+          <strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve
+          <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez;
+          set arası dinlenme ve tur sürelerinizi hızlıca kaydedebilirsiniz.
+        </p>
 
-    <!-- Visible SEO Content (NOW APPEARS AFTER SCROLL!) -->
-    <article class="seo-content">
-      <h1>Online Antrenman Kronometresi</h1>
-      <p>
-        <strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve
-        <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez;
-        set arası dinlenme ve tur sürelerinizi hızlıca kaydedebilirsiniz.
-      </p>
+        <h2>Nasıl Kullanılır?</h2>
+        <p>
+          <strong>BAŞLAT</strong> ile süreyi başlatın. Set veya aralık bitişinde <strong>TUR (LAP)</strong> ile kayıt alın.
+          <strong>DURAKLAT</strong> ile ara verin, <strong>SIFIRLA</strong> ile tüm kayıtları temizleyin.
+        </p>
 
-      <h2>Nasıl Kullanılır?</h2>
-      <p>
-        <strong>BAŞLAT</strong> ile süreyi başlatın. Set veya aralık bitişinde <strong>TUR (LAP)</strong> ile kayıt alın.
-        <strong>DURAKLAT</strong> ile ara verin, <strong>SIFIRLA</strong> ile tüm kayıtları temizleyin.
-      </p>
+        <h2>Tabata Örneği</h2>
+        <p>
+          Klasik Tabata: <strong>20 sn çalışma / 10 sn dinlenme</strong> (8 tur).
+          Her aralıkta <strong>TUR (LAP)</strong> alarak disiplinli takip sağlayabilirsiniz.
+        </p>
 
-      <h2>Tabata Örneği</h2>
-      <p>
-        Klasik Tabata: <strong>20 sn çalışma / 10 sn dinlenme</strong> (8 tur).
-        Her aralıkta <strong>TUR (LAP)</strong> alarak disiplinli takip sağlayabilirsiniz.
-      </p>
+        <p>
+          Nilüfer / Bursa'da antrenman yapmak ister misin?
+          <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
+        </p>
+      </article>
+    </section>
 
-      <p>
-        Nilüfer / Bursa'da antrenman yapmak ister misin?
-        <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
-      </p>
-    </article>
-
-    <!-- Visible FAQ (matches FAQ schema) -->
-    <section class="faq" id="faq" aria-label="Sık Sorulan Sorular">
+    <!-- FAQ (below fold) -->
+    <section class="chrono-faq" id="faq" aria-label="Sık Sorulan Sorular">
       <h2>Sık Sorulan Sorular</h2>
 
       <details>
@@ -284,117 +204,17 @@
     </section>
   </main>
 
-  <footer class="simple-footer">
-    &copy; <span id="year"></span> BLACK GYM Performance Tool · Bursa Nilüfer
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>© <span id="year"></span> BLACK GYM Performance Tool · Bursa Nilüfer</span>
+      <span class="footer-links">
+        <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:info@blackgym.com.tr">Mail</a>
+      </span>
+    </div>
   </footer>
 
   <script src="script.js" defer></script>
-  <script>
-    // Auto-update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // CHRONOMETER LOGIC
-    let startTime = 0;
-    let elapsedTime = 0;
-    let timerInterval;
-    let isRunning = false;
-    let laps = [];
-
-    const display = document.getElementById('display');
-    const startStopBtn = document.getElementById('startStopBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const lapBtn = document.getElementById('lapBtn');
-    const lapsList = document.getElementById('lapsList');
-    const lapCountLabel = document.getElementById('lapCount');
-
-    function formatTime(time) {
-      const date = new Date(time);
-      const m = date.getUTCMinutes().toString().padStart(2, '0');
-      const s = date.getUTCSeconds().toString().padStart(2, '0');
-      const ms = Math.floor(date.getUTCMilliseconds() / 10).toString().padStart(2, '0');
-      return `${m}:${s}<span class="milliseconds">.${ms}</span>`;
-    }
-
-    function updateDisplay() {
-      display.innerHTML = formatTime(elapsedTime);
-    }
-
-    function vibrate(ms){ try { if (navigator.vibrate) navigator.vibrate(ms); } catch(e){} }
-
-    function toggleTimer() {
-      if (isRunning) {
-        clearInterval(timerInterval);
-        isRunning = false;
-        startStopBtn.textContent = "DEVAM ET";
-        startStopBtn.style.backgroundColor = "#8DD5F5";
-        startStopBtn.style.color = "#0b0b0f";
-        lapBtn.disabled = true;
-        vibrate(10);
-      } else {
-        startTime = Date.now() - elapsedTime;
-        timerInterval = setInterval(() => {
-          elapsedTime = Date.now() - startTime;
-          updateDisplay();
-        }, 10);
-        isRunning = true;
-        startStopBtn.textContent = "DURAKLAT";
-        startStopBtn.style.backgroundColor = "#fff";
-        startStopBtn.style.color = "#0b0b0f";
-        lapBtn.disabled = false;
-        vibrate(15);
-      }
-    }
-
-    function resetTimer() {
-      clearInterval(timerInterval);
-      isRunning = false;
-      elapsedTime = 0;
-      updateDisplay();
-      startStopBtn.textContent = "BAŞLAT";
-      startStopBtn.style.backgroundColor = "#8DD5F5";
-      startStopBtn.style.color = "#0b0b0f";
-      lapBtn.disabled = true;
-      laps = [];
-      renderLaps();
-      vibrate(20);
-    }
-
-    function recordLap() {
-      if (!isRunning) return;
-      laps.unshift(elapsedTime);
-      // No 5-lap limit - show all laps!
-      renderLaps();
-      vibrate(12);
-    }
-
-    function renderLaps() {
-      lapsList.innerHTML = '';
-      lapCountLabel.textContent = `${laps.length} Kayıt`;
-      laps.forEach((lapTime, index) => {
-        const li = document.createElement('li');
-        li.className = 'lap-item';
-        li.innerHTML = `
-          <span class="lap-index">#${laps.length - index}</span>
-          <span class="lap-time">${formatTime(lapTime)}</span>
-        `;
-        lapsList.appendChild(li);
-      });
-    }
-
-    // Event listeners (IMPORTANT: Connect buttons to functions!)
-    startStopBtn.addEventListener('click', toggleTimer);
-    resetBtn.addEventListener('click', resetTimer);
-    lapBtn.addEventListener('click', recordLap);
-
-    // Keyboard shortcuts (desktop only)
-    document.addEventListener('keydown', (e) => {
-      const key = (e.key || '').toLowerCase();
-      if (key === ' ' || e.code === 'Space') { e.preventDefault(); toggleTimer(); }
-      if (key === 'l') recordLap();
-      if (key === 'r') resetTimer();
-    });
-
-    updateDisplay();
-  </script>
+  <script src="chrono.js" defer></script>
 </body>
 </html>

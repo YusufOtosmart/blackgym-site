@@ -1329,27 +1329,34 @@ button:focus-visible,
   pointer-events: none;
 }
 
-.time-display {
-  font-family: 'Montserrat', monospace;
+/* Center the chrono numbers (desktop + mobile) */
+.time-display{
+  font-family: "Montserrat", monospace;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   font-size: 5rem;
   color: var(--text-main);
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   text-shadow: 0 0 20px rgba(141, 213, 245, 0.3);
   position: relative;
   z-index: 1;
   line-height: 1;
-  display: inline-block;
-  min-width: 380px;
+
+  /* NEW */
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  min-width: 0; /* remove left bias */
 }
 
-.milliseconds {
+.milliseconds{
   font-size: 0.6em;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
-  vertical-align: baseline;
+  margin-left: 6px; /* looks cleaner than 2px when centered */
 }
+
 
 .time-display .milliseconds {
   margin-left: 2px;
@@ -2073,4 +2080,308 @@ button:focus-visible,
   .blog-header{ padding: 5.75rem 0 3.25rem; }
   .blog-container{ padding-top: 1.75rem; }
   .toc-list a{ padding: 0.65rem 0.75rem; }
+}
+
+/* ==========================================
+   BLOG PAGES (layout + styles)
+   ========================================== */
+
+.blog-header{
+  padding: 6.5rem 0 3.5rem;
+  background:
+    linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(5, 7, 10, 0.96)),
+    url("img/hero-gym.jpg") no-repeat center center / cover;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.blog-header .container{
+  max-width: 1100px;
+}
+
+.blog-meta{
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.blog-title{
+  font-family: "Russo One", sans-serif;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.15;
+  margin: 0 0 1.1rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.blog-lead{
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0.35rem auto 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.blog-meta-row{
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.blog-meta-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+}
+
+.blog-meta-chip strong{
+  color: #fff;
+  font-weight: 800;
+}
+
+.blog-main{
+  padding: 3rem 0 5rem;
+}
+
+.blog-main .container{
+  max-width: 1100px;
+}
+
+.blog-layout{
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 2.6rem;
+  align-items: start;
+}
+
+.toc-box{
+  position: sticky;
+  top: 92px; /* sticky header offset */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 1.1rem;
+  padding: 1.4rem;
+}
+
+.toc-title{
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.85rem;
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.toc-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.toc-list a{
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.8rem;
+  color: var(--accent);
+  border: 1px solid transparent;
+  background: rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.toc-list a:hover{
+  transform: translateY(-1px);
+  border-color: rgba(141,213,245,0.35);
+  background: rgba(255,255,255,0.04);
+}
+
+.blog-article{
+  max-width: 760px;
+}
+
+.blog-content{
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.blog-content h2{
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.75rem;
+  margin-top: 2.6rem;
+  margin-bottom: 0.9rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  scroll-margin-top: 110px;
+}
+
+.blog-content h3{
+  color: #e2e8f0;
+  font-size: 1.35rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.7rem;
+  scroll-margin-top: 110px;
+}
+
+.blog-content p{ margin: 0 0 1.25rem; }
+.blog-content ul, .blog-content ol{ margin: 0 0 1.25rem; padding-left: 1.25rem; }
+.blog-content li{ margin-bottom: 0.5rem; }
+.blog-content strong{ color: #fff; }
+
+.highlight-box{
+  background: linear-gradient(135deg, rgba(141, 213, 245, 0.12), rgba(141, 213, 245, 0.03));
+  border-left: 4px solid var(--accent);
+  padding: 1.2rem 1.25rem;
+  margin: 1.6rem 0;
+  border-radius: 0 1rem 1rem 0;
+  color: #e5e7eb;
+}
+
+.cta-banner{
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  padding: 2.6rem 2rem;
+  text-align: center;
+  border-radius: 1.5rem;
+  margin-top: 3.2rem;
+}
+
+.cta-banner h3{
+  font-family: "Russo One", sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0 0 0.85rem;
+}
+
+.cta-banner p{
+  color: var(--text-muted);
+  margin: 0 0 1.6rem;
+  line-height: 1.7;
+}
+
+/* Mobile blog */
+@media (max-width: 960px){
+  .blog-layout{ grid-template-columns: 1fr; }
+  .toc-box{ position: relative; top: auto; }
+}
+
+/* ==========================================
+   CHRONO PAGE: ensure SEO content is below fold
+   ========================================== */
+
+.chrono-app{
+  min-height: calc(100vh - 72px); /* below sticky header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.chrono-seo{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.chrono-seo h1{
+  font-family: "Russo One", sans-serif;
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chrono-seo h2{
+  color: var(--accent);
+  font-size: 1.15rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.chrono-seo p{ line-height: 1.7; margin: 0.75rem 0; }
+
+.chrono-seo .mini-cta{
+  margin-top: 1.15rem;
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.chrono-faq{
+  max-width: 860px;
+  margin: 2.2rem auto 0;
+  padding: 0 1rem 3rem;
+  color: #cbd5e1;
+}
+
+.chrono-faq h2{
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.chrono-faq details{
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  margin: 0.75rem 0;
+  background: rgba(255,255,255,0.02);
+}
+
+.chrono-faq summary{
+  cursor: pointer;
+  font-weight: 800;
+  color: #fff;
+  list-style: none;
+}
+
+.chrono-faq summary::-webkit-details-marker{ display: none; }
+
+.chrono-faq summary::after{
+  content: "＋";
+  float: right;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.chrono-faq details[open] summary::after{ content: "－"; }
+
+.chrono-faq p{
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.kbd{
+  display:inline-block;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-bottom-width: 2px;
+  border-radius: 8px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.85em;
+  color: #e5e7eb;
+  margin: 0 0.15rem;
+  background: rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px){
+  .shortcuts-legend{ display: none !important; }
+  .chrono-app{ min-height: calc(100vh - 64px); }
 }
