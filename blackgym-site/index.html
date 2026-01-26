@@ -46,7 +46,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- LocalBusiness Schema -->
+  <!-- LocalBusiness Schema (Updated with Social Links) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -94,6 +94,9 @@
     ],
     "sameAs": [
       "https://www.instagram.com/blackgymconcept/",
+      "https://www.tiktok.com/@blackgymconcept",
+      "https://www.facebook.com/profile.php?id=61578639850931",
+      "https://www.youtube.com/@BlackGymConcept",
       "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7"
     ]
   }
@@ -163,7 +166,7 @@
           <li><a href="#reviews">Yorumlar</a></li>
           <li><a href="#hours">Saatler</a></li>
           <li><a href="#pricing">Fiyatlar</a></li>
-          <li><a href="blog-vucut-gelistirme.html" style="color: #8DD5F5;">BLOG</a></li> <!-- NEW LINK -->
+          <li><a href="blog-vucut-gelistirme.html" style="color: #8DD5F5;">BLOG</a></li>
           <li><a href="#contact">İletişim</a></li>
         </ul>
       </nav>
@@ -268,11 +271,17 @@
               <p>Konak Mah. Kudret Sk. Elit Park Plaza No:12/A<br />Nilüfer · Bursa</p>
               <p>📍 <a href="https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7" target="_blank" rel="noopener" data-track="contact_map">Haritada Gör</a></p>
             </div>
+            <!-- Updated Contact Column with Socials -->
             <div>
-              <h3>İletişim</h3>
+              <h3>İletişim & Sosyal</h3>
               <p>📞 <a href="tel:+905300789500" data-track="contact_phone">0 530 078 95 00</a></p>
               <p>✉️ <a href="mailto:info@blackgym.com.tr" data-track="contact_email">info@blackgym.com.tr</a></p>
-              <p>📷 <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener" data-track="contact_instagram">@blackgymconcept</a></p>
+              <div style="margin-top: 1rem;">
+                <p>📷 <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener" data-track="contact_instagram">Instagram</a></p>
+                <p>🎵 <a href="https://www.tiktok.com/@blackgymconcept" target="_blank" rel="noopener" data-track="contact_tiktok">TikTok</a></p>
+                <p>📘 <a href="https://www.facebook.com/profile.php?id=61578639850931" target="_blank" rel="noopener" data-track="contact_facebook">Facebook</a></p>
+                <p>▶️ <a href="https://www.youtube.com/@BlackGymConcept" target="_blank" rel="noopener" data-track="contact_youtube">YouTube</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -499,6 +508,9 @@
       <span class="footer-links">
         <a href="blog-vucut-gelistirme.html" style="color: #8DD5F5;">Fitness Rehberi</a> <!-- NEW LINK -->
         <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener" data-track="footer_instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@blackgymconcept" target="_blank" rel="noopener" data-track="footer_tiktok">TikTok</a>
+        <a href="https://www.facebook.com/profile.php?id=61578639850931" target="_blank" rel="noopener" data-track="footer_facebook">Facebook</a>
+        <a href="https://www.youtube.com/@BlackGymConcept" target="_blank" rel="noopener" data-track="footer_youtube">YouTube</a>
         <a href="mailto:info@blackgym.com.tr" data-track="footer_email">Mail</a>
       </span>
     </div>
@@ -565,7 +577,7 @@
     })();
   </script>
 
-  <!-- Analytics Tracking -->
+  <!-- Analytics Tracking (Updated for New Socials) -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[data-track]').forEach(function(el) {
@@ -576,7 +588,9 @@
           else if (event.includes('phone')) category = 'contact_phone';
           else if (event.includes('email')) category = 'contact_email';
           else if (event.includes('pricing')) category = 'conversion';
-          else if (event.includes('instagram')) category = 'social';
+          // Updated tracking to include new social platforms
+          else if (event.includes('instagram') || event.includes('tiktok') || event.includes('facebook') || event.includes('youtube')) category = 'social';
+          
           if (typeof gtag !== 'undefined') {
             gtag('event', event, {'event_category': category, 'event_label': this.href || this.textContent.trim()});
           }
