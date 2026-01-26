@@ -4,23 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO Meta Tags -->
   <title>Ücretsiz Deneme Antrenmanı Randevusu | BLACK GYM Bursa Nilüfer</title>
   <meta name="description" content="BLACK GYM Bursa Nilüfer'de ücretsiz deneme antrenmanı için randevu oluşturun. Fitness, Reformer Pilates, PT, Zumba, Kickboks. Sizi arayalım, hedeflerinizi konuşalım." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <link rel="canonical" href="https://blackgym.com.tr/deneme.html" />
+  <link rel="canonical" href="https://blackgym.com.tr/booking.html" />
   <meta name="theme-color" content="#0b0b0f" />
 
-  <!-- Open Graph / Social Media -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BLACK GYM" />
   <meta property="og:title" content="Ücretsiz Deneme Antrenmanı | BLACK GYM" />
   <meta property="og:description" content="Bursa Nilüfer'de ücretsiz spor salonu deneme antrenmanı için hemen randevu alın. Fitness, Pilates, PT ve daha fazlası!" />
-  <meta property="og:url" content="https://blackgym.com.tr/deneme.html" />
+  <meta property="og:url" content="https://blackgym.com.tr/booking.html" />
   <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ücretsiz Deneme Antrenmanı | BLACK GYM" />
   <meta name="twitter:description" content="Bursa Nilüfer'de ücretsiz deneme için randevu alın!" />
@@ -31,10 +30,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- External CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="booking.css" />
 
-  <!-- Schema.org - Service Markup -->
+  <!-- Schema: Service -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,10 +58,7 @@
     "areaServed": {
       "@type": "City",
       "name": "Nilüfer",
-      "containedIn": {
-        "@type": "State",
-        "name": "Bursa"
-      }
+      "containedIn": { "@type": "State", "name": "Bursa" }
     },
     "offers": {
       "@type": "Offer",
@@ -72,7 +69,7 @@
   }
   </script>
 
-  <!-- Schema.org - FAQ Markup -->
+  <!-- Schema: FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,23 +103,19 @@
   }
   </script>
 
-  <!-- Google Analytics -->
+  <!-- GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-RLTN0JV889', { 
-      'anonymize_ip': true,
-      'send_page_view': true
-    });
+    gtag('config', 'G-RLTN0JV889', { 'anonymize_ip': true, 'send_page_view': true });
   </script>
 </head>
 
 <body>
   <a href="#main" class="skip-link">İçeriğe atla</a>
 
-  <!-- Header -->
   <header class="site-header" id="top">
     <div class="container nav-container">
       <a href="/" class="logo">
@@ -132,8 +125,8 @@
           <span class="logo-text-accent">GYM</span>
         </span>
       </a>
-      
-      <button class="nav-toggle" aria-label="Menü">
+
+      <button class="nav-toggle" aria-label="Menü" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
@@ -147,104 +140,63 @@
 
   <main id="main" class="booking-section">
     <div class="booking-wrapper">
-      
-      <!-- Left Column: Form -->
+
       <div class="booking-container">
         <div class="booking-header">
           <h1>Ücretsiz Dene</h1>
           <p>Bilgilerinizi doldurun, WhatsApp'tan size ulaşalım.</p>
         </div>
 
-        <!-- Success Message (Hidden by default) -->
-        <div id="successMessage" style="display: none; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); padding: 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem; text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: 0.5rem;">✅</div>
-          <h2 style="color: #22c55e; margin: 0 0 0.5rem; font-size: 1.3rem;">Mesajınız Hazırlandı!</h2>
-          <p style="color: #9ca3af; margin: 0; font-size: 0.95rem;">WhatsApp'ta açılan mesajı göndererek randevu talebinizi iletin. Ekibimiz en kısa sürede sizinle iletişime geçecektir.</p>
-          <button onclick="resetForm()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 999px; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Yeni Randevu Oluştur</button>
+        <!-- Success -->
+        <div id="successMessage" class="success-box" hidden>
+          <div class="success-icon" aria-hidden="true">✅</div>
+          <h2 class="success-title">Mesajınız Hazırlandı!</h2>
+          <p class="success-text">
+            WhatsApp'ta açılan mesajı göndererek randevu talebinizi iletin. Ekibimiz en kısa sürede sizinle iletişime geçecektir.
+          </p>
+          <button type="button" class="btn ghost" id="newBookingBtn">Yeni Randevu Oluştur</button>
         </div>
 
         <form id="bookingForm" novalidate>
-          
           <div class="form-group">
             <label class="form-label" for="name">Ad Soyad *</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              class="form-input" 
-              placeholder="Örn: Ahmet Yılmaz" 
-              required 
-              aria-required="true"
-              aria-describedby="nameHelp"
-            />
-            <span id="nameHelp" class="sr-only">Adınız ve soyadınızı girin</span>
+            <input type="text" id="name" name="name" class="form-input"
+              placeholder="Örn: Ahmet Yılmaz" required aria-required="true"
+              autocomplete="name" />
+            <span class="sr-only" id="nameHelp">Adınız ve soyadınızı girin</span>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="phone">Telefon (WhatsApp) *</label>
             <div class="phone-wrap">
               <span class="phone-prefix" aria-hidden="true">+90</span>
-              <input 
-                type="tel" 
-                id="phone" 
-                name="phone"
-                class="form-input" 
-                placeholder="5XX XXX XX XX" 
-                value="5" 
-                required 
-                maxlength="12"
-                aria-required="true"
-                aria-describedby="phoneHelp"
-              />
+              <input type="tel" id="phone" name="phone" class="form-input"
+                placeholder="5XX XXX XX XX" value="5" required maxlength="12"
+                inputmode="numeric" autocomplete="tel" />
             </div>
-            <span id="phoneHelp" class="sr-only">10 haneli cep telefonu numaranızı girin</span>
+            <span class="sr-only" id="phoneHelp">10 haneli cep telefonu numaranızı girin</span>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="date">Planlanan Tarih *</label>
-              <input 
-                type="date" 
-                id="date" 
-                name="date"
-                class="form-input" 
-                required 
-                lang="tr"
-                aria-required="true"
-                aria-describedby="dateHelp"
-              />
-              <span id="dateHelp" class="sr-only">Deneme antrenmanı için tarih seçin</span>
+              <input type="date" id="date" name="date" class="form-input" required lang="tr" />
             </div>
-            
+
             <div class="form-group">
               <label class="form-label" for="time">Saat Aralığı *</label>
-              <select 
-                id="time" 
-                name="time"
-                class="form-input" 
-                required
-                aria-required="true"
-                aria-describedby="timeHelp"
-              >
+              <select id="time" name="time" class="form-input" required>
                 <option value="">Seçiniz</option>
                 <option value="Sabah (09:00 - 12:00)">Sabah (09:00 - 12:00)</option>
                 <option value="Öğle (12:00 - 17:00)">Öğle (12:00 - 17:00)</option>
                 <option value="Akşam (17:00 - 21:00)">Akşam (17:00 - 21:00)</option>
               </select>
-              <span id="timeHelp" class="sr-only">Tercih ettiğiniz saat aralığını seçin</span>
             </div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="service">İlgilendiğiniz *</label>
-            <select 
-              id="service" 
-              name="service"
-              class="form-input" 
-              required
-              aria-required="true"
-              aria-describedby="serviceHelp"
-            >
+            <select id="service" name="service" class="form-input" required>
               <option value="">Seçiniz</option>
               <option value="Salon (Fitness/Ağırlık)">Salon (Fitness/Ağırlık)</option>
               <option value="Reformer Pilates">Reformer Pilates</option>
@@ -252,334 +204,58 @@
               <option value="Zumba">Zumba</option>
               <option value="Kickboks">Kickboks</option>
             </select>
-            <span id="serviceHelp" class="sr-only">İlgilendiğiniz hizmeti seçin</span>
           </div>
 
           <div class="form-group">
-            <label style="display:flex; gap:.6rem; align-items:flex-start; color:#cbd5e1; font-size:.95rem; cursor: pointer;">
-              <input 
-                id="consent" 
-                name="consent"
-                type="checkbox" 
-                required 
-                style="margin-top:.2rem; cursor: pointer;"
-                aria-required="true"
-              />
+            <label class="consent">
+              <input id="consent" name="consent" type="checkbox" required />
               <span>KVKK kapsamında aranmayı/WhatsApp'tan iletişim kurulmasını kabul ediyorum. *</span>
             </label>
           </div>
 
-          <button type="submit" class="submit-btn" id="submitBtn">
-            WhatsApp İle Gönder 
-          </button>
+          <button type="submit" class="submit-btn" id="submitBtn">WhatsApp İle Gönder</button>
 
           <p class="disclaimer">
             * Butona tıkladığınızda bilgilerinizle hazırlanmış bir WhatsApp mesajı açılacaktır.
           </p>
 
-          <div id="formError" class="form-error" role="alert" aria-live="assertive"></div>
+          <div id="formError" class="form-error" role="alert" aria-live="assertive" hidden></div>
         </form>
       </div>
 
-      <!-- Right Column: Map -->
       <div class="map-container">
-        <iframe 
-          class="map-frame"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.9137416704525!2d28.980144976798652!3d40.210981671473604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca15d86f2fcf0d%3A0xe55f76e9f7973931!2sBlack%20Gym%20Concept!5e0!3m2!1sfr!2sde!4v1769368418530!5m2!1sfr!2sde" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
+        <iframe class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.9137416704525!2d28.980144976798652!3d40.210981671473604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca15d86f2fcf0d%3A0xe55f76e9f7973931!2sBlack%20Gym%20Concept!5e0!3m2!1sfr!2sde!4v1769368418530!5m2!1sfr!2sde"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="BLACK GYM Konum Haritası">
         </iframe>
       </div>
 
     </div>
 
-    <!-- SEO Content Block -->
     <section class="seo-block">
       <h2>Nilüfer (Konak) Ücretsiz Deneme Spor Salonu Randevusu</h2>
-      <p>
-        <strong>BLACK GYM</strong>, <strong>Bursa Nilüfer Konak</strong> bölgesinde premium spor salonu deneyimi sunar.
-        Ücretsiz denemede hedefinizi konuşur, uygun programı önerir ve randevunuzu netleştiririz.
-      </p>
+      <p><strong>BLACK GYM</strong>, <strong>Bursa Nilüfer Konak</strong> bölgesinde premium spor salonu deneyimi sunar...</p>
 
       <h2>Neler Var?</h2>
-      <p>
-        Fitness & ağırlık alanı, reformer pilates, personal trainer (PT), zumba, kickboks ve sauna.
-        Adres: Konak Mah. Kudret Sk. Elit Park Plaza No:12/A, Nilüfer · Bursa.
-      </p>
+      <p>Fitness & ağırlık alanı, reformer pilates, PT, zumba, kickboks ve sauna...</p>
 
       <div class="faq-block">
         <h2>Sık Sorulan Sorular</h2>
-        <details>
-          <summary>Ücretsiz deneme nasıl planlanıyor?</summary>
-          <p>Formu doldurduğunuzda WhatsApp'ta hazır bir mesaj açılır. Mesajı gönderdiğinizde ekibimiz sizinle iletişime geçerek günü/saat aralığını netleştirir.</p>
-        </details>
-        <details>
-          <summary>Randevu kesin saat mi, yoksa saat aralığı mı?</summary>
-          <p>Bu sayfa saat aralığı seçtirir (Sabah/Öğle/Akşam). Müsaitliğe göre kesin saati WhatsApp üzerinden birlikte belirleriz.</p>
-        </details>
-        <details>
-          <summary>Ücretsiz deneme için yanımda ne getirmeliyim?</summary>
-          <p>Spor kıyafeti, temiz spor ayakkabı ve su şişesi yeterli. İsterseniz havlu da getirebilirsiniz.</p>
-        </details>
+        <details><summary>Ücretsiz deneme nasıl planlanıyor?</summary><p>...</p></details>
+        <details><summary>Randevu kesin saat mi, yoksa saat aralığı mı?</summary><p>...</p></details>
+        <details><summary>Ücretsiz deneme için yanımda ne getirmeliyim?</summary><p>...</p></details>
       </div>
     </section>
-
   </main>
 
-  <footer class="site-footer" style="text-align: center;">
-    <div class="container">
+  <footer class="site-footer">
+    <div class="container" style="text-align:center;">
       <span>© <span id="year"></span> BLACK GYM · Nilüfer / Bursa</span>
     </div>
   </footer>
 
   <script src="script.js" defer></script>
-  <script>
-    // Auto-update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // DOM Elements
-    const form = document.getElementById('bookingForm');
-    const formError = document.getElementById('formError');
-    const phoneInput = document.getElementById('phone');
-    const dateInput = document.getElementById('date');
-    const successMessage = document.getElementById('successMessage');
-    const submitBtn = document.getElementById('submitBtn');
-
-    // Set minimum date to today
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const localDate = `${year}-${month}-${day}`;
-    dateInput.min = localDate;
-    dateInput.value = localDate;
-
-    // Phone Input: Better UX - Start with "5" and smart cursor
-    phoneInput.addEventListener('focus', function(e) {
-      if (e.target.value === '5') {
-        // Move cursor to end when clicking on pre-filled "5"
-        setTimeout(() => {
-          e.target.setSelectionRange(1, 1);
-        }, 0);
-      }
-    });
-
-    // Phone formatting function
-    function normalizeTRPhone(raw) {
-      let digits = String(raw || '').replace(/\D/g, '');
-      // Remove country code if present
-      if (digits.startsWith('90')) digits = digits.slice(2);
-      if (digits.startsWith('0')) digits = digits.slice(1);
-      // Limit to 10 digits
-      digits = digits.slice(0, 10);
-      return digits;
-    }
-
-    function formatTRPhone(digits10) {
-      const d = (digits10 || '').slice(0, 10);
-      const p1 = d.slice(0, 3);
-      const p2 = d.slice(3, 6);
-      const p3 = d.slice(6, 8);
-      const p4 = d.slice(8, 10);
-      let out = p1;
-      if (p2) out += ' ' + p2;
-      if (p3) out += ' ' + p3;
-      if (p4) out += ' ' + p4;
-      return out.trim();
-    }
-
-    // Auto-format phone as user types
-    phoneInput.addEventListener('input', function(e) {
-      const digits = normalizeTRPhone(e.target.value);
-      const formatted = formatTRPhone(digits);
-      e.target.value = formatted;
-    });
-
-    // Error handling functions
-    function showError(msg) {
-      formError.textContent = msg;
-      formError.style.display = 'block';
-      formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function clearError() {
-      formError.textContent = '';
-      formError.style.display = 'none';
-    }
-
-    // Reset form function
-    function resetForm() {
-      form.reset();
-      phoneInput.value = '5';
-      dateInput.value = localDate;
-      successMessage.style.display = 'none';
-      form.style.display = 'block';
-      clearError();
-      
-      // Track form reset
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'trial_form_reset', {
-          'event_category': 'form_interaction'
-        });
-      }
-    }
-
-    // Make resetForm available globally
-    window.resetForm = resetForm;
-
-    // Form submission handler
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      clearError();
-
-      // Get form values
-      const name = document.getElementById('name').value.trim();
-      const phoneDigits = normalizeTRPhone(phoneInput.value);
-      const rawDate = dateInput.value;
-      const time = document.getElementById('time').value;
-      const service = document.getElementById('service').value;
-      const consent = document.getElementById('consent').checked;
-
-      // Validation
-      if (!name || name.length < 3) {
-        showError("Lütfen ad soyad alanını doğru girin (en az 3 karakter).");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'invalid_name'
-          });
-        }
-        return;
-      }
-
-      if (!phoneDigits || phoneDigits.length !== 10 || !phoneDigits.startsWith('5')) {
-        showError("Lütfen 10 haneli, 5 ile başlayan cep telefonu numarası girin. Örn: 5XX XXX XX XX");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'invalid_phone'
-          });
-        }
-        return;
-      }
-
-      if (!rawDate) {
-        showError("Lütfen tarih seçin.");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'missing_date'
-          });
-        }
-        return;
-      }
-
-      if (!time) {
-        showError("Lütfen saat aralığı seçin.");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'missing_time'
-          });
-        }
-        return;
-      }
-
-      if (!service) {
-        showError("Lütfen ilgilendiğiniz hizmeti seçin.");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'missing_service'
-          });
-        }
-        return;
-      }
-
-      if (!consent) {
-        showError("Devam etmek için KVKK onayını işaretlemelisiniz.");
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'trial_form_error', {
-            'event_category': 'form_validation',
-            'event_label': 'missing_consent'
-          });
-        }
-        return;
-      }
-
-      // Format date to DD.MM.YYYY
-      let formattedDate = rawDate;
-      const parts = rawDate.split('-');
-      if (parts.length === 3) {
-        formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
-      }
-
-      // Format phone with +90
-      const fullPhone = `+90 ${formatTRPhone(phoneDigits)}`;
-
-      // Create WhatsApp message
-      const text = `*ÜCRETSİZ DENEME RANDEVUSU*
-Merhaba BLACK GYM, ücretsiz deneme için randevu almak istiyorum.
-
-İsim: ${name}
-Tel: ${fullPhone}
-İlgilendiğim: ${service}
-Tarih: ${formattedDate}
-Saat Aralığı: ${time}`;
-
-      // Track successful form submission
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'trial_booking_submitted', {
-          'event_category': 'conversion',
-          'event_label': service,
-          'value': 1
-        });
-      }
-
-      // Open WhatsApp
-      const whatsappNumber = "905300789500";
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
-
-      // Show success message and hide form
-      form.style.display = 'none';
-      successMessage.style.display = 'block';
-      successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Track WhatsApp open
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'whatsapp_opened', {
-          'event_category': 'engagement',
-          'event_label': 'trial_booking'
-        });
-      }
-    });
-
-    // Track page view
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'trial_page_view', {
-        'event_category': 'page_view',
-        'event_label': 'booking_form'
-      });
-    }
-  </script>
-
-  <!-- Accessibility: Screen reader only text -->
-  <style>
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-  </style>
-
+  <script src="booking.js" defer></script>
 </body>
 </html>
