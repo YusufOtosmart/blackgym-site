@@ -1759,7 +1759,318 @@ button:focus-visible,
     min-height: 3.5rem;
   }
 }
-
 /* ==========================================
-   END OF STYLESHEET
+   18. BLOG PAGE (CORE)
    ========================================== */
+
+/* Small utility */
+.btn.btn-sm{
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+}
+
+/* Blog hero */
+.blog-header{
+  padding: 6.5rem 0 3.75rem;
+  background:
+    linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(5, 7, 10, 0.98)),
+    url("img/hero-gym.jpg") no-repeat center center / cover;
+  text-align: center;
+}
+
+.blog-meta{
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.blog-title{
+  font-family: "Russo One", sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+.blog-lede{
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0.25rem auto 0;
+  line-height: 1.75;
+}
+
+/* Meta chips row */
+.blog-meta-row{
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.blog-meta-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+}
+
+.blog-meta-chip strong{
+  color: #fff;
+  font-weight: 800;
+}
+
+/* Main article container */
+.blog-container{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.25rem 1.5rem 5rem;
+}
+
+/* Table of contents */
+.toc-box{
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  padding: 1.6rem 1.6rem;
+  margin-bottom: 2.25rem;
+}
+
+.toc-title{
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.9rem;
+  display: block;
+  font-size: 1.05rem;
+}
+
+.toc-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.toc-list a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--accent);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.01);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.toc-list a::after{
+  content: "→";
+  opacity: 0.8;
+}
+
+.toc-list a:hover{
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+}
+
+/* Blog typography */
+.blog-content{
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.blog-content p{
+  margin: 0 0 1.35rem;
+}
+
+.blog-content ul,
+.blog-content ol{
+  margin: 0 0 1.35rem;
+  padding-left: 1.35rem;
+}
+
+.blog-content li{
+  margin-bottom: 0.5rem;
+}
+
+.blog-content strong{
+  color: #fff;
+}
+
+.blog-content h2{
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  margin: 2.5rem 0 0.9rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.blog-content h3{
+  color: #e2e8f0;
+  font-size: 1.35rem;
+  margin: 1.7rem 0 0.65rem;
+}
+
+/* Highlight box */
+.highlight-box{
+  background: linear-gradient(135deg, rgba(141, 213, 245, 0.10), rgba(141, 213, 245, 0.02));
+  border-left: 4px solid var(--accent);
+  padding: 1.25rem 1.25rem;
+  margin: 1.75rem 0;
+  border-radius: 0 1rem 1rem 0;
+  color: #e5e7eb;
+}
+
+/* CTA banner */
+.cta-banner{
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  padding: 2.6rem 2rem;
+  text-align: center;
+  border-radius: 1.5rem;
+  margin-top: 3rem;
+}
+
+.cta-banner h3{
+  font-family: "Russo One", sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0 0 0.9rem;
+}
+
+.cta-banner p{
+  color: var(--text-muted);
+  margin: 0 0 1.6rem;
+  line-height: 1.75;
+}
+
+/* Optional: FAQ / related / author (kept) */
+.blog-faq{
+  max-width: 900px;
+  margin: 3.25rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.blog-faq h2{
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  margin: 0 0 1rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.blog-faq details{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  margin: 0.75rem 0;
+}
+
+.blog-faq summary{
+  cursor: pointer;
+  font-weight: 800;
+  color: #fff;
+  list-style: none;
+}
+
+.blog-faq summary::-webkit-details-marker{ display: none; }
+
+.blog-faq summary::after{
+  content: "＋";
+  float: right;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.blog-faq details[open] summary::after{ content: "－"; }
+
+.blog-faq p{
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.blog-related{
+  max-width: 900px;
+  margin: 3.25rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.blog-related h2{
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  margin: 0 0 1rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.blog-related ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.blog-related a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+  color: #e5e7eb;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.blog-related a:hover{
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.blog-related a span{
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.blog-author-box{
+  max-width: 900px;
+  margin: 2.5rem auto 0;
+  padding: 1.35rem 1.5rem;
+  border-radius: 1.2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+}
+
+.blog-author-box strong{ color: #fff; }
+
+/* Responsive */
+@media (max-width: 768px){
+  .blog-header{ padding: 5.75rem 0 3.25rem; }
+  .blog-container{ padding-top: 1.75rem; }
+  .toc-list a{ padding: 0.65rem 0.75rem; }
+}

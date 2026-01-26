@@ -1,69 +1,94 @@
 /* ====================================================================================
-   BLACK GYM - MAIN JAVASCRIPT
-   
+   BLACK GYM - MAIN JAVASCRIPT (UPDATED)
+
    Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
    Contact: info@otosmart.com.tr
-   
+
    Features:
    1. Header scroll effects
-   2. Mobile navigation
+   2. Mobile navigation (ARIA + outside click + ESC + resize)
    3. Reveal animations
-   4. Facilities carousel  
-   5. Lightbox
+   4. Facilities carousel
+   5. Lightbox (focus-friendly)
    6. Footer year
-   
-   Note: Hero title animation is handled inline in HTML for better compatibility
+
    ==================================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ====================================================================================
      1. HEADER SCROLL SHADOW
-     Adds shadow to header when scrolling down
      ==================================================================================== */
   const header = document.querySelector(".site-header");
 
   const handleScroll = () => {
     if (!header) return;
-    if (window.scrollY > 10) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+    header.classList.toggle("scrolled", window.scrollY > 10);
   };
 
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
 
   /* ====================================================================================
-     2. MOBILE NAVIGATION
-     Hamburger menu toggle for mobile devices
+     2. MOBILE NAVIGATION (ACCESSIBLE)
      ==================================================================================== */
   const navToggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".nav");
   const navLinks = document.querySelectorAll(".nav-links a");
 
+  // Prefer aria-controls to find the correct nav
+  const navId = navToggle?.getAttribute("aria-controls");
+  const nav = navId ? document.getElementById(navId) : document.querySelector(".nav");
+
+  const setMenuState = (open) => {
+    if (!navToggle || !nav) return;
+
+    nav.classList.toggle("open", open);
+    navToggle.classList.toggle("open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+
+    // Optional: lock scroll when menu open (helps on mobile)
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  const isMenuOpen = () => nav?.classList.contains("open");
+
   if (navToggle && nav) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("open");
-      navToggle.classList.toggle("open", isOpen);
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    // Ensure initial ARIA state is consistent
+    navToggle.setAttribute("aria-expanded", nav.classList.contains("open") ? "true" : "false");
+
+    navToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      setMenuState(!isMenuOpen());
     });
 
+    // Close when clicking a link (mobile)
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 768 && nav.classList.contains("open")) {
-          nav.classList.remove("open");
-          navToggle.classList.remove("open");
-          navToggle.setAttribute("aria-expanded", "false");
-        }
+        if (window.innerWidth <= 768 && isMenuOpen()) setMenuState(false);
       });
+    });
+
+    // Close on outside click
+    document.addEventListener("click", (e) => {
+      if (!isMenuOpen()) return;
+      const target = e.target;
+      const clickedInside = nav.contains(target) || navToggle.contains(target);
+      if (!clickedInside) setMenuState(false);
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isMenuOpen()) setMenuState(false);
+    });
+
+    // Close when resizing to desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768 && isMenuOpen()) setMenuState(false);
     });
   }
 
   /* ====================================================================================
      3. REVEAL ANIMATIONS
-     Fade-in effect when elements scroll into view
      ==================================================================================== */
   const revealEls = document.querySelectorAll(".reveal");
 
@@ -87,10 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ====================================================================================
      4. FACILITIES SLIDER
-     Carousel for gym areas
      ==================================================================================== */
   const slider = document.querySelector(".facilities-slider");
-  
+
   if (slider) {
     const track = slider.querySelector(".slider-track");
     const slides = slider.querySelectorAll(".facility-slide");
@@ -101,8 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateSlider = () => {
       if (!track) return;
-      const offset = -currentIndex * 100;
-      track.style.transform = `translateX(${offset}%)`;
+      track.style.transform = `translateX(${-currentIndex * 100}%)`;
     };
 
     const goPrev = () => {
@@ -128,21 +151,17 @@ document.addEventListener("DOMContentLoaded", () => {
       track.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         isSwiping = true;
-      });
+      }, { passive: true });
 
       track.addEventListener("touchmove", (e) => {
         if (!isSwiping) return;
         const diff = e.touches[0].clientX - startX;
-        
+
         if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            goPrev();
-          } else {
-            goNext();
-          }
+          diff > 0 ? goPrev() : goNext();
           isSwiping = false;
         }
-      });
+      }, { passive: true });
 
       track.addEventListener("touchend", () => {
         isSwiping = false;
@@ -151,35 +170,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ====================================================================================
-     5. LIGHTBOX
-     Image popup viewer for facility images
+     5. LIGHTBOX (FOCUS FRIENDLY)
      ==================================================================================== */
   const lightbox = document.getElementById("lightbox");
   const lbImg = document.getElementById("lightbox-image");
   const lbCaption = document.getElementById("lightbox-caption");
   const lbClose = document.querySelector(".lightbox-close");
 
+  let lastFocusEl = null;
+
   if (lightbox && lbImg && lbCaption && lbClose) {
     const openLightbox = (src, altText) => {
+      lastFocusEl = document.activeElement;
+
       lbImg.src = src;
       lbImg.alt = altText || "";
       lbCaption.textContent = altText || "";
+
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+
+      // move focus to close for accessibility
+      lbClose.focus();
     };
 
     const closeLightbox = () => {
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+
+      // restore focus
+      if (lastFocusEl && typeof lastFocusEl.focus === "function") {
+        lastFocusEl.focus();
+      }
     };
 
     document.querySelectorAll(".facility-slide img").forEach((img) => {
       img.style.cursor = "zoom-in";
-      img.addEventListener("click", () => {
-        openLightbox(img.src, img.alt);
-      });
+      img.addEventListener("click", () => openLightbox(img.src, img.alt));
     });
 
     lbClose.addEventListener("click", closeLightbox);
@@ -189,25 +218,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLightbox();
+      if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
     });
   }
 
   /* ====================================================================================
      6. FOOTER YEAR AUTO-UPDATE
-     Automatically updates copyright year
      ==================================================================================== */
   const yearSpan = document.getElementById("year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
 });
-
-/* ====================================================================================
-   END OF JAVASCRIPT
-   
-   Total features: 6
-   Hero animation: Handled inline in HTML
-   Browser support: Modern browsers with graceful fallbacks
-   ==================================================================================== */
