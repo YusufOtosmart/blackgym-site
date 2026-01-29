@@ -26,7 +26,7 @@
     return `${mmss}<span class="ms-small">.${cs}</span>`;
   };
 
-  // NEW: Badge display (small blue ms for badges)
+  // Badge display (small blue ms for badges)
   const formatBadgeDisplay = (ms) => {
     const t = formatMs(ms);
     const [mmss, cs] = t.split('.');
@@ -221,7 +221,6 @@
     lapBtn.textContent = sw ? 'TUR' : 'SONRAKİ';
     
     if(sw) {
-      // Use formatBadgeDisplay for styled HTML
       $('badgeLeft').innerHTML = `Toplam: <b id="totalLabel">${formatBadgeDisplay(currentTotalMs())}</b>`;
       $('badgeRight').innerHTML = `Tur: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
     } else {
@@ -311,7 +310,6 @@
     
     const tLabel = $('totalLabel');
     const lLabel = $('lapLabel');
-    // Use innerHTML + formatBadgeDisplay to keep color styling in loop
     if(tLabel) tLabel.innerHTML = formatBadgeDisplay(total);
     if(lLabel) lLabel.innerHTML = formatBadgeDisplay(currentLapMs());
 
@@ -327,7 +325,6 @@
 
     display.innerHTML = formatDisplay(intLeftMs);
     const lLabel = $('lapLabel');
-    // Use innerHTML + formatBadgeDisplay
     if(lLabel) lLabel.innerHTML = formatBadgeDisplay(intLeftMs);
 
     if (intLeftMs <= 0) {
@@ -482,6 +479,16 @@
   }
 
   async function saveSettingsFn() {
+    // Show visual feedback immediately
+    const btn = $('saveSettings');
+    const originalText = btn.textContent;
+    const originalBg = btn.style.backgroundColor;
+    const originalColor = btn.style.color;
+    
+    btn.textContent = 'KAYDEDİLDİ!';
+    btn.style.backgroundColor = '#22c55e'; // Success Green
+    btn.style.color = '#ffffff';
+
     const p = preset.value;
     const pre = applyPreset(p);
     const rounds = clamp(Number(roundsInput.value)||8, 1, 99);
@@ -489,13 +496,18 @@
     const rest = clamp(Number(restInput.value)||10, 0, 3600);
     
     settings.interval.preset = p;
+    // CRITICAL FIX: If user manually edited, preset is 'custom', so pre is null.
+    // If pre is null, use the manual inputs.
+    // If pre exists (user picked dropdown), use preset defaults.
     settings.interval.rounds = pre ? pre.rounds : rounds;
     settings.interval.work = pre ? pre.work : work;
     settings.interval.rest = pre ? pre.rest : rest;
+    
     settings.vibration = !!vibrationToggle.checked;
     settings.sound = !!soundToggle.checked;
     settings.wake = !!wakeToggle.checked;
 
+    // Apply settings if interval is not running
     if (mode === 'interval' && !intRunning) {
       intPhase = 'work'; intRound = 1;
       intLeftMs = settings.interval.work * 1000;
@@ -503,10 +515,21 @@
       display.innerHTML = formatDisplay(intLeftMs);
       updatePhaseVisuals();
     }
+    
     await setWakeLock(settings.wake && isRunning());
     saveState();
-    try { dlg.close(); } catch(e) { dlg.removeAttribute('open'); }
-    toast('Kaydedildi');
+
+    // Close dialog after short delay to show success
+    setTimeout(() => {
+        try { dlg.close(); } catch(e) { dlg.removeAttribute('open'); }
+        
+        // Reset button for next time
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = originalBg;
+            btn.style.color = originalColor;
+        }, 300);
+    }, 500);
   }
 
   function setMode(next) {
@@ -532,6 +555,12 @@
     const pre = applyPreset(preset.value);
     if(pre) { roundsInput.value=pre.rounds; workInput.value=pre.work; restInput.value=pre.rest; }
   });
+
+  // NEW: Force preset to 'custom' when user types in inputs
+  function setCustomPreset() { preset.value = 'custom'; }
+  roundsInput.addEventListener('input', setCustomPreset);
+  workInput.addEventListener('input', setCustomPreset);
+  restInput.addEventListener('input', setCustomPreset);
 
   document.addEventListener('keydown', (e) => {
     const key = (e.key||'').toLowerCase();
