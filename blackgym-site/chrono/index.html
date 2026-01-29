@@ -8,11 +8,23 @@
   <meta name="description" content="Ücretsiz online antrenman kronometresi: HIIT, Tabata ve interval antrenmanlarında set arası dinlenme ve tur sürelerini takip edin. İndirme yok." />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <link rel="canonical" href="https://blackgym.com.tr/chrono.html" />
-  <link rel="alternate" href="https://blackgym.com.tr/chrono.html" hreflang="tr" />
+  
+  <!-- Updated Canonical Link -->
+  <link rel="canonical" href="https://blackgym.com.tr/chrono/" />
+  <link rel="alternate" href="https://blackgym.com.tr/chrono/" hreflang="tr" />
+  
   <meta name="theme-color" content="#0b0b0f" />
 
-  <!-- Fonts (Old Version) -->
+  <!-- Open Graph (Updated URL) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BLACK GYM" />
+  <meta property="og:title" content="Ücretsiz Online Antrenman Kronometresi | BLACK GYM" />
+  <meta property="og:description" content="HIIT, Tabata ve interval antrenmanları için ücretsiz online kronometre. Set arası dinlenme ve tur sürelerini kaydedin." />
+  <meta property="og:url" content="https://blackgym.com.tr/chrono/" />
+  <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -23,7 +35,7 @@
 <body class="chrono-page">
   <a href="#main" class="skip-link">İçeriğe atla</a>
 
-  <!-- Header (Old Structure) -->
+  <!-- Header -->
   <header class="site-header" id="top">
     <div class="container nav-container">
       <a href="/" class="logo" aria-label="BLACK GYM Ana Sayfa">
@@ -57,7 +69,7 @@
     <section class="chrono-app" aria-label="Kronometre Uygulaması">
       <div class="chrono-container" role="application">
 
-        <!-- Top Row: New functionality (Tabs) + Settings -->
+        <!-- Top Row: Tabs + Settings -->
         <div class="top-row">
           <div class="mode-tabs" role="tablist">
             <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">KRONOMETRE</button>
@@ -74,11 +86,12 @@
 
         <!-- Time Display -->
         <div class="time-wrap">
+          <div id="phaseLabel" class="phase-label"></div>
+
           <div class="time-display" id="display" aria-live="polite">
             00:00<span class="ms">.00</span>
           </div>
 
-          <!-- Badges (Modified layout for mobile) -->
           <div class="subline" id="subline">
             <span class="badge" id="badgeLeft">Toplam: <b id="totalLabel">00:00.00</b></span>
             <span class="badge" id="badgeRight">Tur: <b id="lapLabel">00:00.00</b></span>
@@ -87,7 +100,7 @@
           <p class="sr-only" id="srPhase"></p>
         </div>
 
-        <!-- Controls (Mapped to Old Button Classes) -->
+        <!-- Controls -->
         <div class="controls">
           <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
           <button class="btn btn-secondary" id="lapBtn" disabled>TUR (LAP)</button>
@@ -111,7 +124,7 @@
       </div>
     </section>
 
-    <!-- SEO & FAQ (Old Content) -->
+    <!-- SEO & FAQ -->
     <section class="chrono-seo">
       <article>
         <h1>Online Antrenman Kronometresi</h1>
@@ -149,7 +162,6 @@
     </section>
   </main>
 
-  <!-- Footer (Old Structure) -->
   <footer class="site-footer">
     <div class="container footer-content">
       <span>© <span id="year"></span> BLACK GYM Performance Tool · Bursa Nilüfer</span>
@@ -160,7 +172,7 @@
     </div>
   </footer>
 
-  <!-- Settings Dialog (New Feature) -->
+  <!-- Settings Dialog -->
   <dialog id="settingsDialog" aria-label="Ayarlar">
     <div class="sheet-head">
       <div class="h">Ayarlar</div>
@@ -219,5 +231,26 @@
   <div class="toast" id="toast"></div>
 
   <script src="script.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RLTN0JV889', { 'anonymize_ip': true });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"BLACK GYM Online Antrenman Kronometresi",
+    "url":"https://blackgym.com.tr/chrono/",
+    "applicationCategory":"HealthAndFitnessApplication",
+    "operatingSystem":"All",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},
+    "publisher":{"@type":"Organization","name":"BLACK GYM","url":"https://blackgym.com.tr/"}
+  }
+  </script>
 </body>
 </html>
