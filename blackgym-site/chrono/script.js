@@ -328,9 +328,7 @@
     if(lLabel) lLabel.innerHTML = formatBadgeDisplay(intLeftMs);
 
     if (intLeftMs <= 0) {
-      // Phase Done
       const phaseDur = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
-      
       intAccum += phaseDur;
       laps.unshift({ totalMs: intAccum, splitMs: phaseDur });
       renderLaps();
@@ -346,7 +344,7 @@
       } else {
         nextRoundOrFinish();
       }
-      setTabs(); // refreshes labels and visuals
+      setTabs(); 
       setUIState();
       toast(`${intPhase === 'work' ? 'Çalışma' : 'Dinlenme'} Başladı`);
     }
@@ -418,29 +416,24 @@
       saveState();
       return;
     }
-    // Interval skip
     if (!intRunning) return;
-    intLeftMs = 0; // Trigger next phase immediately
+    intLeftMs = 0; 
   }
 
   async function resetAll() {
     if (isRunning()) { toast('Önce duraklat'); return; }
-    
     swRunning = false; 
     swAccum = 0;
     if (rafId) cancelAnimationFrame(rafId);
-    
     intRunning = false; 
     intPhase = 'work'; 
     intRound = 1; 
     intLeftMs = settings.interval.work * 1000;
     intAccum = 0;
-    
     laps = [];
-    
     display.innerHTML = mode === 'stopwatch' ? formatDisplay(0) : formatDisplay(intLeftMs);
     renderLaps();
-    setTabs(); // resets badges and visuals
+    setTabs(); 
     setUIState();
     await setWakeLock(false);
     saveState();
@@ -460,6 +453,15 @@
   }
 
   // ---------- Settings Modal ----------
+  // Reset button state helper
+  function resetSaveButton() {
+    const btn = $('saveSettings');
+    if (!btn) return;
+    btn.textContent = 'KAYDET';
+    btn.style.backgroundColor = ''; // Reverts to CSS default (Blue)
+    btn.style.color = '';
+  }
+
   function openSettings() {
     preset.value = settings.interval.preset;
     roundsInput.value = settings.interval.rounds;
@@ -468,6 +470,9 @@
     vibrationToggle.checked = settings.vibration;
     soundToggle.checked = settings.sound;
     wakeToggle.checked = settings.wake;
+    
+    resetSaveButton(); // Always reset button state when opening
+    
     try { dlg.showModal(); } catch(e) { dlg.setAttribute('open',''); }
   }
 
@@ -479,15 +484,13 @@
   }
 
   async function saveSettingsFn() {
-    // Show visual feedback immediately
     const btn = $('saveSettings');
-    const originalText = btn.textContent;
-    const originalBg = btn.style.backgroundColor;
-    const originalColor = btn.style.color;
     
+    // 1. Show Green "Saved" State
     btn.textContent = 'KAYDEDİLDİ!';
     btn.style.backgroundColor = '#22c55e'; // Success Green
     btn.style.color = '#ffffff';
+    btn.style.boxShadow = 'none';
 
     const p = preset.value;
     const pre = applyPreset(p);
@@ -496,9 +499,6 @@
     const rest = clamp(Number(restInput.value)||10, 0, 3600);
     
     settings.interval.preset = p;
-    // CRITICAL FIX: If user manually edited, preset is 'custom', so pre is null.
-    // If pre is null, use the manual inputs.
-    // If pre exists (user picked dropdown), use preset defaults.
     settings.interval.rounds = pre ? pre.rounds : rounds;
     settings.interval.work = pre ? pre.work : work;
     settings.interval.rest = pre ? pre.rest : rest;
@@ -507,7 +507,6 @@
     settings.sound = !!soundToggle.checked;
     settings.wake = !!wakeToggle.checked;
 
-    // Apply settings if interval is not running
     if (mode === 'interval' && !intRunning) {
       intPhase = 'work'; intRound = 1;
       intLeftMs = settings.interval.work * 1000;
@@ -518,18 +517,9 @@
     
     await setWakeLock(settings.wake && isRunning());
     saveState();
-
-    // Close dialog after short delay to show success
-    setTimeout(() => {
-        try { dlg.close(); } catch(e) { dlg.removeAttribute('open'); }
-        
-        // Reset button for next time
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.backgroundColor = originalBg;
-            btn.style.color = originalColor;
-        }, 300);
-    }, 500);
+    
+    // Note: Dialog stays OPEN to allow user to see "Saved" or edit more.
+    // Button will revert to Blue if user interacts with inputs (see listeners below).
   }
 
   function setMode(next) {
@@ -556,11 +546,26 @@
     if(pre) { roundsInput.value=pre.rounds; workInput.value=pre.work; restInput.value=pre.rest; }
   });
 
-  // NEW: Force preset to 'custom' when user types in inputs
-  function setCustomPreset() { preset.value = 'custom'; }
-  roundsInput.addEventListener('input', setCustomPreset);
-  workInput.addEventListener('input', setCustomPreset);
-  restInput.addEventListener('input', setCustomPreset);
+  // NEW: Force preset to 'custom' & Reset Button to Blue on Interaction
+  function onInputChange() {
+    preset.value = 'custom';
+    resetSaveButton();
+  }
+  
+  // Generic handler for non-preset inputs to reset button
+  function onSettingInteraction() {
+    resetSaveButton();
+  }
+
+  roundsInput.addEventListener('input', onInputChange);
+  workInput.addEventListener('input', onInputChange);
+  restInput.addEventListener('input', onInputChange);
+  
+  // For other inputs, just reset button state
+  preset.addEventListener('change', onSettingInteraction);
+  vibrationToggle.addEventListener('change', onSettingInteraction);
+  soundToggle.addEventListener('change', onSettingInteraction);
+  wakeToggle.addEventListener('change', onSettingInteraction);
 
   document.addEventListener('keydown', (e) => {
     const key = (e.key||'').toLowerCase();
