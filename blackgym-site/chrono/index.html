@@ -9,13 +9,11 @@
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   
-  <!-- Updated Canonical Link -->
   <link rel="canonical" href="https://blackgym.com.tr/chrono/" />
   <link rel="alternate" href="https://blackgym.com.tr/chrono/" hreflang="tr" />
   
   <meta name="theme-color" content="#0b0b0f" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BLACK GYM" />
   <meta property="og:title" content="Ücretsiz Online Antrenman Kronometresi | BLACK GYM" />
@@ -24,7 +22,6 @@
   <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
-  <!-- Fonts (Optimized) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -35,11 +32,9 @@
 <body class="chrono-page">
   <a href="#main" class="skip-link">İçeriğe atla</a>
 
-  <!-- Header -->
   <header class="site-header" id="top">
     <div class="container nav-container">
       <a href="/" class="logo" aria-label="BLACK GYM Ana Sayfa">
-        <!-- Fixed: Absolute path for image -->
         <img src="/img/logo-mark.png" alt="BLACK GYM logo" class="logo-mark" onerror="this.style.display='none'" />
         <span class="logo-text" aria-hidden="true">
           <span class="logo-text-main">BLACK</span>
@@ -65,12 +60,9 @@
   </header>
 
   <main id="main">
-
-    <!-- FULL SCREEN APP -->
     <section class="chrono-app" aria-label="Kronometre Uygulaması">
       <div class="chrono-container" role="application">
 
-        <!-- Top Row: Tabs + Settings -->
         <div class="top-row">
           <div class="mode-tabs" role="tablist">
             <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">KRONOMETRE</button>
@@ -85,7 +77,6 @@
           </button>
         </div>
 
-        <!-- Time Display -->
         <div class="time-wrap">
           <div id="phaseLabel" class="phase-label"></div>
 
@@ -101,18 +92,15 @@
           <p class="sr-only" id="srPhase"></p>
         </div>
 
-        <!-- Controls -->
         <div class="controls">
           <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
-          <button class="btn btn-secondary" id="lapBtn" disabled>TUR (LAP)</button>
+          <button class="btn btn-secondary" id="lapBtn" disabled>TUR</button>
           <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
         </div>
 
-        <!-- Laps List -->
         <div class="lap-panel">
           <div class="lap-header">
             <span id="lapsTitle">Turlar</span>
-            <span id="lapCount">0 Kayıt</span>
           </div>
           <div class="laps" id="lapsScroll">
             <div id="lapsList"></div>
@@ -125,7 +113,6 @@
       </div>
     </section>
 
-    <!-- SEO & FAQ -->
     <section class="chrono-seo">
       <article>
         <h1>Online Antrenman Kronometresi</h1>
@@ -173,7 +160,6 @@
     </div>
   </footer>
 
-  <!-- Settings Dialog -->
   <dialog id="settingsDialog" aria-label="Ayarlar">
     <div class="sheet-head">
       <div class="h">Ayarlar</div>
