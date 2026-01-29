@@ -1,6 +1,5 @@
 /* ==========================================
-   Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
-   Contact: info@otosmart.com.tr
+   BLACK GYM - Chronometer Styles
    ========================================== */
 
 /* ==========================================
@@ -18,6 +17,7 @@
   --text-muted: #9ca3af;
   --border-soft: #1f2933;
   --danger: #ff6b6b;
+  --success: #22c55e;
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
 }
@@ -217,6 +217,13 @@ a {
   pointer-events: none;
 }
 
+/* Helper class for saved state */
+.btn-success {
+  background-color: var(--success) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
 /* ==========================================
    6. CHRONOMETER PAGE STYLES (Merged)
    ========================================== */
@@ -369,6 +376,7 @@ main {
 }
 
 .time-display.text-work {
+  color: var(--text-main) !important; 
   text-shadow: 0 0 30px rgba(141, 213, 245, 0.6);
 }
 
@@ -385,9 +393,15 @@ main {
   transition: color 0.3s ease;
 }
 
-/* Inherit color for milliseconds when phase changes */
-.time-display.text-work .ms { color: inherit; opacity: 0.8; }
-.time-display.text-rest .ms { color: inherit; opacity: 0.8; }
+.time-display.text-work .ms { 
+  color: var(--accent) !important; 
+  opacity: 1; 
+}
+
+.time-display.text-rest .ms { 
+  color: inherit; 
+  opacity: 0.8; 
+}
 
 /* --- Badges / Subline --- */
 .subline {
@@ -422,7 +436,7 @@ main {
   font-feature-settings: "tnum";
   display: inline-block;
   min-width: 4.8em; /* Reserves space for 00:00.00 */
-  text-align: center; /* Centered as requested */
+  text-align: center;
 }
 
 /* NEW: Style for milliseconds inside badges */
@@ -445,18 +459,15 @@ main {
   grid-column: span 2;
   background-color: var(--accent);
   color: #0b0b0f;
-  /* box-shadow removed for eye comfort */
   box-shadow: none;
   min-height: 54px;
   font-size: 1rem;
   transition: all 0.2s ease;
 }
 
-/* UPDATE: Reduced shadow and removed white background for comfort */
 .btn-main:hover {
   background-color: var(--accent); /* Keep original color */
   filter: brightness(1.1); /* Slightly brighter instead of changing color */
-  /* box-shadow removed */
   box-shadow: none;
   transform: translateY(-1px);
 }
@@ -836,7 +847,7 @@ select:focus {
 .footer-links a:hover { color: var(--accent); }
 
 /* ==========================================
-   8. MOBILE RESPONSIVE TWEAKS (Preserving Improvements)
+   8. MOBILE RESPONSIVE TWEAKS
    ========================================== */
 @media (max-width: 768px) {
   .nav-toggle { display: block; }
@@ -857,8 +868,30 @@ select:focus {
 
 /* Specific Mobile Optimization for Chrono Layout */
 @media (max-width: 480px) {
+  /* Make the App Wrapper flush with edges */
+  .chrono-app {
+    padding: 0;
+    align-items: flex-start; /* Align top so it fills down */
+    /* Ensure height accounts for sticky header */
+    min-height: calc(100vh - 65px); 
+  }
+
+  /* Remove "Card" effect: Border, Shadow, Radius */
   .chrono-container {
-    padding: 20px 14px;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    /* Keep the card's background color as requested, but filling the screen */
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px 16px;
+    min-height: calc(100vh - 65px); /* Ensure background fills screen */
+  }
+
+  /* Remove the internal glow effect on mobile for a cleaner look */
+  .chrono-container::before {
+    display: none;
   }
 
   /* Compact header layout */

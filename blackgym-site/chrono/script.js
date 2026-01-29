@@ -88,7 +88,6 @@
   const resetBtn = $('resetBtn');
   const lapBtn = $('lapBtn');
   const lapsList = $('lapsList');
-  const lapCountLabel = $('lapCount');
   const lapsTitle = $('lapsTitle');
   
   const tabStopwatch = $('tabStopwatch');
@@ -220,12 +219,27 @@
     lapsTitle.textContent = sw ? 'Turlar' : 'Aralıklar';
     lapBtn.textContent = sw ? 'TUR' : 'SONRAKİ';
     
+    // DOM references
+    const badgeLeft = $('badgeLeft');
+    const badgeRight = $('badgeRight');
+
     if(sw) {
-      $('badgeLeft').innerHTML = `Toplam: <b id="totalLabel">${formatBadgeDisplay(currentTotalMs())}</b>`;
-      $('badgeRight').innerHTML = `Tur: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
+      // Stopwatch Mode
+      badgeLeft.style.display = 'none'; 
+      badgeRight.style.display = 'inline-flex';
+      badgeRight.innerHTML = `Tur: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
     } else {
-      $('badgeLeft').innerHTML = `Tur: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
-      $('badgeRight').innerHTML = `${intPhase === 'work' ? 'Çalışma' : 'Dinlenme'}: <b id="lapLabel">${formatBadgeDisplay(intLeftMs)}</b>`;
+      // Interval Mode
+      badgeLeft.style.display = 'inline-flex';
+      badgeLeft.innerHTML = `Tur: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
+      
+      badgeRight.style.display = 'inline-flex';
+      // Total elapsed calculation for initial display
+      const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
+      const currentPhaseElapsed = Math.max(0, phaseTotal - intLeftMs);
+      const totalElapsed = intAccum + currentPhaseElapsed;
+      
+      badgeRight.innerHTML = `Toplam: <b id="lapLabel">${formatBadgeDisplay(totalElapsed)}</b>`;
     }
 
     lapBtn.disabled = sw ? !swRunning : !intRunning;
@@ -267,7 +281,6 @@
   }
 
   function renderLaps() {
-    lapCountLabel.textContent = `${laps.length} Kayıt`;
     if (!laps.length) {
       lapsList.innerHTML = '<div style="padding:10px; color:rgba(156,163,175,.8); text-align:center; font-size:0.9rem;">Henüz kayıt yok.</div>';
       return;
@@ -308,9 +321,7 @@
     const total = currentTotalMs();
     display.innerHTML = formatDisplay(total);
     
-    const tLabel = $('totalLabel');
     const lLabel = $('lapLabel');
-    if(tLabel) tLabel.innerHTML = formatBadgeDisplay(total);
     if(lLabel) lLabel.innerHTML = formatBadgeDisplay(currentLapMs());
 
     rafId = requestAnimationFrame(updateStopwatchFrame);
@@ -324,34 +335,47 @@
     intLeftMs = Math.max(0, intLeftMs - dt);
 
     display.innerHTML = formatDisplay(intLeftMs);
-    const lLabel = $('lapLabel');
-    if(lLabel) lLabel.innerHTML = formatBadgeDisplay(intLeftMs);
+    
+    // Update Total Elapsed Badge in Interval Mode
+    const lLabel = $('lapLabel'); 
+    if(lLabel) {
+      const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
+      const currentPhaseElapsed = phaseTotal - intLeftMs;
+      const totalElapsed = intAccum + currentPhaseElapsed;
+      lLabel.innerHTML = formatBadgeDisplay(totalElapsed);
+    }
 
     if (intLeftMs <= 0) {
+      // Natural Finish Logic
       const phaseDur = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
-      intAccum += phaseDur;
+      
+      intAccum += phaseDur; // Add full duration
+      
       laps.unshift({ totalMs: intAccum, splitMs: phaseDur });
       renderLaps();
       vibrate(50); bip();
 
-      if (intPhase === 'work') {
-        if (settings.interval.rest > 0) {
-          intPhase = 'rest';
-          intLeftMs = settings.interval.rest * 1000;
-        } else {
-          nextRoundOrFinish();
-        }
-      } else {
-        nextRoundOrFinish();
-      }
+      nextRoundOrFinish();
       setTabs(); 
       setUIState();
-      toast(`${intPhase === 'work' ? 'Çalışma' : 'Dinlenme'} Başladı`);
     }
     rafId = requestAnimationFrame(updateIntervalFrame);
   }
 
   function nextRoundOrFinish() {
+    if (intPhase === 'work') {
+      if (settings.interval.rest > 0) {
+        intPhase = 'rest';
+        intLeftMs = settings.interval.rest * 1000;
+      } else {
+        checkNextRound();
+      }
+    } else {
+      checkNextRound();
+    }
+  }
+
+  function checkNextRound() {
     if (intRound >= settings.interval.rounds) {
       stopInterval(true);
     } else {
@@ -416,21 +440,47 @@
       saveState();
       return;
     }
+    
+    // Interval Logic (Manual Skip)
     if (!intRunning) return;
-    intLeftMs = 0; 
+
+    // 1. Calculate actual time spent in this phase
+    const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
+    const actualSpent = Math.max(0, phaseTotal - intLeftMs);
+
+    // 2. Update Accumulator with ACTUAL time, not full phase time
+    intAccum += actualSpent;
+
+    // 3. Record Lap
+    laps.unshift({ totalMs: intAccum, splitMs: actualSpent });
+    renderLaps();
+    
+    // 4. Move to next
+    nextRoundOrFinish();
+    
+    // 5. Update visuals immediately
+    updatePhaseVisuals();
+    display.innerHTML = formatDisplay(intLeftMs); // intLeftMs is updated in nextRoundOrFinish
+    setTabs(); // Updates badges with new total
+    vibrate(12);
+    saveState();
   }
 
   async function resetAll() {
     if (isRunning()) { toast('Önce duraklat'); return; }
+    
     swRunning = false; 
     swAccum = 0;
     if (rafId) cancelAnimationFrame(rafId);
+    
     intRunning = false; 
     intPhase = 'work'; 
     intRound = 1; 
     intLeftMs = settings.interval.work * 1000;
-    intAccum = 0;
+    intAccum = 0; // Correctly reset total accumulator
+    
     laps = [];
+    
     display.innerHTML = mode === 'stopwatch' ? formatDisplay(0) : formatDisplay(intLeftMs);
     renderLaps();
     setTabs(); 
@@ -453,13 +503,11 @@
   }
 
   // ---------- Settings Modal ----------
-  // Reset button state helper
   function resetSaveButton() {
     const btn = $('saveSettings');
     if (!btn) return;
     btn.textContent = 'KAYDET';
-    btn.style.backgroundColor = ''; // Reverts to CSS default (Blue)
-    btn.style.color = '';
+    btn.classList.remove('btn-success');
   }
 
   function openSettings() {
@@ -471,7 +519,7 @@
     soundToggle.checked = settings.sound;
     wakeToggle.checked = settings.wake;
     
-    resetSaveButton(); // Always reset button state when opening
+    resetSaveButton(); 
     
     try { dlg.showModal(); } catch(e) { dlg.setAttribute('open',''); }
   }
@@ -485,12 +533,8 @@
 
   async function saveSettingsFn() {
     const btn = $('saveSettings');
-    
-    // 1. Show Green "Saved" State
     btn.textContent = 'KAYDEDİLDİ!';
-    btn.style.backgroundColor = '#22c55e'; // Success Green
-    btn.style.color = '#ffffff';
-    btn.style.boxShadow = 'none';
+    btn.classList.add('btn-success');
 
     const p = preset.value;
     const pre = applyPreset(p);
@@ -517,9 +561,6 @@
     
     await setWakeLock(settings.wake && isRunning());
     saveState();
-    
-    // Note: Dialog stays OPEN to allow user to see "Saved" or edit more.
-    // Button will revert to Blue if user interacts with inputs (see listeners below).
   }
 
   function setMode(next) {
@@ -546,13 +587,11 @@
     if(pre) { roundsInput.value=pre.rounds; workInput.value=pre.work; restInput.value=pre.rest; }
   });
 
-  // NEW: Force preset to 'custom' & Reset Button to Blue on Interaction
   function onInputChange() {
     preset.value = 'custom';
     resetSaveButton();
   }
   
-  // Generic handler for non-preset inputs to reset button
   function onSettingInteraction() {
     resetSaveButton();
   }
@@ -561,7 +600,6 @@
   workInput.addEventListener('input', onInputChange);
   restInput.addEventListener('input', onInputChange);
   
-  // For other inputs, just reset button state
   preset.addEventListener('change', onSettingInteraction);
   vibrationToggle.addEventListener('change', onSettingInteraction);
   soundToggle.addEventListener('change', onSettingInteraction);
