@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Online Antrenman Kronometresi (HIIT/Tabata/Interval) | BLACK GYM</title>
+  <meta name="description" content="Ücretsiz online antrenman kronometresi: HIIT, Tabata ve interval antrenmanlarında set arası dinlenme ve tur sürelerini takip edin. İndirme yok." />
+
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://blackgym.com.tr/chrono.html" />
+  <link rel="alternate" href="https://blackgym.com.tr/chrono.html" hreflang="tr" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Fonts (Old Version) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="chrono-page">
+  <a href="#main" class="skip-link">İçeriğe atla</a>
+
+  <!-- Header (Old Structure) -->
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <a href="/" class="logo" aria-label="BLACK GYM Ana Sayfa">
+        <img src="img/logo-mark.png" alt="BLACK GYM logo" class="logo-mark" onerror="this.style.display='none'" />
+        <span class="logo-text" aria-hidden="true">
+          <span class="logo-text-main">BLACK</span>
+          <span class="logo-text-accent">GYM</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="primary-nav">
+        <ul class="nav-links">
+          <li><a href="/#about">Stüdyo</a></li>
+          <li><a href="/#facilities">Alanlar</a></li>
+          <li><a href="/#reviews">Yorumlar</a></li>
+          <li><a href="/#hours">Saatler</a></li>
+          <li><a href="/#pricing">Fiyatlar</a></li>
+          <li><a href="/#contact">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- FULL SCREEN APP -->
+    <section class="chrono-app" aria-label="Kronometre Uygulaması">
+      <div class="chrono-container" role="application">
+
+        <!-- Top Row: New functionality (Tabs) + Settings -->
+        <div class="top-row">
+          <div class="mode-tabs" role="tablist">
+            <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">KRONOMETRE</button>
+            <button class="tab" id="tabInterval" role="tab" aria-selected="false">INTERVAL</button>
+          </div>
+
+          <button class="icon-btn" id="settingsBtn" aria-label="Ayarlar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Time Display -->
+        <div class="time-wrap">
+          <div class="time-display" id="display" aria-live="polite">
+            00:00<span class="ms">.00</span>
+          </div>
+
+          <!-- Badges (Modified layout for mobile) -->
+          <div class="subline" id="subline">
+            <span class="badge" id="badgeLeft">Toplam: <b id="totalLabel">00:00.00</b></span>
+            <span class="badge" id="badgeRight">Tur: <b id="lapLabel">00:00.00</b></span>
+          </div>
+
+          <p class="sr-only" id="srPhase"></p>
+        </div>
+
+        <!-- Controls (Mapped to Old Button Classes) -->
+        <div class="controls">
+          <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
+          <button class="btn btn-secondary" id="lapBtn" disabled>TUR (LAP)</button>
+          <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
+        </div>
+
+        <!-- Laps List -->
+        <div class="lap-panel">
+          <div class="lap-header">
+            <span id="lapsTitle">Turlar</span>
+            <span id="lapCount">0 Kayıt</span>
+          </div>
+          <div class="laps" id="lapsScroll">
+            <div id="lapsList"></div>
+          </div>
+        </div>
+
+        <p class="hint" id="hintLine">
+          Kısayollar: <span class="kbd">Space</span> Başlat • <span class="kbd">L</span> Tur • <span class="kbd">R</span> Sıfırla • <span class="kbd">S</span> Ayarlar
+        </p>
+      </div>
+    </section>
+
+    <!-- SEO & FAQ (Old Content) -->
+    <section class="chrono-seo">
+      <article>
+        <h1>Online Antrenman Kronometresi</h1>
+        <p>
+          <strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve
+          <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez;
+          tur kayıtlarınızı saklar, isterseniz <strong>Interval</strong> modunda otomatik çalışma/dinlenme yönetimi sunar.
+        </p>
+
+        <h2>Nasıl Kullanılır?</h2>
+        <p>
+          <strong>BAŞLAT</strong> ile süreyi başlatın. <strong>TUR</strong> ile split (tur) kaydedin.
+          <strong>INTERVAL</strong> modunda çalışma/dinlenme sürelerini ayarlayın.
+        </p>
+        <p>
+          <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
+        </p>
+      </article>
+    </section>
+
+    <section class="chrono-faq">
+      <h2>Sık Sorulan Sorular</h2>
+      <details>
+        <summary>Bu kronometre HIIT ve Tabata antrenmanında kullanılır mı?</summary>
+        <p>Evet. Kronometre modunda TUR ile split alabilir, Interval modunda çalışma/dinlenme sürelerini otomatik yönetebilirsiniz.</p>
+      </details>
+      <details>
+        <summary>İdeal set arası dinlenme süresi ne kadar olmalı?</summary>
+        <p>Genel olarak hipertrofi için 60–90 saniye, güç odaklı setler için 3–5 dakika dinlenme tercih edilir.</p>
+      </details>
+      <details>
+        <summary>Kayıtlarım kaybolur mu?</summary>
+        <p>Tarayıcıda yerel olarak (localStorage) saklanır. Sayfayı yenileseniz bile geri gelir.</p>
+      </details>
+    </section>
+  </main>
+
+  <!-- Footer (Old Structure) -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>© <span id="year"></span> BLACK GYM Performance Tool · Bursa Nilüfer</span>
+      <span class="footer-links">
+        <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:info@blackgym.com.tr">Mail</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- Settings Dialog (New Feature) -->
+  <dialog id="settingsDialog" aria-label="Ayarlar">
+    <div class="sheet-head">
+      <div class="h">Ayarlar</div>
+      <button class="icon-btn" id="closeSettings" aria-label="Kapat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <div class="sheet-body">
+      <div class="grid">
+        <label>
+          Preset
+          <select id="preset">
+            <option value="custom">Özel</option>
+            <option value="tabata">Tabata (20/10 x 8)</option>
+            <option value="hiit">HIIT (40/20 x 10)</option>
+            <option value="boxing">Boxing (3:00/1:00 x 6)</option>
+          </select>
+        </label>
+        <label>
+          Tur (Round)
+          <input id="rounds" type="number" min="1" max="99" inputmode="numeric" value="8" />
+        </label>
+        <label>
+          Çalışma (sn)
+          <input id="work" type="number" min="5" max="3600" inputmode="numeric" value="20" />
+        </label>
+        <label>
+          Dinlenme (sn)
+          <input id="rest" type="number" min="0" max="3600" inputmode="numeric" value="10" />
+        </label>
+      </div>
+
+      <div class="switch">
+        <div class="txt">Titreşim <small>Geçişlerde haptic</small></div>
+        <input id="vibration" type="checkbox" checked />
+      </div>
+
+      <div class="switch">
+        <div class="txt">Ses (Bip) <small>Başlangıç/Bitiş bipi</small></div>
+        <input id="sound" type="checkbox" checked />
+      </div>
+
+      <div class="switch">
+        <div class="txt">Ekranı açık tut <small>Antrenmanda kapanmasın</small></div>
+        <input id="wakelock" type="checkbox" />
+      </div>
+    </div>
+
+    <div class="sheet-actions">
+      <button class="btn btn-secondary" id="copyExport">Kopyala</button>
+      <button class="btn btn-main" id="saveSettings">KAYDET</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

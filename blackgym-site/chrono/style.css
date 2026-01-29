@@ -1,0 +1,913 @@
+/* ==========================================
+   Designer: Yusuf - Otosmart Bilgi Teknolojileri A.Ş.
+   Contact: info@otosmart.com.tr
+   ========================================== */
+
+/* ==========================================
+   1. CSS VARIABLES
+   ========================================== */
+:root {
+  --bg-main: #05070a;
+  --bg-alt: #0b1118;
+  --bg-hero: #020617;
+  --card-bg: #101621;
+  --card-soft: #121826;
+  --accent: #8DD5F5;
+  --accent-soft: rgba(141, 213, 245, 0.16);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-soft: #1f2933;
+  --danger: #ff6b6b;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+
+/* ==========================================
+   2. RESET & BASE STYLES
+   ========================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #020617 0, #020617 35%, #05070a 70%);
+  color: var(--text-main);
+  line-height: 1.6;
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================
+   3. LAYOUT & CONTAINERS
+   ========================================== */
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================
+   4. HEADER & NAVIGATION
+   ========================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: linear-gradient(to bottom, rgba(50, 50, 50, 0.96), rgba(42, 42, 42, 0.92));
+  border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+  backdrop-filter: blur(12px);
+  padding-top: var(--safe-top);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-mark {
+  display: block;
+  height: 42px;
+  width: auto;
+  background: transparent;
+}
+
+.logo-text {
+  display: flex;
+  align-items: baseline;
+  font-family: "Russo One", system-ui;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  font-size: 1.3rem;
+}
+
+.logo-text-main {
+  color: #f9fafb;
+}
+
+.logo-text-accent {
+  color: var(--accent);
+  margin-left: 0.18rem;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--text-main);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: #02111f;
+  font-weight: 600;
+  border-radius: 999px;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ==========================================
+   5. BUTTONS (Global)
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================
+   6. CHRONOMETER PAGE STYLES (Merged)
+   ========================================== */
+main {
+  padding-bottom: calc(20px + var(--safe-bottom));
+}
+
+.chrono-app {
+  min-height: calc(100vh - 78px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.chrono-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.chrono-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* --- Top Row: Tabs + Settings --- */
+.top-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+.mode-tabs {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.18s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tab[aria-selected="true"] {
+  background: var(--accent-soft);
+  color: #fff;
+  border: 1px solid rgba(141, 213, 245, 0.3);
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* --- Display --- */
+.time-wrap {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NEW: Phase Label (Work/Rest) */
+.phase-label {
+  font-family: "Russo One", sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  min-height: 1.8rem; /* Keeps layout stable when empty */
+  transition: color 0.3s ease, opacity 0.3s ease;
+  opacity: 0; /* Hidden by default (Stopwatch mode) */
+}
+
+.phase-label.visible {
+  opacity: 1;
+}
+
+/* Color states */
+.text-work { color: var(--accent) !important; }
+.text-rest { color: #fbbf24 !important; } /* Orange/Amber for rest */
+
+.time-display {
+  font-family: "Montserrat", monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 5rem;
+  color: var(--text-main);
+  text-shadow: 0 0 20px rgba(141, 213, 245, 0.3);
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+.time-display.text-work {
+  text-shadow: 0 0 30px rgba(141, 213, 245, 0.6);
+}
+
+.time-display.text-rest {
+  text-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+}
+
+.time-display .ms {
+  font-size: 0.5em;
+  color: var(--accent); /* Default accent */
+  font-variant-numeric: tabular-nums;
+  margin-left: 6px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Inherit color for milliseconds when phase changes */
+.time-display.text-work .ms { color: inherit; opacity: 0.8; }
+.time-display.text-rest .ms { color: inherit; opacity: 0.8; }
+
+/* --- Badges / Subline --- */
+.subline {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-soft);
+  min-width: 130px;
+  justify-content: center;
+  font-family: 'Montserrat', monospace;
+  font-size: 0.9rem;
+}
+
+.badge b {
+  color: #fff;
+  font-weight: 700;
+  /* Fix for vibrating text: enforce fixed width and tabular numbers */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  display: inline-block;
+  min-width: 4.8em; /* Reserves space for 00:00.00 */
+  text-align: center; /* Centered as requested */
+}
+
+/* NEW: Style for milliseconds inside badges */
+.badge .ms-badge {
+  color: var(--accent); /* BlackGym Blue */
+  font-size: 0.75em;    /* Smaller font */
+}
+
+/* --- Controls --- */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-main {
+  grid-column: span 2;
+  background-color: var(--accent);
+  color: #0b0b0f;
+  /* box-shadow removed for eye comfort */
+  box-shadow: none;
+  min-height: 54px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* UPDATE: Reduced shadow and removed white background for comfort */
+.btn-main:hover {
+  background-color: var(--accent); /* Keep original color */
+  filter: brightness(1.1); /* Slightly brighter instead of changing color */
+  /* box-shadow removed */
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  min-height: 50px;
+}
+
+.btn-secondary:hover {
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-reset {
+  color: var(--danger);
+  border-color: rgba(255, 107, 107, 0.3);
+  min-height: 50px;
+}
+
+.btn-reset:hover {
+  border-color: var(--danger);
+  background-color: rgba(255, 107, 107, 0.1);
+  color: var(--danger);
+}
+
+/* --- Laps List (New Structure, Old Style) --- */
+.lap-panel {
+  position: relative;
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.lap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.laps {
+  max-height: 250px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.laps::-webkit-scrollbar {
+  width: 6px;
+}
+.laps::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.laps::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.lap-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  font-family: 'Montserrat', monospace;
+  transition: background 0.2s;
+}
+
+.lap-item.best {
+  background: rgba(141, 213, 245, 0.08);
+  border-color: rgba(141, 213, 245, 0.2);
+}
+
+.lap-idx {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.lap-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lap-col .label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.lap-col .val {
+  font-size: 1rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.lap-col .val .ms-small {
+  font-size: 0.75em;
+  color: var(--accent);
+}
+
+.hint {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  z-index: 1;
+  position: relative;
+}
+
+.kbd {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.8em;
+  color: #e5e7eb;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0 2px;
+}
+
+/* --- Settings Dialog (Adapted to Old Theme) --- */
+dialog {
+  width: min(500px, 92vw);
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  color: var(--text-main);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  padding: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.sheet-head {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.sheet-head .h {
+  font-family: "Russo One", sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sheet-body {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 10px;
+  background: #05070a;
+  border: 1px solid var(--border-soft);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  margin-top: 12px;
+}
+
+.switch .txt {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.switch .txt small {
+  display: block;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.switch input[type="checkbox"] {
+  width: 44px;
+  height: 24px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+
+.switch input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.switch input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.switch input[type="checkbox"]:checked::after {
+  left: 22px;
+}
+
+.sheet-actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  border: 1px solid var(--accent);
+  padding: 12px 24px;
+  border-radius: 99px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+.toast.show { display: block; }
+
+/* ==========================================
+   7. SEO / FAQ / FOOTER
+   ========================================== */
+.chrono-seo {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1rem 0;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.chrono-seo h1 {
+  font-family: "Russo One", sans-serif;
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.chrono-seo h2 {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.chrono-seo p {
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.mini-cta {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.chrono-faq {
+  max-width: 860px;
+  margin: 3rem auto;
+  padding: 0 1rem 2rem;
+}
+
+.chrono-faq h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.chrono-faq details {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-soft);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.chrono-faq summary {
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chrono-faq p {
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-soft);
+  background: #020617;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links a {
+  margin-left: 1rem;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* ==========================================
+   8. MOBILE RESPONSIVE TWEAKS (Preserving Improvements)
+   ========================================== */
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #020617;
+    border-bottom: 1px solid var(--border-soft);
+    display: none;
+    padding: 1rem;
+  }
+  .nav.is-open { display: block; }
+  .nav-links { flex-direction: column; gap: 0.5rem; }
+  
+  .hint { display: none; }
+  
+  .time-display { font-size: 3.8rem; }
+}
+
+/* Specific Mobile Optimization for Chrono Layout */
+@media (max-width: 480px) {
+  .chrono-container {
+    padding: 20px 14px;
+  }
+
+  /* Compact header layout */
+  .top-row {
+    gap: 8px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .tab {
+    padding: 7px 10px;
+    font-size: 0.7rem;
+  }
+  
+  /* Settings icon sizing */
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  /* Compact Badges */
+  .subline {
+    margin-top: 8px;
+    gap: 6px;
+  }
+  
+  .badge {
+    min-width: auto;
+    flex: 1;
+    padding: 6px 4px;
+    font-size: 0.8rem;
+  }
+  
+  /* Laps list compact */
+  .lap-item {
+    grid-template-columns: 30px 1fr 1fr;
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .controls {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .btn-main { grid-column: auto; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
