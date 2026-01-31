@@ -11,12 +11,10 @@
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://blackgym.com.tr/" />
-  <meta name="theme-color" content="#0b0b0f" />
-
-  <!-- Canonical & Hreflang Tags (CRITICAL SEO UPDATE) -->
   <link rel="alternate" hreflang="tr-TR" href="https://blackgym.com.tr/" />
   <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/index-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://blackgym.com.tr/" />
+  <meta name="theme-color" content="#0b0b0f" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -51,100 +49,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- INTERNAL STYLES -->
-  <style>
-    /* Language Switching Logic */
-    html[lang="en"] .tr-only { display: none !important; }
-    html[lang="tr"] .en-only { display: none !important; }
-
-    /* Hero Card Improvements */
-    .hero-card {
-      background: rgba(16, 20, 28, 0.85) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      border-top: 4px solid #8DD5F5 !important;
-      padding: 2.5rem !important;
-      border-radius: 16px !important;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
-      transition: transform 0.3s ease;
-    }
-    
-    .hero-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(141, 213, 245, 0.3) !important;
-    }
-
-    .hero-card h2 {
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      color: #fff;
-      font-family: 'Russo One', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero-features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 2rem 0;
-    }
-
-    .hero-features-list li {
-      display: flex;
-      align-items: center;
-      color: #cbd5e1;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      line-height: 1.4;
-      font-weight: 500;
-    }
-
-    .check-icon {
-      width: 18px;
-      height: 18px;
-      color: #8DD5F5;
-      margin-right: 12px;
-      flex-shrink: 0;
-    }
-
-    .hero-card-link {
-      display: inline-flex;
-      align-items: center;
-      color: #8DD5F5;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-      background: none !important;
-      padding: 0 !important;
-    }
-
-    .hero-card-link .arrow {
-      margin-left: 8px;
-      transition: transform 0.3s ease;
-      font-size: 1.2rem;
-    }
-
-    .hero-card-link:hover {
-      color: #fff;
-    }
-
-    .hero-card-link:hover .arrow {
-      transform: translateX(5px);
-    }
-    
-    @media (max-width: 768px) {
-      .hero-card {
-        padding: 1.5rem !important;
-      }
-    }
-  </style>
-
-  <!-- LocalBusiness Schema (Updated: Phone format fix) -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -170,7 +75,6 @@
       "latitude": 40.1885,
       "longitude": 29.0636
     },
-    "hasMap": "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7",
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Nilüfer" },
       { "@type": "AdministrativeArea", "name": "Konak" },
@@ -205,7 +109,6 @@
   }
   </script>
   
-  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -253,6 +156,19 @@
         "text": "Üyeliğiniz başladığında vücut analizi yapılır, hedefleriniz belirlenir ve antrenörlerimiz tarafından tamamen size özel bir antrenman ve beslenme programı oluşturulur."
       }
     }]
+  }
+  </script>
+
+  <!-- VideoObject Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Black Gym Turu",
+    "description": "Bursa Nilüfer Black Gym spor salonu tanıtım videosu.",
+    "thumbnailUrl": "https://blackgym.com.tr/img/hero-gym.jpg",
+    "uploadDate": "2024-01-01",
+    "contentUrl": "https://blackgym.com.tr/video/blackgym-tour.mp4"
   }
   </script>
 
@@ -304,7 +220,6 @@
 
   <main id="main">
     <section id="hero" class="hero">
-      <!-- Video Updated: preload="none" added -->
       <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="none" poster="img/hero-gym.jpg">
         <source src="video/hero-desktop.mp4" type="video/mp4" />
       </video>
@@ -446,7 +361,7 @@
       <div class="container">
         <p class="video-tagline reveal">BLACK GYM'İ 1 DAKİKADA HİSSET.</p>
         <div class="video-wrapper reveal">
-          <video class="gallery-video" controls autoplay muted loop playsinline poster="img/hero-gym.jpg" id="tour-video">
+          <video class="gallery-video" controls playsinline preload="none" poster="img/hero-gym.jpg" id="tour-video">
             <source src="video/blackgym-tour.mp4" type="video/mp4" />
           </video>
         </div>
@@ -618,10 +533,10 @@
     </section>
     
     <section id="faq" class="section">
-      <div class="container"> <!-- Removed 'section-layout' class -->
+      <div class="container"> <!-- Removed 'section-layout' class so grid is centered -->
         <div class="reveal">
           <h2>Sıkça Sorulan Sorular</h2>
-          <div class="faq-grid"> <!-- Changed class to faq-grid -->
+          <div class="faq-grid"> <!-- Use new faq-grid for multi-column layout -->
             <div class="highlight-item">
               <span class="highlight-title">Black Gym Bursa nerede?</span>
               <p>Black Gym, Bursa Nilüfer Konak Mahallesi'nde, Odunluk ve Beşevler'e yürüme mesafesinde, Kudret Sokak Elit Park Plaza'da hizmet vermektedir.</p>
@@ -694,42 +609,5 @@
 
   <script src="script.js" defer></script>
 
-  <!-- Hero Animation & Style Overrides (Inline for critical path) -->
-  <style>
-    .hero-title-dynamic {
-      display: inline-block;
-      color: #8DD5F5 !important;
-      white-space: nowrap !important;
-      transition: opacity 0.9s ease !important;
-    }
-    .hero-title-dynamic.hidden { opacity: 0 !important; }
-    
-    /* Navigation link specifically for language switch */
-    .lang-switch-link {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--border-soft);
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-left: 1.5rem;
-      font-family: 'Montserrat', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-    .lang-switch-link:hover {
-      background: var(--accent);
-      color: #020617;
-      border-color: var(--accent);
-    }
-    @media (max-width: 768px) {
-        .lang-switch-link { margin: 0 auto 1rem; }
-    }
-  </style>
 </body>
 </html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://blackgym.com.tr/sitemap.xml
