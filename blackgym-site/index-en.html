@@ -10,13 +10,11 @@
   <meta name="description" content="Premium gym in Bursa Nilufer; serving Odunluk, Besevler, Ihsaniye, Camlica and Konak. Fitness, Pilates, Zumba and Sauna. Try for free!" />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="theme-color" content="#0b0b0f" />
-
-  <!-- Canonical & Hreflang Tags (CRITICAL SEO UPDATE) -->
   <link rel="canonical" href="https://blackgym.com.tr/index-en.html" />
   <link rel="alternate" hreflang="tr-TR" href="https://blackgym.com.tr/" />
   <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/index-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://blackgym.com.tr/" />
+  <meta name="theme-color" content="#0b0b0f" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -161,6 +159,19 @@
         "text": "When membership starts, body analysis is done, goals are set, and a fully personalized training and nutrition program is created by our trainers."
       }
     }]
+  }
+  </script>
+
+  <!-- VideoObject Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Black Gym Tour",
+    "description": "Promotional video of Black Gym fitness center in Bursa Nilufer.",
+    "thumbnailUrl": "https://blackgym.com.tr/img/hero-gym.jpg",
+    "uploadDate": "2024-01-01",
+    "contentUrl": "https://blackgym.com.tr/video/blackgym-tour.mp4"
   }
   </script>
 
@@ -603,42 +614,5 @@
 
   <script src="script.js" defer></script>
 
-  <!-- Hero Animation & Style Overrides (Inline for critical path) -->
-  <style>
-    .hero-title-dynamic {
-      display: inline-block;
-      color: #8DD5F5 !important;
-      white-space: nowrap !important;
-      transition: opacity 0.9s ease !important;
-    }
-    .hero-title-dynamic.hidden { opacity: 0 !important; }
-    
-    /* Navigation link specifically for language switch */
-    .lang-switch-link {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--border-soft);
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-left: 1.5rem;
-      font-family: 'Montserrat', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-    .lang-switch-link:hover {
-      background: var(--accent);
-      color: #020617;
-      border-color: var(--accent);
-    }
-    @media (max-width: 768px) {
-        .lang-switch-link { margin: 0 auto 1rem; }
-    }
-  </style>
 </body>
 </html>
