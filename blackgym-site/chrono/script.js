@@ -12,21 +12,18 @@
     return `${fmt2(m)}:${fmt2(s)}.${fmt2(cs)}`;
   };
 
-  // Main display (large text)
   const formatDisplay = (ms) => {
     const t = formatMs(ms);
     const [mmss, cs] = t.split('.');
     return `${mmss}<span class="ms">.${cs}</span>`;
   };
 
-  // List display (small blue ms)
   const formatListDisplay = (ms) => {
     const t = formatMs(ms);
     const [mmss, cs] = t.split('.');
     return `${mmss}<span class="ms-small">.${cs}</span>`;
   };
 
-  // Badge display (small blue ms for badges)
   const formatBadgeDisplay = (ms) => {
     const t = formatMs(ms);
     const [mmss, cs] = t.split('.');
@@ -176,7 +173,6 @@
   let rafId = null;
   let laps = Array.isArray(initial.laps) ? initial.laps : [];
 
-  // Interval State
   let intRunning = false;
   let intPhase = 'work';
   let intRound = 1;
@@ -193,20 +189,32 @@
     display.classList.remove('text-work', 'text-rest');
     phaseLabel.classList.remove('text-work', 'text-rest', 'visible');
     
+    // STOPWATCH MODE: Use &nbsp; to reserve vertical space (keeps timer alignment)
     if (mode === 'stopwatch') {
-      phaseLabel.textContent = '';
+      phaseLabel.innerHTML = '&nbsp;';
       return;
     }
 
+    // INTERVAL MODE
     phaseLabel.classList.add('visible');
-    if (intPhase === 'work') {
-      phaseLabel.textContent = 'ÇALIŞMA';
-      phaseLabel.classList.add('text-work');
-      display.classList.add('text-work');
+
+    // Check "Ready" state (Interval initialized but not running)
+    const fullWorkTime = settings.interval.work * 1000;
+    const isReady = (!intRunning && intRound === 1 && intPhase === 'work' && Math.abs(intLeftMs - fullWorkTime) < 100);
+
+    if (isReady) {
+      phaseLabel.textContent = 'BAŞLA';
+      // Default color (White) applied automatically
     } else {
-      phaseLabel.textContent = 'DİNLENME';
-      phaseLabel.classList.add('text-rest');
-      display.classList.add('text-rest');
+      if (intPhase === 'work') {
+        phaseLabel.textContent = 'ÇALIŞMA';
+        phaseLabel.classList.add('text-work');
+        display.classList.add('text-work');
+      } else {
+        phaseLabel.textContent = 'DİNLENME';
+        phaseLabel.classList.add('text-rest');
+        display.classList.add('text-rest');
+      }
     }
   }
 
@@ -219,22 +227,18 @@
     lapsTitle.textContent = sw ? 'Turlar' : 'Aralıklar';
     lapBtn.textContent = sw ? 'TUR' : 'SONRAKİ';
     
-    // DOM references
     const badgeLeft = $('badgeLeft');
     const badgeRight = $('badgeRight');
 
     if(sw) {
-      // Stopwatch Mode
       badgeLeft.style.display = 'none'; 
       badgeRight.style.display = 'inline-flex';
       badgeRight.innerHTML = `Tur: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
     } else {
-      // Interval Mode
       badgeLeft.style.display = 'inline-flex';
       badgeLeft.innerHTML = `Tur: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
       
       badgeRight.style.display = 'inline-flex';
-      // Total elapsed calculation for initial display
       const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
       const currentPhaseElapsed = Math.max(0, phaseTotal - intLeftMs);
       const totalElapsed = intAccum + currentPhaseElapsed;
@@ -336,7 +340,6 @@
 
     display.innerHTML = formatDisplay(intLeftMs);
     
-    // Update Total Elapsed Badge in Interval Mode
     const lLabel = $('lapLabel'); 
     if(lLabel) {
       const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
@@ -346,11 +349,8 @@
     }
 
     if (intLeftMs <= 0) {
-      // Natural Finish Logic
       const phaseDur = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
-      
-      intAccum += phaseDur; // Add full duration
-      
+      intAccum += phaseDur; 
       laps.unshift({ totalMs: intAccum, splitMs: phaseDur });
       renderLaps();
       vibrate(50); bip();
@@ -416,12 +416,14 @@
       setUIState();
       await setWakeLock(false);
       saveState();
+      updatePhaseVisuals(); // Update to "BAŞLA" or paused state
       vibrate(10);
       return;
     }
     intRunning = true;
     intLastTick = 0;
     setUIState();
+    updatePhaseVisuals(); // Update to Work/Rest
     if (settings.wake) await setWakeLock(true);
     rafId = requestAnimationFrame(updateIntervalFrame);
     saveState();
@@ -441,27 +443,21 @@
       return;
     }
     
-    // Interval Logic (Manual Skip)
     if (!intRunning) return;
 
-    // 1. Calculate actual time spent in this phase
     const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
     const actualSpent = Math.max(0, phaseTotal - intLeftMs);
 
-    // 2. Update Accumulator with ACTUAL time, not full phase time
     intAccum += actualSpent;
 
-    // 3. Record Lap
     laps.unshift({ totalMs: intAccum, splitMs: actualSpent });
     renderLaps();
     
-    // 4. Move to next
     nextRoundOrFinish();
     
-    // 5. Update visuals immediately
     updatePhaseVisuals();
-    display.innerHTML = formatDisplay(intLeftMs); // intLeftMs is updated in nextRoundOrFinish
-    setTabs(); // Updates badges with new total
+    display.innerHTML = formatDisplay(intLeftMs);
+    setTabs();
     vibrate(12);
     saveState();
   }
@@ -477,7 +473,7 @@
     intPhase = 'work'; 
     intRound = 1; 
     intLeftMs = settings.interval.work * 1000;
-    intAccum = 0; // Correctly reset total accumulator
+    intAccum = 0;
     
     laps = [];
     
@@ -497,6 +493,7 @@
     rafId = null;
     await setWakeLock(false);
     setUIState();
+    updatePhaseVisuals();
     saveState();
     toast(finished ? 'Antrenman Bitti! 🔥' : 'Duraklatıldı');
     vibrate(finished ? 80 : 10);

@@ -341,7 +341,7 @@ main {
   justify-content: center;
   align-items: center;
   
-  /* Spacing - REDUCED MORE as requested */
+  /* Spacing */
   margin: 1.2rem auto 1.5rem; 
   padding: 0;
   
@@ -355,12 +355,15 @@ main {
 .phase-label {
   font-family: "Russo One", sans-serif;
   font-size: 1.5rem;
+  line-height: 1.2; /* Explicit line-height for consistent spacing */
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
-  min-height: 1.8rem;
+  min-height: 1.8rem; /* Matches font-size * line-height (1.5 * 1.2) */
   transition: color 0.3s ease, opacity 0.3s ease;
   opacity: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .phase-label.visible {
