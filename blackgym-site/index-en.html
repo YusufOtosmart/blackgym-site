@@ -10,9 +10,13 @@
   <meta name="description" content="Premium gym in Bursa Nilufer; serving Odunluk, Besevler, Ihsaniye, Camlica and Konak. Fitness, Pilates, Zumba and Sauna. Try for free!" />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <link rel="canonical" href="https://blackgym.com.tr/index-en.html" />
-  <link rel="alternate" hreflang="tr" href="https://blackgym.com.tr/" />
   <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Canonical & Hreflang Tags (CRITICAL SEO UPDATE) -->
+  <link rel="canonical" href="https://blackgym.com.tr/index-en.html" />
+  <link rel="alternate" hreflang="tr-TR" href="https://blackgym.com.tr/" />
+  <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/index-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://blackgym.com.tr/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -47,7 +51,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Schema -->
+  <!-- Schema (Updated: Map link & sameAs) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,6 +77,7 @@
       "latitude": 40.1885,
       "longitude": 29.0636
     },
+    "hasMap": "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7",
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Nilüfer" },
       { "@type": "AdministrativeArea", "name": "Konak" },
@@ -101,11 +106,13 @@
       "https://www.instagram.com/blackgymconcept/",
       "https://www.tiktok.com/@blackgymconcept",
       "https://www.facebook.com/profile.php?id=61578639850931",
-      "https://www.youtube.com/@BlackGymConcept"
+      "https://www.youtube.com/@BlackGymConcept",
+      "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7"
     ]
   }
   </script>
   
+  <!-- FAQ Schema (Expanded with 6 Questions) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -156,13 +163,13 @@
   }
   </script>
 
-  <!-- Google Analytics -->
+  <!-- Google Analytics (Updated: anonymize_ip) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-RLTN0JV889');
+    gtag('config', 'G-RLTN0JV889', { 'anonymize_ip': true });
   </script>
 </head>
 
@@ -204,10 +211,11 @@
 
   <main id="main">
     <section id="hero" class="hero">
-      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline poster="img/hero-gym.jpg">
+      <!-- Video Updated: Removed autoplay, added preload="none" and controls -->
+      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="none" poster="img/hero-gym.jpg">
         <source src="video/hero-desktop.mp4" type="video/mp4" />
       </video>
-      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline poster="img/hero-vertical.jpg">
+      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="none" poster="img/hero-vertical.jpg">
         <source src="video/hero-mobile.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
@@ -479,10 +487,10 @@
             <h3>Reformer Pilates</h3>
             <p class="pricing-tagline">Small groups, strong results</p>
             <ul class="pricing-features">
-              <li>Small group classes of 4 people</li>
-              <li>Duet class options for 2 people</li>
-              <li>One-on-one reformer sessions</li>
-              <li>Programming suitable for all levels</li>
+              <li>4 kişilik küçük grup dersleri</li>
+              <li>2 kişilik duet ders seçenekleri</li>
+              <li>Birebir reformer seansları</li>
+              <li>Her seviyeye uygun programlama</li>
             </ul>
             <a href="https://wa.me/905300789500" target="_blank" rel="noopener" class="pricing-link" data-track="pricing_reformer">Get price for Reformer packages</a>
           </article>

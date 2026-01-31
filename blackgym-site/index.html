@@ -10,9 +10,13 @@
   <meta name="description" content="Bursa Nilüfer'de; Odunluk, Beşevler, İhsaniye, Çamlıca ve Konak bölgesine hizmet veren premium spor salonu. Fitness, Pilates, Zumba ve Sauna. Ücretsiz dene!" />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <link rel="canonical" href="https://blackgym.com.tr/" />
-  <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/index-en.html" />
   <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Canonical & Hreflang Tags (CRITICAL SEO UPDATE) -->
+  <link rel="canonical" href="https://blackgym.com.tr/" />
+  <link rel="alternate" hreflang="tr-TR" href="https://blackgym.com.tr/" />
+  <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/index-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://blackgym.com.tr/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -47,7 +51,100 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Schema -->
+  <!-- INTERNAL STYLES -->
+  <style>
+    /* Language Switching Logic */
+    html[lang="en"] .tr-only { display: none !important; }
+    html[lang="tr"] .en-only { display: none !important; }
+
+    /* Hero Card Improvements */
+    .hero-card {
+      background: rgba(16, 20, 28, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-top: 4px solid #8DD5F5 !important;
+      padding: 2.5rem !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(141, 213, 245, 0.3) !important;
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #fff;
+      font-family: 'Russo One', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+
+    .hero-features-list li {
+      display: flex;
+      align-items: center;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      color: #8DD5F5;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .hero-card-link {
+      display: inline-flex;
+      align-items: center;
+      color: #8DD5F5;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      background: none !important;
+      padding: 0 !important;
+    }
+
+    .hero-card-link .arrow {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .hero-card-link:hover {
+      color: #fff;
+    }
+
+    .hero-card-link:hover .arrow {
+      transform: translateX(5px);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card {
+        padding: 1.5rem !important;
+      }
+    }
+  </style>
+
+  <!-- LocalBusiness Schema (Updated: Map link & sameAs) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,6 +170,7 @@
       "latitude": 40.1885,
       "longitude": 29.0636
     },
+    "hasMap": "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7",
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Nilüfer" },
       { "@type": "AdministrativeArea", "name": "Konak" },
@@ -101,11 +199,13 @@
       "https://www.instagram.com/blackgymconcept/",
       "https://www.tiktok.com/@blackgymconcept",
       "https://www.facebook.com/profile.php?id=61578639850931",
-      "https://www.youtube.com/@BlackGymConcept"
+      "https://www.youtube.com/@BlackGymConcept",
+      "https://maps.app.goo.gl/XiwvtmfhMvHgJ2Ku7"
     ]
   }
   </script>
   
+  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -156,13 +256,13 @@
   }
   </script>
 
-  <!-- Google Analytics -->
+  <!-- Google Analytics (Updated: anonymize_ip) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLTN0JV889"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-RLTN0JV889');
+    gtag('config', 'G-RLTN0JV889', { 'anonymize_ip': true });
   </script>
 </head>
 
@@ -204,10 +304,11 @@
 
   <main id="main">
     <section id="hero" class="hero">
-      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline poster="img/hero-gym.jpg">
+      <!-- Video Updated: preload="none" added -->
+      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="none" poster="img/hero-gym.jpg">
         <source src="video/hero-desktop.mp4" type="video/mp4" />
       </video>
-      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline poster="img/hero-vertical.jpg">
+      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="none" poster="img/hero-vertical.jpg">
         <source src="video/hero-mobile.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
@@ -345,7 +446,8 @@
       <div class="container">
         <p class="video-tagline reveal">BLACK GYM'İ 1 DAKİKADA HİSSET.</p>
         <div class="video-wrapper reveal">
-          <video class="gallery-video" controls autoplay muted loop playsinline poster="img/hero-gym.jpg" id="tour-video">
+          <!-- Video Updated: Removed autoplay, added preload="none" and controls -->
+          <video class="gallery-video" controls playsinline preload="none" poster="img/hero-gym.jpg" id="tour-video">
             <source src="video/blackgym-tour.mp4" type="video/mp4" />
           </video>
         </div>
@@ -517,10 +619,10 @@
     </section>
     
     <section id="faq" class="section">
-      <div class="container"> <!-- Removed 'section-layout' class -->
+      <div class="container"> <!-- Removed 'section-layout' class so grid is centered -->
         <div class="reveal">
           <h2>Sıkça Sorulan Sorular</h2>
-          <div class="faq-grid"> <!-- Changed class to faq-grid -->
+          <div class="faq-grid"> <!-- Use new faq-grid for multi-column layout -->
             <div class="highlight-item">
               <span class="highlight-title">Black Gym Bursa nerede?</span>
               <p>Black Gym, Bursa Nilüfer Konak Mahallesi'nde, Odunluk ve Beşevler'e yürüme mesafesinde, Kudret Sokak Elit Park Plaza'da hizmet vermektedir.</p>
