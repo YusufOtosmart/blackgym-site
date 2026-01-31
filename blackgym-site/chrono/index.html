@@ -4,24 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>Online Antrenman Kronometresi (HIIT/Tabata/Interval) | BLACK GYM</title>
-  <meta name="description" content="Ücretsiz online antrenman kronometresi: HIIT, Tabata ve interval antrenmanlarında set arası dinlenme ve tur sürelerini takip edin. İndirme yok." />
+  <!-- SEO UPDATE: Keywords added to Title -->
+  <title>Online Kronometre | BLACK GYM Bursa Nilüfer (Odunluk, Beşevler, İhsaniye)</title>
+  
+  <!-- SEO UPDATE: Keywords added to Description -->
+  <meta name="description" content="Bursa Nilüfer, Konak, Odunluk, Beşevler, İhsaniye, Karaman ve Kültür bölgeleri için ücretsiz online antrenman kronometresi. HIIT ve Tabata sayacı." />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   
   <link rel="canonical" href="https://blackgym.com.tr/chrono/" />
   <link rel="alternate" href="https://blackgym.com.tr/chrono/" hreflang="tr" />
+  <link rel="alternate" href="https://blackgym.com.tr/chrono/?lang=en" hreflang="en" />
   
   <meta name="theme-color" content="#0b0b0f" />
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BLACK GYM" />
-  <meta property="og:title" content="Ücretsiz Online Antrenman Kronometresi | BLACK GYM" />
-  <meta property="og:description" content="HIIT, Tabata ve interval antrenmanları için ücretsiz online kronometre. Set arası dinlenme ve tur sürelerini kaydedin." />
+  <meta property="og:title" content="Online Kronometre | BLACK GYM Bursa Nilüfer" />
+  <meta property="og:description" content="Bursa Nilüfer'in kalbinde sporcular için geliştirilmiş ücretsiz online antrenman kronometresi. Konak, Odunluk, Beşevler için ideal." />
   <meta property="og:url" content="https://blackgym.com.tr/chrono/" />
   <meta property="og:image" content="https://blackgym.com.tr/img/hero-gym.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -32,6 +38,7 @@
 <body class="chrono-page">
   <a href="#main" class="skip-link">İçeriğe atla</a>
 
+  <!-- Header -->
   <header class="site-header" id="top">
     <div class="container nav-container">
       <a href="/" class="logo" aria-label="BLACK GYM Ana Sayfa">
@@ -60,9 +67,12 @@
   </header>
 
   <main id="main">
+
+    <!-- FULL SCREEN APP -->
     <section class="chrono-app" aria-label="Kronometre Uygulaması">
       <div class="chrono-container" role="application">
 
+        <!-- Top Row: Tabs + Settings -->
         <div class="top-row">
           <div class="mode-tabs" role="tablist">
             <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">KRONOMETRE</button>
@@ -77,6 +87,7 @@
           </button>
         </div>
 
+        <!-- Time Display -->
         <div class="time-wrap">
           <div id="phaseLabel" class="phase-label"></div>
 
@@ -92,15 +103,18 @@
           <p class="sr-only" id="srPhase"></p>
         </div>
 
+        <!-- Controls -->
         <div class="controls">
           <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
           <button class="btn btn-secondary" id="lapBtn" disabled>TUR</button>
           <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
         </div>
 
+        <!-- Laps List -->
         <div class="lap-panel">
           <div class="lap-header">
             <span id="lapsTitle">Turlar</span>
+            <span id="lapCount">0 Kayıt</span>
           </div>
           <div class="laps" id="lapsScroll">
             <div id="lapsList"></div>
@@ -113,39 +127,46 @@
       </div>
     </section>
 
+    <!-- SEO & FAQ -->
     <section class="chrono-seo">
       <article>
-        <h1>Online Antrenman Kronometresi</h1>
-        <p>
+        <h1 id="seo_h1">Online Antrenman Kronometresi</h1>
+        <p id="seo_p1">
           <strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve
           <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez;
           tur kayıtlarınızı saklar, isterseniz <strong>Interval</strong> modunda otomatik çalışma/dinlenme yönetimi sunar.
         </p>
 
-        <h2>Nasıl Kullanılır?</h2>
-        <p>
+        <h2 id="seo_h2">Nasıl Kullanılır?</h2>
+        <p id="seo_p2">
           <strong>BAŞLAT</strong> ile süreyi başlatın. <strong>TUR</strong> ile split (tur) kaydedin.
           <strong>INTERVAL</strong> modunda çalışma/dinlenme sürelerini ayarlayın.
         </p>
+        
+        <!-- SEO UPDATE: New Location Paragraph -->
+        <p id="seo_loc" style="color:rgba(229,231,235,0.7); margin-top:1.5rem; font-size:0.92rem;">
+          Bursa Nilüfer'in merkezi noktaları <strong>Konak, Odunluk, Beşevler, İhsaniye, Karaman, Kültür ve Çamlıca</strong> bölgelerinden kolayca ulaşabileceğiniz BLACK GYM ile sporun farkını yaşayın.
+        </p>
+
         <p>
-          <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
+          <a id="contact_btn" class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
         </p>
       </article>
     </section>
 
     <section class="chrono-faq">
-      <h2>Sık Sorulan Sorular</h2>
+      <h2 id="faq_h2">Sık Sorulan Sorular</h2>
       <details>
-        <summary>Bu kronometre HIIT ve Tabata antrenmanında kullanılır mı?</summary>
-        <p>Evet. Kronometre modunda TUR ile split alabilir, Interval modunda çalışma/dinlenme sürelerini otomatik yönetebilirsiniz.</p>
+        <summary id="faq_q1">Bu kronometre HIIT ve Tabata antrenmanında kullanılır mı?</summary>
+        <p id="faq_a1">Evet. Kronometre modunda TUR ile split alabilir, Interval modunda çalışma/dinlenme sürelerini otomatik yönetebilirsiniz.</p>
       </details>
       <details>
-        <summary>İdeal set arası dinlenme süresi ne kadar olmalı?</summary>
-        <p>Genel olarak hipertrofi için 60–90 saniye, güç odaklı setler için 3–5 dakika dinlenme tercih edilir.</p>
+        <summary id="faq_q2">İdeal set arası dinlenme süresi ne kadar olmalı?</summary>
+        <p id="faq_a2">Genel olarak hipertrofi için 60–90 saniye, güç odaklı setler için 3–5 dakika dinlenme tercih edilir.</p>
       </details>
       <details>
-        <summary>Kayıtlarım kaybolur mu?</summary>
-        <p>Tarayıcıda yerel olarak (localStorage) saklanır. Sayfayı yenileseniz bile geri gelir.</p>
+        <summary id="faq_q3">Kayıtlarım kaybolur mu?</summary>
+        <p id="faq_a3">Tarayıcıda yerel olarak (localStorage) saklanır. Sayfayı yenileseniz bile geri gelir.</p>
       </details>
     </section>
   </main>
@@ -160,9 +181,10 @@
     </div>
   </footer>
 
+  <!-- Settings Dialog -->
   <dialog id="settingsDialog" aria-label="Ayarlar">
     <div class="sheet-head">
-      <div class="h">Ayarlar</div>
+      <div class="h" id="set_h_title">Ayarlar</div>
       <button class="icon-btn" id="closeSettings" aria-label="Kapat">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
       </button>
@@ -171,7 +193,7 @@
     <div class="sheet-body">
       <div class="grid">
         <label>
-          Preset
+          <span id="lbl_preset">Preset</span>
           <select id="preset">
             <option value="custom">Özel</option>
             <option value="tabata">Tabata (20/10 x 8)</option>
@@ -180,31 +202,31 @@
           </select>
         </label>
         <label>
-          Tur (Round)
+          <span id="lbl_rounds">Tur (Round)</span>
           <input id="rounds" type="number" min="1" max="99" inputmode="numeric" value="8" />
         </label>
         <label>
-          Çalışma (sn)
+          <span id="lbl_work">Çalışma (sn)</span>
           <input id="work" type="number" min="5" max="3600" inputmode="numeric" value="20" />
         </label>
         <label>
-          Dinlenme (sn)
+          <span id="lbl_rest">Dinlenme (sn)</span>
           <input id="rest" type="number" min="0" max="3600" inputmode="numeric" value="10" />
         </label>
       </div>
 
       <div class="switch">
-        <div class="txt">Titreşim <small>Geçişlerde haptic</small></div>
+        <div class="txt"><span id="txt_vib">Titreşim</span> <small id="sub_vib">Geçişlerde haptic</small></div>
         <input id="vibration" type="checkbox" checked />
       </div>
 
       <div class="switch">
-        <div class="txt">Ses (Bip) <small>Başlangıç/Bitiş bipi</small></div>
+        <div class="txt"><span id="txt_sound">Ses (Bip)</span> <small id="sub_sound">Başlangıç/Bitiş bipi</small></div>
         <input id="sound" type="checkbox" checked />
       </div>
 
       <div class="switch">
-        <div class="txt">Ekranı açık tut <small>Antrenmanda kapanmasın</small></div>
+        <div class="txt"><span id="txt_wake">Ekranı açık tut</span> <small id="sub_wake">Antrenmanda kapanmasın</small></div>
         <input id="wakelock" type="checkbox" />
       </div>
     </div>

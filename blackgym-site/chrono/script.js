@@ -1,4 +1,163 @@
 (function() {
+  // ---------- Localization Configuration ----------
+  const translations = {
+    tr: {
+      // Meta
+      pageTitle: "Online Kronometre | BLACK GYM Bursa Nilüfer",
+      
+      // UI
+      start: 'BAŞLAT', pause: 'DURAKLAT', resume: 'DEVAM ET',
+      lap: 'TUR', next: 'SONRAKİ', reset: 'SIFIRLA',
+      work: 'ÇALIŞMA', rest: 'DİNLENME', begin: 'BAŞLA',
+      total: 'Toplam', lapLabel: 'Tur',
+      lapsHeader: 'Turlar', 
+      
+      // Tabs
+      tabSw: 'KRONOMETRE', tabInt: 'INTERVAL',
+      
+      // Hints & Toast
+      hint: 'Kısayollar: Space Başlat • L Tur • R Sıfırla • S Ayarlar',
+      saved: 'KAYDEDİLDİ!', save: 'KAYDET',
+      finished: 'Antrenman Bitti! 🔥', paused: 'Duraklatıldı',
+      resetToast: 'Sıfırlandı', pauseFirst: 'Önce duraklat',
+      noLaps: 'Henüz kayıt yok. Başlatıp TUR ile split al.',
+      copy: 'Kopyala', copied: 'Kopyalandı',
+      modeSw: 'Kronometre', modeInt: 'Interval',
+
+      // Settings
+      set_title: 'Ayarlar',
+      set_preset: 'Preset', set_custom: 'Özel',
+      set_rounds: 'Tur (Round)',
+      set_work: 'Çalışma (sn)',
+      set_rest: 'Dinlenme (sn)',
+      set_vib: 'Titreşim', set_vib_sub: 'Geçişlerde haptic',
+      set_sound: 'Ses (Bip)', set_sound_sub: 'Başlangıç/Bitiş bipi',
+      set_wake: 'Ekranı açık tut', set_wake_sub: 'Antrenmanda kapanmasın',
+      set_copy: 'KAYITLARI KOPYALA',
+
+      // SEO Content
+      seo_h1: 'Online Antrenman Kronometresi',
+      seo_p1: '<strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez; tur kayıtlarınızı saklar, isterseniz <strong>Interval</strong> modunda otomatik çalışma/dinlenme yönetimi sunar.',
+      seo_h2: 'Nasıl Kullanılır?',
+      seo_p2: '<strong>BAŞLAT</strong> ile süreyi başlatın. <strong>TUR</strong> ile split (tur) kaydedin. <strong>INTERVAL</strong> modunda çalışma/dinlenme sürelerini ayarlayın.',
+      
+      // NEW LOCAL SEO TEXT
+      seo_loc: 'Bursa Nilüfer\'in merkezi noktaları <strong>Konak, Odunluk, Beşevler, İhsaniye, Karaman, Kültür ve Çamlıca</strong> bölgelerinden kolayca ulaşabileceğiniz BLACK GYM ile sporun farkını yaşayın.',
+      
+      contact_btn: 'BLACK GYM ile iletişime geç →',
+
+      // FAQ
+      faq_h2: 'Sık Sorulan Sorular',
+      faq_q1: 'Bu kronometre HIIT ve Tabata antrenmanında kullanılır mı?',
+      faq_a1: 'Evet. Kronometre modunda TUR ile split alabilir, Interval modunda çalışma/dinlenme sürelerini otomatik yönetebilirsiniz.',
+      faq_q2: 'İdeal set arası dinlenme süresi ne kadar olmalı?',
+      faq_a2: 'Genel olarak hipertrofi için 60–90 saniye, güç odaklı setler için 3–5 dakika dinlenme tercih edilir.',
+      faq_q3: 'Kayıtlarım kaybolur mu?',
+      faq_a3: 'Tarayıcıda yerel olarak (localStorage) saklanır. Sayfayı yenileseniz bile geri gelir.'
+    },
+    en: {
+      // Meta
+      pageTitle: "Online Workout Chronometer | BLACK GYM Bursa Nilufer",
+
+      // UI
+      start: 'START', pause: 'PAUSE', resume: 'RESUME',
+      lap: 'LAP', next: 'NEXT', reset: 'RESET',
+      work: 'WORK', rest: 'REST', begin: 'START', // Updated from BEGIN to START
+      total: 'Total', lapLabel: 'Lap',
+      lapsHeader: 'Laps',
+      
+      // Tabs
+      tabSw: 'CHRONO', tabInt: 'INTERVAL', // Updated from STOPWATCH to CHRONO
+
+      // Hints & Toast
+      hint: 'Shortcuts: Space Start • L Lap • R Reset • S Settings',
+      saved: 'SAVED!', save: 'SAVE',
+      finished: 'Workout Complete! 🔥', paused: 'Paused',
+      resetToast: 'Reset', pauseFirst: 'Pause first',
+      noLaps: 'No records yet. Start and press LAP.',
+      copy: 'Copy', copied: 'Copied',
+      modeSw: 'Chrono', modeInt: 'Interval', // Updated from Stopwatch to Chrono
+
+      // Settings
+      set_title: 'Settings',
+      set_preset: 'Preset', set_custom: 'Custom',
+      set_rounds: 'Rounds',
+      set_work: 'Work (s)',
+      set_rest: 'Rest (s)',
+      set_vib: 'Vibration', set_vib_sub: 'Haptic feedback',
+      set_sound: 'Sound (Beep)', set_sound_sub: 'Start/End beep',
+      set_wake: 'Keep screen on', set_wake_sub: 'Prevent sleep',
+      set_copy: 'COPY LOGS',
+
+      // SEO Content
+      seo_h1: 'Online Workout Chronometer',
+      seo_p1: '<strong>Free online chronometer</strong> to track <strong>HIIT</strong>, <strong>Tabata</strong>, and <strong>interval workout</strong> sessions. No download required; easily record laps, rest times, and manage your workout intervals automatically.',
+      seo_h2: 'How to Use?',
+      seo_p2: 'Press <strong>START</strong> to begin. Use <strong>LAP</strong> to record splits. In <strong>INTERVAL</strong> mode, configure your work/rest periods.',
+      
+      // NEW LOCAL SEO TEXT (EN)
+      seo_loc: 'Located in the heart of Bursa Nilüfer, serving <strong>Konak, Odunluk, Beşevler, İhsaniye, Karaman, Kültür, and Çamlıca</strong>. Experience the difference with BLACK GYM.',
+      
+      contact_btn: 'Contact BLACK GYM →',
+
+      // FAQ
+      faq_h2: 'Frequently Asked Questions',
+      faq_q1: 'Can I use this for HIIT and Tabata?',
+      faq_a1: 'Yes. You can use the Interval mode to set custom work/rest periods suitable for HIIT and Tabata.',
+      faq_q2: 'What is the ideal rest period?',
+      faq_a2: 'Generally, 60–90 seconds for hypertrophy and 3–5 minutes for strength training.',
+      faq_q3: 'Are my records saved?',
+      faq_a3: 'Yes, records are stored locally in your browser (localStorage). They remain even if you refresh.'
+    }
+  };
+
+  // Detect Language: Check URL param (?lang=en) OR Browser Language
+  const urlParams = new URLSearchParams(window.location.search);
+  const browserLang = navigator.language || navigator.userLanguage; 
+  const lang = urlParams.get('lang') === 'en' || browserLang.startsWith('en') ? 'en' : 'tr';
+  const T = translations[lang];
+
+  // Apply Translations immediately
+  document.title = T.pageTitle;
+  document.documentElement.lang = lang;
+  
+  function applyText(id, text) { const el = document.getElementById(id); if(el) el.innerHTML = text; }
+  
+  // UI Elements
+  applyText('tabStopwatch', T.tabSw);
+  applyText('tabInterval', T.tabInt);
+  applyText('startStopBtn', T.start);
+  applyText('lapBtn', T.lap);
+  applyText('resetBtn', T.reset);
+  applyText('lapsTitle', T.lapsHeader);
+  applyText('hintLine', T.hint);
+  
+  // Settings
+  applyText('set_h_title', T.set_title);
+  applyText('lbl_preset', T.set_preset);
+  document.querySelector('#preset option[value="custom"]').textContent = T.set_custom;
+  applyText('lbl_rounds', T.set_rounds);
+  applyText('lbl_work', T.set_work);
+  applyText('lbl_rest', T.set_rest);
+  applyText('txt_vib', T.set_vib); applyText('sub_vib', T.set_vib_sub);
+  applyText('txt_sound', T.set_sound); applyText('sub_sound', T.set_sound_sub);
+  applyText('txt_wake', T.set_wake); applyText('sub_wake', T.set_wake_sub);
+  applyText('copyExport', T.set_copy);
+  applyText('saveSettings', T.save);
+
+  // SEO & FAQ
+  applyText('seo_h1', T.seo_h1);
+  applyText('seo_p1', T.seo_p1);
+  applyText('seo_h2', T.seo_h2);
+  applyText('seo_p2', T.seo_p2);
+  applyText('seo_loc', T.seo_loc); // Apply Location Text
+  applyText('contact_btn', T.contact_btn);
+  applyText('faq_h2', T.faq_h2);
+  applyText('faq_q1', T.faq_q1); applyText('faq_a1', T.faq_a1);
+  applyText('faq_q2', T.faq_q2); applyText('faq_a2', T.faq_a2);
+  applyText('faq_q3', T.faq_q3); applyText('faq_a3', T.faq_a3);
+
+
   // ---------- Helpers ----------
   const $ = (id) => document.getElementById(id);
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
@@ -173,6 +332,7 @@
   let rafId = null;
   let laps = Array.isArray(initial.laps) ? initial.laps : [];
 
+  // Interval State
   let intRunning = false;
   let intPhase = 'work';
   let intRound = 1;
@@ -189,29 +349,26 @@
     display.classList.remove('text-work', 'text-rest');
     phaseLabel.classList.remove('text-work', 'text-rest', 'visible');
     
-    // STOPWATCH MODE: Use &nbsp; to reserve vertical space (keeps timer alignment)
     if (mode === 'stopwatch') {
       phaseLabel.innerHTML = '&nbsp;';
       return;
     }
 
-    // INTERVAL MODE
     phaseLabel.classList.add('visible');
 
-    // Check "Ready" state (Interval initialized but not running)
+    // Check "Ready" state
     const fullWorkTime = settings.interval.work * 1000;
     const isReady = (!intRunning && intRound === 1 && intPhase === 'work' && Math.abs(intLeftMs - fullWorkTime) < 100);
 
     if (isReady) {
-      phaseLabel.textContent = 'BAŞLA';
-      // Default color (White) applied automatically
+      phaseLabel.textContent = T.begin;
     } else {
       if (intPhase === 'work') {
-        phaseLabel.textContent = 'ÇALIŞMA';
+        phaseLabel.textContent = T.work;
         phaseLabel.classList.add('text-work');
         display.classList.add('text-work');
       } else {
-        phaseLabel.textContent = 'DİNLENME';
+        phaseLabel.textContent = T.rest;
         phaseLabel.classList.add('text-rest');
         display.classList.add('text-rest');
       }
@@ -224,26 +381,28 @@
     tabStopwatch.setAttribute('aria-selected', sw ? 'true' : 'false');
     tabInterval.setAttribute('aria-selected', sw ? 'false' : 'true');
 
-    lapsTitle.textContent = sw ? 'Turlar' : 'Aralıklar';
-    lapBtn.textContent = sw ? 'TUR' : 'SONRAKİ';
+    lapsTitle.textContent = sw ? T.lapsHeader : T.intervalHeader;
+    lapBtn.textContent = sw ? T.lap : T.next;
     
     const badgeLeft = $('badgeLeft');
     const badgeRight = $('badgeRight');
 
     if(sw) {
+      // Stopwatch Mode
       badgeLeft.style.display = 'none'; 
       badgeRight.style.display = 'inline-flex';
-      badgeRight.innerHTML = `Tur: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
+      badgeRight.innerHTML = `${T.lapLabel}: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
     } else {
+      // Interval Mode
       badgeLeft.style.display = 'inline-flex';
-      badgeLeft.innerHTML = `Tur: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
+      badgeLeft.innerHTML = `${T.lapLabel}: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
       
       badgeRight.style.display = 'inline-flex';
       const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
       const currentPhaseElapsed = Math.max(0, phaseTotal - intLeftMs);
       const totalElapsed = intAccum + currentPhaseElapsed;
       
-      badgeRight.innerHTML = `Toplam: <b id="lapLabel">${formatBadgeDisplay(totalElapsed)}</b>`;
+      badgeRight.innerHTML = `${T.total}: <b id="lapLabel">${formatBadgeDisplay(totalElapsed)}</b>`;
     }
 
     lapBtn.disabled = sw ? !swRunning : !intRunning;
@@ -258,7 +417,13 @@
 
     updatePhaseVisuals();
 
-    startStopBtn.textContent = isRunning() ? 'DURAKLAT' : 'BAŞLAT';
+    // Smart button text update based on state
+    if (isRunning()) {
+      startStopBtn.textContent = (mode === 'stopwatch' && swAccum > 0) ? T.resume : T.pause;
+    } else {
+      startStopBtn.textContent = T.start;
+    }
+
     display.innerHTML = sw ? formatDisplay(currentTotalMs()) : formatDisplay(intLeftMs);
 
     renderLaps();
@@ -280,13 +445,17 @@
 
   function setUIState() {
     const running = isRunning();
-    startStopBtn.textContent = running ? 'DURAKLAT' : (mode === 'stopwatch' && swAccum > 0 ? 'DEVAM ET' : 'BAŞLAT');
+    if (mode === 'stopwatch') {
+       startStopBtn.textContent = running ? T.pause : (swAccum > 0 ? T.resume : T.start);
+    } else {
+       startStopBtn.textContent = running ? T.pause : T.start;
+    }
     lapBtn.disabled = !running;
   }
 
   function renderLaps() {
     if (!laps.length) {
-      lapsList.innerHTML = '<div style="padding:10px; color:rgba(156,163,175,.8); text-align:center; font-size:0.9rem;">Henüz kayıt yok.</div>';
+      lapsList.innerHTML = `<div style="padding:10px; color:rgba(156,163,175,.8); text-align:center; font-size:0.9rem;">${T.noLaps}</div>`;
       return;
     }
     
@@ -296,21 +465,23 @@
       laps.forEach((x, i) => { if (x.splitMs > 0 && x.splitMs < best) { best = x.splitMs; bestIdx = i; } });
     }
 
+    // Determine column headers based on language/mode
+    const leftHeader = mode === 'stopwatch' ? 'Split' : (lang === 'tr' ? 'Süre' : 'Time');
+    const rightHeader = T.total;
+
     const items = laps.map((x, i) => {
       const idx = laps.length - i;
       const bestClass = (mode === 'stopwatch' && i === bestIdx) ? 'best' : '';
-      const leftLabel = mode === 'stopwatch' ? 'Split' : 'Süre';
-      const rightLabel = mode === 'stopwatch' ? 'Toplam' : 'Toplam';
       
       return `
         <div class="lap-item ${bestClass}">
           <div class="lap-idx">#${idx}</div>
           <div class="lap-col">
-            <div class="label">${leftLabel}</div>
+            <div class="label">${leftHeader}</div>
             <div class="val">${formatListDisplay(x.splitMs)}</div>
           </div>
           <div class="lap-col">
-            <div class="label">${rightLabel}</div>
+            <div class="label">${rightHeader}</div>
             <div class="val">${formatListDisplay(x.totalMs)}</div>
           </div>
         </div>
@@ -416,14 +587,14 @@
       setUIState();
       await setWakeLock(false);
       saveState();
-      updatePhaseVisuals(); // Update to "BAŞLA" or paused state
+      updatePhaseVisuals();
       vibrate(10);
       return;
     }
     intRunning = true;
     intLastTick = 0;
     setUIState();
-    updatePhaseVisuals(); // Update to Work/Rest
+    updatePhaseVisuals();
     if (settings.wake) await setWakeLock(true);
     rafId = requestAnimationFrame(updateIntervalFrame);
     saveState();
@@ -463,7 +634,7 @@
   }
 
   async function resetAll() {
-    if (isRunning()) { toast('Önce duraklat'); return; }
+    if (isRunning()) { toast(T.pauseFirst); return; }
     
     swRunning = false; 
     swAccum = 0;
@@ -484,7 +655,7 @@
     await setWakeLock(false);
     saveState();
     vibrate(20);
-    toast('Sıfırlandı');
+    toast(T.resetToast);
   }
 
   async function stopInterval(finished) {
@@ -495,7 +666,7 @@
     setUIState();
     updatePhaseVisuals();
     saveState();
-    toast(finished ? 'Antrenman Bitti! 🔥' : 'Duraklatıldı');
+    toast(finished ? T.finished : T.paused);
     vibrate(finished ? 80 : 10);
   }
 
@@ -503,7 +674,7 @@
   function resetSaveButton() {
     const btn = $('saveSettings');
     if (!btn) return;
-    btn.textContent = 'KAYDET';
+    btn.textContent = T.save;
     btn.classList.remove('btn-success');
   }
 
@@ -530,7 +701,7 @@
 
   async function saveSettingsFn() {
     const btn = $('saveSettings');
-    btn.textContent = 'KAYDEDİLDİ!';
+    btn.textContent = T.saved;
     btn.classList.add('btn-success');
 
     const p = preset.value;
@@ -561,12 +732,12 @@
   }
 
   function setMode(next) {
-    if(isRunning()) { toast('Önce duraklat'); return; }
+    if(isRunning()) { toast(T.pauseFirst); return; }
     mode = next;
     saveState();
     setTabs();
     setUIState();
-    toast(next === 'stopwatch' ? 'Kronometre' : 'Interval');
+    toast(next === 'stopwatch' ? T.modeSw : T.modeInt);
   }
 
   // Listeners
@@ -578,6 +749,12 @@
   settingsBtn.addEventListener('click', openSettings);
   closeSettings.addEventListener('click', () => { try{dlg.close();}catch(e){dlg.removeAttribute('open');} });
   saveSettings.addEventListener('click', saveSettingsFn);
+  
+  copyExport.addEventListener('click', () => {
+      const text = `BLACK GYM ${mode === 'stopwatch' ? T.modeSw : T.modeInt}\n` + 
+                   laps.map((l,i) => `#${laps.length-i} ${formatMs(l.splitMs)} / ${formatMs(l.totalMs)}`).join('\n');
+      navigator.clipboard.writeText(text).then(() => toast(T.copied));
+  });
   
   preset.addEventListener('change', () => {
     const pre = applyPreset(preset.value);
