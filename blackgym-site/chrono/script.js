@@ -2,13 +2,13 @@
   // Determine language based on HTML lang attribute
   const lang = document.documentElement.lang === 'en' ? 'en' : 'tr';
 
-  // Dynamic Dictionary (Buttons, States, Toasts)
+  // Dynamic Dictionary (Interactive Elements Only)
   const T = {
     tr: {
       start: 'BAŞLAT', pause: 'DURAKLAT', resume: 'DEVAM ET',
       lap: 'TUR', next: 'SONRAKİ', reset: 'SIFIRLA',
       work: 'ÇALIŞMA', rest: 'DİNLENME', begin: 'BAŞLA',
-      lapLabel: 'Tur', total: 'Toplam', // Fixed: Added 'total' key
+      lapLabel: 'Tur', total: 'Toplam',
       lapsHeader: 'Turlar', intervalHeader: 'Aralıklar',
       save: 'KAYDET', saved: 'KAYDEDİLDİ!',
       finished: 'Antrenman Bitti! 🔥', paused: 'Duraklatıldı',
@@ -21,7 +21,7 @@
       start: 'START', pause: 'PAUSE', resume: 'RESUME',
       lap: 'LAP', next: 'NEXT', reset: 'RESET',
       work: 'WORK', rest: 'REST', begin: 'START',
-      lapLabel: 'Lap', total: 'Total', // Fixed: Added 'total' key
+      lapLabel: 'Lap', total: 'Total',
       lapsHeader: 'Laps', intervalHeader: 'Intervals',
       save: 'SAVE', saved: 'SAVED!',
       finished: 'Workout Complete! 🔥', paused: 'Paused',
@@ -119,16 +119,13 @@
   const lapBtn = $('lapBtn');
   const lapsList = $('lapsList');
   const lapsTitle = $('lapsTitle');
-  
   const tabStopwatch = $('tabStopwatch');
   const tabInterval = $('tabInterval');
   const settingsBtn = $('settingsBtn');
-
   const dlg = $('settingsDialog');
   const closeSettings = $('closeSettings');
   const saveSettings = $('saveSettings');
   const copyExport = $('copyExport');
-
   const preset = $('preset');
   const roundsInput = $('rounds');
   const workInput = $('work');
@@ -136,7 +133,6 @@
   const vibrationToggle = $('vibration');
   const soundToggle = $('sound');
   const wakeToggle = $('wakelock');
-  
   const navToggle = $('navToggle');
   const nav = $('primary-nav');
   const year = $('year');
@@ -263,15 +259,15 @@
 
     if(sw) {
       // Stopwatch Mode
-      badgeLeft.style.display = 'none'; 
-      badgeRight.style.display = 'inline-flex';
+      badgeLeft.classList.add('is-hidden'); 
+      badgeRight.classList.remove('is-hidden');
       badgeRight.innerHTML = `${T.lapLabel}: <b id="lapLabel">${formatBadgeDisplay(currentLapMs())}</b>`;
     } else {
       // Interval Mode
-      badgeLeft.style.display = 'inline-flex';
+      badgeLeft.classList.remove('is-hidden');
       badgeLeft.innerHTML = `${T.lapLabel}: <b id="totalLabel">${intRound}/${settings.interval.rounds}</b>`;
       
-      badgeRight.style.display = 'inline-flex';
+      badgeRight.classList.remove('is-hidden');
       const phaseTotal = (intPhase === 'work' ? settings.interval.work : settings.interval.rest) * 1000;
       const currentPhaseElapsed = Math.max(0, phaseTotal - intLeftMs);
       const totalElapsed = intAccum + currentPhaseElapsed;
@@ -291,7 +287,7 @@
 
     updatePhaseVisuals();
 
-    // Smart button text update based on state
+    // Smart button text update
     if (isRunning()) {
       startStopBtn.textContent = (mode === 'stopwatch' && swAccum > 0) ? T.resume : T.pause;
     } else {
@@ -339,9 +335,8 @@
       laps.forEach((x, i) => { if (x.splitMs > 0 && x.splitMs < best) { best = x.splitMs; bestIdx = i; } });
     }
 
-    // Determine column headers based on language/mode
     const leftHeader = mode === 'stopwatch' ? 'Split' : (lang === 'tr' ? 'Süre' : 'Time');
-    const rightHeader = T.total; // Uses corrected dictionary key
+    const rightHeader = T.total;
 
     const items = laps.map((x, i) => {
       const idx = laps.length - i;
