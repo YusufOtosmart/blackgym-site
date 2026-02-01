@@ -203,13 +203,10 @@
         <ul class="nav-links">
           <li><a href="#about">Stüdyo</a></li>
           <li><a href="#facilities">Alanlar</a></li>
-          <li><a href="#reviews">Yorumlar</a></li>
-          <li><a href="#hours">Saatler</a></li>
           <li><a href="#pricing">Fiyatlar</a></li>
+          <li><a href="chrono/index.html" style="color: #8DD5F5;">Kronometre</a></li>
           <li><a href="blog-vucut-gelistirme.html" style="color: #8DD5F5;">BLOG</a></li>
           <li><a href="#contact">İletişim</a></li>
-          <!-- Mobile Only Chrono Link -->
-          <li class="mobile-nav-item"><a href="chrono/index.html">Kronometre</a></li>
           <li>
             <a href="index-en.html" class="lang-switch-link" aria-label="Switch to English">
               <strong>TR</strong> <span style="opacity:0.5">EN</span>
@@ -246,6 +243,10 @@
             <a href="booking.html" class="btn primary" data-track="hero_booking">ÜCRETSİZ DENE</a>
             <a href="#pricing" class="btn ghost" data-track="hero_pricing">ÖZEL FİYATLAR</a>
           </div>
+
+          <p class="hero-mini-links">
+            <a href="/chrono/" data-track="hero_chrono">⏱ Online Kronometre (HIIT/Tabata)</a>
+          </p>
 
           <div class="hero-meta">
             <div>
@@ -535,10 +536,10 @@
     </section>
     
     <section id="faq" class="section">
-      <div class="container">
+      <div class="container"> <!-- Removed 'section-layout' class so grid is centered -->
         <div class="reveal">
           <h2>Sıkça Sorulan Sorular</h2>
-          <div class="faq-grid">
+          <div class="faq-grid"> <!-- Changed class to faq-grid -->
             <div class="highlight-item">
               <span class="highlight-title">Black Gym Bursa nerede?</span>
               <p>Black Gym, Bursa Nilüfer Konak Mahallesi'nde, Odunluk ve Beşevler'e yürüme mesafesinde, Kudret Sokak Elit Park Plaza'da hizmet vermektedir.</p>
@@ -592,7 +593,6 @@
         <path d="M12 2V4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </span>
-    <span class="chrono-text">Kronometre</span>
   </a>
 
   <a href="https://wa.me/905300789500" class="whatsapp-floating" target="_blank" rel="noopener" aria-label="WhatsApp" data-track="floating_whatsapp">
@@ -610,43 +610,5 @@
   </div>
 
   <script src="script.js" defer></script>
-
-  <!-- Hero Animation & Style Overrides (Inline for critical path) -->
-  <style>
-    .hero-title-dynamic {
-      display: inline-block;
-      color: #8DD5F5 !important;
-      white-space: nowrap !important;
-      transition: opacity 0.9s ease !important;
-    }
-    .hero-title-dynamic.hidden { opacity: 0 !important; }
-    
-    /* Navigation link specifically for language switch */
-    .lang-switch-link {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--border-soft);
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-left: 1.5rem;
-      font-family: 'Montserrat', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-    .lang-switch-link:hover {
-      background: var(--accent);
-      color: #020617;
-      border-color: var(--accent);
-    }
-    @media (max-width: 768px) {
-        .lang-switch-link { margin: 0 auto 1rem; }
-    }
-  </style>
 </body>
 </html>
