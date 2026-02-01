@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>Online Antrenman Kronometresi (HIIT/Tabata/Interval) | BLACK GYM</title>
-  <meta name="description" content="Ücretsiz online antrenman kronometresi: HIIT, Tabata ve interval antrenmanlarında set arası dinlenme ve tur sürelerini takip edin. İndirme yok." />
+  <title>Online Stopwatch & Interval Timer (HIIT/Tabata) | BLACK GYM</title>
+  <meta name="description" content="Free online stopwatch and interval timer for HIIT, Tabata, and workout tracking. Record laps, set custom work/rest intervals. No download required." />
 
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  
-  <link rel="canonical" href="https://blackgym.com.tr/chrono/" />
-  <link rel="alternate" href="https://blackgym.com.tr/chrono/" hreflang="tr" />
-  <link rel="alternate" href="https://blackgym.com.tr/chrono/index-en.html" hreflang="en" />
-  <link rel="alternate" href="https://blackgym.com.tr/chrono/index-en.html" hreflang="x-default" />
-  
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://blackgym.com.tr/chrono/index-en.html" />
+  <link rel="alternate" hreflang="tr" href="https://blackgym.com.tr/chrono/" />
+  <link rel="alternate" hreflang="en" href="https://blackgym.com.tr/chrono/index-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://blackgym.com.tr/chrono/index-en.html" />
+
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b0b0f" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BLACK GYM" />
-  <meta property="og:title" content="Ücretsiz Online Antrenman Kronometresi | BLACK GYM" />
-  <meta property="og:description" content="HIIT, Tabata ve interval antrenmanları için ücretsiz online kronometre. Set arası dinlenme ve tur sürelerini kaydedin." />
-  <meta property="og:url" content="https://blackgym.com.tr/chrono/" />
+  <meta property="og:title" content="Free Online Stopwatch & Interval Timer | BLACK GYM" />
+  <meta property="og:description" content="Professional online timer for HIIT and Tabata. Track your laps and rest periods easily." />
+  <meta property="og:url" content="https://blackgym.com.tr/chrono/index-en.html" />
   <meta property="og:image" content="https://blackgym.com.tr/img/chrono-preview.jpg" />
-  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +36,7 @@
 <body class="chrono-page">
   <header class="site-header" id="top">
     <div class="container nav-container">
-      <a href="/" class="logo" aria-label="BLACK GYM Ana Sayfa">
+      <a href="/" class="logo" aria-label="BLACK GYM Home">
         <img src="/img/logo-mark.png" alt="BLACK GYM logo" class="logo-mark" onerror="this.style.display='none'" />
         <span class="logo-text" aria-hidden="true">
           <span class="logo-text-main">BLACK</span>
@@ -45,22 +45,22 @@
       </a>
 
       <div class="lang-switch">
-        <a href="index-en.html" class="lang-link" title="Switch to English">EN</a>
+        <a href="index.html" class="lang-link" title="Türkçe versiyona geç">TR</a>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="chrono-app" aria-label="Kronometre Uygulaması">
+    <section class="chrono-app" aria-label="Chronometer Application">
       <div class="chrono-container" role="application">
 
         <div class="top-row">
           <div class="mode-tabs" role="tablist">
-            <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">KRONOMETRE</button>
+            <button class="tab" id="tabStopwatch" role="tab" aria-selected="true">CHRONO</button>
             <button class="tab" id="tabInterval" role="tab" aria-selected="false">INTERVAL</button>
           </div>
 
-          <button class="icon-btn" id="settingsBtn" aria-label="Ayarlar">
+          <button class="icon-btn" id="settingsBtn" aria-label="Settings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"></circle>
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0 .33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -76,22 +76,22 @@
           </div>
 
           <div class="subline" id="subline">
-            <span class="badge" id="badgeLeft">Toplam: <b id="totalLabel">00:00.00</b></span>
-            <span class="badge" id="badgeRight">Tur: <b id="lapLabel">00:00.00</b></span>
+            <span class="badge" id="badgeLeft" style="display:none">Total: <b id="totalLabel">00:00.00</b></span>
+            <span class="badge" id="badgeRight">Lap: <b id="lapLabel">00:00.00</b></span>
           </div>
 
           <p class="sr-only" id="srPhase"></p>
         </div>
 
         <div class="controls">
-          <button class="btn btn-main" id="startStopBtn">BAŞLAT</button>
-          <button class="btn btn-secondary" id="lapBtn" disabled>TUR</button>
-          <button class="btn btn-secondary btn-reset" id="resetBtn">SIFIRLA</button>
+          <button class="btn btn-main" id="startStopBtn">START</button>
+          <button class="btn btn-secondary" id="lapBtn" disabled>LAP</button>
+          <button class="btn btn-secondary btn-reset" id="resetBtn">RESET</button>
         </div>
 
         <div class="lap-panel">
           <div class="lap-header">
-            <span id="lapsTitle">Turlar</span>
+            <span id="lapsTitle">Laps</span>
           </div>
           <div class="laps" id="lapsScroll">
             <div id="lapsList"></div>
@@ -99,7 +99,7 @@
         </div>
 
         <p class="hint" id="hintLine">
-          Kısayollar: <span class="kbd">Space</span> Başlat • <span class="kbd">L</span> Tur • <span class="kbd">R</span> Sıfırla • <span class="kbd">S</span> Ayarlar
+          Shortcuts: <span class="kbd">Space</span> Start • <span class="kbd">L</span> Lap • <span class="kbd">R</span> Reset • <span class="kbd">S</span> Settings
         </p>
       </div>
     </section>
@@ -107,49 +107,49 @@
     <!-- SEO Content -->
     <section class="chrono-seo">
       <article>
-        <h1>Online Antrenman Kronometresi</h1>
+        <h1>Online Stopwatch & Interval Timer</h1>
         <p>
-          <strong>Ücretsiz online kronometre</strong> ile <strong>HIIT</strong>, <strong>Tabata</strong> ve
-          <strong>interval antrenman</strong> aralıklarını pratik şekilde takip edin. İndirme gerektirmez;
-          tur kayıtlarınızı saklar, isterseniz <strong>Interval</strong> modunda otomatik çalışma/dinlenme yönetimi sunar.
+          <strong>Free online stopwatch</strong> to track <strong>HIIT</strong>, <strong>Tabata</strong>, and
+          <strong>interval workout</strong> sessions. No download required;
+          easily record laps, rest times, and manage your workout intervals automatically.
         </p>
 
-        <h2>Nasıl Kullanılır?</h2>
+        <h2>How to Use?</h2>
         <p>
-          <strong>BAŞLAT</strong> ile süreyi başlatın. <strong>TUR</strong> ile split (tur) kaydedin.
-          <strong>INTERVAL</strong> modunda çalışma/dinlenme sürelerini ayarlayın.
+          Press <strong>START</strong> to begin the timer. Use <strong>LAP</strong> to record splits.
+          In <strong>INTERVAL</strong> mode, configure your work/rest periods.
         </p>
         
         <p class="seo-loc" style="color:rgba(229,231,235,0.7); margin-top:1.5rem; font-size:0.92rem;">
-          Bursa Nilüfer'in merkezi noktaları <strong>Konak, Odunluk, Beşevler, İhsaniye, Karaman, Kültür ve Çamlıca</strong> bölgelerinden kolayca ulaşabileceğiniz BLACK GYM ile sporun farkını yaşayın.
+          Created by <strong>BLACK GYM</strong> in Bursa Nilüfer.
         </p>
 
         <p>
-          <a class="mini-cta" href="/#contact">BLACK GYM ile iletişime geç →</a>
+          <a class="mini-cta" href="/#contact">Contact BLACK GYM →</a>
         </p>
       </article>
     </section>
 
     <section class="chrono-faq">
-      <h2>Sık Sorulan Sorular</h2>
+      <h2>Frequently Asked Questions</h2>
       <details>
-        <summary>Bu kronometre HIIT ve Tabata antrenmanında kullanılır mı?</summary>
-        <p>Evet. Kronometre modunda TUR ile split alabilir, Interval modunda çalışma/dinlenme sürelerini otomatik yönetebilirsiniz.</p>
+        <summary>Can I use this for HIIT and Tabata?</summary>
+        <p>Yes. You can use the Interval mode to set custom work/rest periods suitable for HIIT and Tabata.</p>
       </details>
       <details>
-        <summary>İdeal set arası dinlenme süresi ne kadar olmalı?</summary>
-        <p>Genel olarak hipertrofi için 60–90 saniye, güç odaklı setler için 3–5 dakika dinlenme tercih edilir.</p>
+        <summary>What is the ideal rest period?</summary>
+        <p>Generally, 60–90 seconds for hypertrophy and 3–5 minutes for strength training. It depends on your goals.</p>
       </details>
       <details>
-        <summary>Kayıtlarım kaybolur mu?</summary>
-        <p>Tarayıcıda yerel olarak (localStorage) saklanır. Sayfayı yenileseniz bile geri gelir.</p>
+        <summary>Are my records saved?</summary>
+        <p>Yes, records are stored locally in your browser (localStorage). They will remain even if you refresh the page.</p>
       </details>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <span>© <span id="year"></span> BLACK GYM Performance Tool · Bursa Nilüfer</span>
+      <span>© <span id="year"></span> BLACK GYM Performance Tool</span>
       <span class="footer-links">
         <a href="https://www.instagram.com/blackgymconcept/" target="_blank" rel="noopener">Instagram</a>
         <a href="mailto:info@blackgym.com.tr">Mail</a>
@@ -158,10 +158,10 @@
   </footer>
 
   <!-- Settings Dialog -->
-  <dialog id="settingsDialog" aria-label="Ayarlar">
+  <dialog id="settingsDialog" aria-label="Settings">
     <div class="sheet-head">
-      <div class="h">Ayarlar</div>
-      <button class="icon-btn" id="closeSettings" aria-label="Kapat">
+      <div class="h">Settings</div>
+      <button class="icon-btn" id="closeSettings" aria-label="Close">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
       </button>
     </div>
@@ -169,47 +169,47 @@
     <div class="sheet-body">
       <div class="grid">
         <label>
-          Hazır Ayar (Preset)
+          Preset
           <select id="preset">
-            <option value="custom">Özel</option>
+            <option value="custom">Custom</option>
             <option value="tabata">Tabata (20/10 x 8)</option>
             <option value="hiit">HIIT (40/20 x 10)</option>
-            <option value="boxing">Boks (3:00/1:00 x 6)</option>
+            <option value="boxing">Boxing (3:00/1:00 x 6)</option>
           </select>
         </label>
         <label>
-          Tur Sayısı (Round)
+          Rounds
           <input id="rounds" type="number" min="1" max="99" inputmode="numeric" value="8" />
         </label>
         <label>
-          Çalışma (sn)
+          Work (s)
           <input id="work" type="number" min="5" max="3600" inputmode="numeric" value="20" />
         </label>
         <label>
-          Dinlenme (sn)
+          Rest (s)
           <input id="rest" type="number" min="0" max="3600" inputmode="numeric" value="10" />
         </label>
       </div>
 
       <div class="switch">
-        <div class="txt">Titreşim <small>Geçişlerde haptic</small></div>
+        <div class="txt">Vibration <small>Haptic feedback</small></div>
         <input id="vibration" type="checkbox" checked />
       </div>
 
       <div class="switch">
-        <div class="txt">Ses (Bip) <small>Başlangıç/Bitiş bipi</small></div>
+        <div class="txt">Sound (Beep) <small>Start/End beep</small></div>
         <input id="sound" type="checkbox" checked />
       </div>
 
       <div class="switch">
-        <div class="txt">Ekranı açık tut <small>Antrenmanda kapanmasın</small></div>
+        <div class="txt">Keep screen on <small>Prevent sleep</small></div>
         <input id="wakelock" type="checkbox" />
       </div>
     </div>
 
     <div class="sheet-actions">
-      <button class="btn btn-secondary" id="copyExport">Kopyala</button>
-      <button class="btn btn-main" id="saveSettings">KAYDET</button>
+      <button class="btn btn-secondary" id="copyExport">Copy Logs</button>
+      <button class="btn btn-main" id="saveSettings">SAVE</button>
     </div>
   </dialog>
 
@@ -227,24 +227,19 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "BLACK GYM Online Antrenman Kronometresi",
-    "url": "https://blackgym.com.tr/chrono/",
-    "description": "HIIT, Tabata ve interval antrenmanları için ücretsiz online kronometre. Bursa Nilüfer sporcuları için tasarlandı.",
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"BLACK GYM Online Workout Chronometer",
+    "url":"https://blackgym.com.tr/chrono/index-en.html",
+    "description": "Free online stopwatch and interval timer for HIIT and Tabata.",
     "applicationCategory": "HealthAndFitnessApplication",
-    "operatingSystem": "All",
+    "operatingSystem":"All",
     "isAccessibleForFree": true,
-    "inLanguage": "tr",
+    "inLanguage": "en",
     "publisher": {
       "@type": "Organization",
       "name": "BLACK GYM",
       "url": "https://blackgym.com.tr/"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "TRY"
     }
   }
   </script>
